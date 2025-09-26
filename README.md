@@ -48,10 +48,13 @@ pip install tox
 `pip-licenses.txt`是記專案有用的第三方套件授權，是利用[pip-licenses](https://github.com/raimon49/pip-licenses)自動彙整。請注意，它是利用pip查找本機已安裝的套件資訊，因此請確認本機僅安裝專案有用的套件再利用pip-licenses。
 
 1. 先安裝pip-licenses：
+
       ```bash
       pip install pip-licenses
       ```
+
 2. 列出專案的第三方套件授權：
+
       ```bash
       pip-licenses > pip-licenses.txt
       ```

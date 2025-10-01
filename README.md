@@ -56,5 +56,5 @@ pip install tox
 2. 列出專案的第三方套件授權：
 
       ```bash
-      pip-licenses > pip-licenses.txt
+      pip-licenses > licenses-of-requirements.txt
       ```

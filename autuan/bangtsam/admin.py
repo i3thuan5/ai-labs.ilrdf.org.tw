@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.models import User, Group
+from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
 
@@ -10,5 +11,5 @@ class AutaiSite(admin.AdminSite):
 
 autai_site = AutaiSite(name="adminautai")
 
-autai_site.register(User)
+autai_site.register(User, UserAdmin)
 autai_site.register(Group)

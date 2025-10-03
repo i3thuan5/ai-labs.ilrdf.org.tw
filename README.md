@@ -58,4 +58,5 @@ pip install tox
       ```bash
       pip-licenses > licenses-of-requirements.txt
       ```
+
 3. 人工審閱匯出結果，若發現顯示「Unknown」須手動查詢套件授權並回填。

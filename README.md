@@ -56,5 +56,7 @@ pip install tox
 2. 列出專案的第三方套件授權：
 
       ```bash
-      pip-licenses > pip-licenses.txt
+      pip-licenses > licenses-of-requirements.txt
       ```
+
+3. 人工審閱匯出結果，若發現顯示「Unknown」須手動查詢套件授權並回填。

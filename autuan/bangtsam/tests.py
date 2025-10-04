@@ -20,5 +20,5 @@ class AutaiTest(TestCase):
             reverse("adminautai:auth_user_changelist"), follow=True)
         self.assertContains(
             response,
-            '<a href="/katayalan/auth/user/{}/change/">'.format(
+            '<a href="/kuanli/auth/user/{}/change/">'.format(
                 self.superuser.id))

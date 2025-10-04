@@ -143,7 +143,8 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Wagtail
+
 WAGTAIL_SITE_NAME = '成果網站內容後台'
 WAGTAILADMIN_BASE_URL = 'localhost'
-WAGTAILDOCS_EXTENSIONS = [
-    'csv', 'docx', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', ]
+WAGTAILIMAGES_EXTENSIONS = ['svg', 'png', 'jpg', 'webp', ]
+WAGTAILDOCS_EXTENSIONS = ['docx', 'odt', 'pdf', 'txt', ]

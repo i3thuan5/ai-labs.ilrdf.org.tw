@@ -148,3 +148,4 @@ WAGTAIL_SITE_NAME = '成果網站內容後台'
 WAGTAILADMIN_BASE_URL = 'localhost'
 WAGTAILIMAGES_EXTENSIONS = ['svg', 'png', 'jpg', 'webp', ]
 WAGTAILDOCS_EXTENSIONS = ['docx', 'odt', 'pdf', 'txt', ]
+WAGTAIL_PASSWORD_RESET_ENABLED = False  # 關閉「忘記密碼？」連結

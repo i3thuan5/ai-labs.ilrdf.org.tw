@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'wagtail',
     'modelcluster',
     'taggit',
+    'password_policies',
 
     'bangtsam',
 ]
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'password_policies.middleware.PasswordExpirationMiddleware',
 ]
 
 ROOT_URLCONF = 'autuan.urls'
@@ -112,6 +114,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+    {
+        'NAME': 'password_policies.password_validation.ComplexityValidator',
+    },
+    {
+        'NAME': 'password_policies.password_validation.ReusedPasswordValidator',
+    },
+    {
+        'NAME': 'password_policies.password_validation.MinimumChangeIntervalValidator',
     },
 ]
 

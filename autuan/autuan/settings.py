@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+from datetime import timedelta
 from pathlib import Path
 import os
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'modelcluster',
     'taggit',
     'password_policies',
+    'axes',
 
     'bangtsam',
 ]
@@ -66,6 +67,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     'password_policies.middleware.PasswordExpirationMiddleware',
+    'axes.middleware.AxesMiddleware',
 ]
 
 ROOT_URLCONF = 'autuan.urls'
@@ -87,6 +89,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'autuan.wsgi.application'
 
+
+# Django-axes related
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesStandaloneBackend',
+    # Django ModelBackend is the default authentication backend.
+    'django.contrib.auth.backends.ModelBackend',
+]
+AXES_ENABLED = True
+AXES_FAILURE_LIMIT = 5
+AXES_COOLOFF_TIME = timedelta(minutes=15)
+AXES_ENABLE_ACCESS_FAILURE_LOG = True
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases

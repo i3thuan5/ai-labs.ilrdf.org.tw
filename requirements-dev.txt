@@ -6,19 +6,19 @@
 #
 anyascii==0.3.3
     # via wagtail
-asgiref==3.9.2
+asgiref==3.10.0
     # via
     #   django
     #   django-axes
 beautifulsoup4==4.14.2
     # via wagtail
-certifi==2025.8.3
+certifi==2025.10.5
     # via requests
 charset-normalizer==3.4.3
     # via requests
 defusedxml==0.7.1
     # via willow
-django==5.2.6
+django==5.2.7
     # via
     #   -r requirements-dev.in
     #   django-axes
@@ -34,7 +34,7 @@ django==5.2.6
     #   wagtail
 django-axes==8.0.0
     # via -r requirements-dev.in
-django-filter==25.1
+django-filter==25.2
     # via wagtail
 django-modelcluster==6.4
     # via wagtail
@@ -42,7 +42,7 @@ django-password-policies-validator==1.0.3
     # via -r requirements-dev.in
 django-permissionedforms==0.1
     # via wagtail
-django-stubs-ext==5.2.5
+django-stubs-ext==5.2.7
     # via django-tasks
 django-taggit==6.1.0
     # via wagtail

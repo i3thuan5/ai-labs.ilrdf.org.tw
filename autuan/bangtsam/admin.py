@@ -9,7 +9,7 @@ from password_policies.models import PasswordRecord
 
 
 class AutaiSite(admin.AdminSite):
-    site_header = "族語AI成果網站人員管理後台"
+    site_header = "族語AI成果網站系統管理後台"
 
 
 class PasswordRecordAutai(admin.ModelAdmin):

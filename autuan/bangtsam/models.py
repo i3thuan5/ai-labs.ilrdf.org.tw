@@ -12,18 +12,23 @@ class HomePage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        sitemappage = SitemapPage.objects.first()
+        try:
+            sitemappage = SitemapPage.objects.first()
+        except SitemapPage.DoesNotExist:
+            sitemappage = None
         intropage = IntroPage.objects.first()
         feedbackpage = FeedbackPage.objects.first()
         applicationformpage = ApplicationFormPage.objects.first()
         aboutuspage = AboutUsPage.objects.first()
         termofusepage = TermsOfUsePage.objects.first()
+        copyrightpage = CopyrightPage.objects.first()
         context['sitemappage'] = sitemappage
         context['intropage'] = intropage
         context['feedbackpage'] = feedbackpage
         context['applicationformpage'] = applicationformpage
         context['aboutuspage'] = aboutuspage
         context['termofusepage'] = termofusepage
+        context['copyrightpage'] = copyrightpage
         return context
 
 
@@ -49,12 +54,14 @@ class RichTextBasePage(Page):
         applicationformpage = ApplicationFormPage.objects.first()
         aboutuspage = AboutUsPage.objects.first()
         termofusepage = TermsOfUsePage.objects.first()
+        copyrightpage = CopyrightPage.objects.first()
         context['sitemappage'] = sitemappage
         context['intropage'] = intropage
         context['feedbackpage'] = feedbackpage
         context['applicationformpage'] = applicationformpage
         context['aboutuspage'] = aboutuspage
         context['termofusepage'] = termofusepage
+        context['copyrightpage'] = copyrightpage
         return context
 
 
@@ -75,6 +82,10 @@ class ApplicationFormPage(RichTextBasePage):
 
 
 class AboutUsPage(RichTextBasePage):
+    template = 'bangtsam/richtextbase.html'
+
+
+class CopyrightPage(RichTextBasePage):
     template = 'bangtsam/richtextbase.html'
 
 

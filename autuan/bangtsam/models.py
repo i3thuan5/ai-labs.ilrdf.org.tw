@@ -47,7 +47,11 @@ class HomePage(Page):
 
 
 class RichTextBasePage(Page):
-    body = RichTextField(blank=True)
+    body = RichTextField(
+        blank=True,
+        features=['h2', 'h3', 'bold', 'italic',
+                  'link', 'ol', 'ul', 'document-link',
+                  'image', ])
 
     content_panels = Page.content_panels + [
         FieldPanel('body'),
@@ -89,7 +93,13 @@ class IntroPage(RichTextBasePage):
 
 
 class FeedbackPage(RichTextBasePage):
-    template = 'bangtsam/richtextbase.html'
+    feedbackurl = models.URLField(blank=True, help_text="意見回饋的Google表單連結")
+
+    template = 'bangtsam/feedbackpage.html'
+    content_panels = Page.content_panels + [
+        FieldPanel('body'),
+        FieldPanel('feedbackurl'),
+    ]
 
 
 class ApplicationFormPage(RichTextBasePage):

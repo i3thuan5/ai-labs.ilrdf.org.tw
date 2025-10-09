@@ -7,6 +7,9 @@ from bangtsam.models import HomePage, SitemapPage, \
 
 class HomePageTest(WagtailPageTestCase):
 
+    def test_can_create_HomePage_with_none_children_page(self):
+        self.fail()
+
     def test_can_create_SitemapPage_under_home_page(self):
         self.assertCanCreateAt(HomePage, SitemapPage)
 

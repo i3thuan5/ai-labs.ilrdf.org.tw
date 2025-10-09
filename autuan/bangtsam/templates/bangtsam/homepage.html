@@ -24,16 +24,17 @@
 		頁首區...
 		<nav aria-label="無障礙選單">
 			<a href="#main">跳去主內容</a>
-			<a href="{% pageurl sitemappage %}">網站地圖</a>
+			<a href="{% pageurl sitemappage fallback='comming_soon' %}">{{sitemappage.title}}</a>
 		</nav>
 		<nav aria-label="主選單">
 			<span>語音辨識系統</span>
 			<span>語音合成系統</span>
 			<span>基礎翻譯系統</span>
-			<a href="{% pageurl feedbackpage %}">{{feedbackpage.title}}</a>
-			<a href="{% pageurl intropage %}">計畫介紹</a>
-			<a href="{% pageurl applicationformpage %}">語料申請頁</a>
-			<a href="{% pageurl aboutuspage %}">關於我們</a>
+			<a href="{% pageurl feedbackpage fallback='comming_soon' %}">{{feedbackpage.title}}</a>
+			<a href="{% pageurl intropage fallback='comming_soon' %}">{{intropage.title}}</a>
+			<a href="{% pageurl applicationformpage fallback='comming_soon' %}">
+			{{applicationformpage.title}}</a>
+			<a href="{% pageurl aboutuspage fallback='comming_soon' %}">{{aboutuspage.title}}</a>
 		</nav>
 	</header>
 	<hr>
@@ -45,8 +46,8 @@
 	</main>
 	<hr>
 	<footer>頁腳區...
-		<a href="{% pageurl copyrightpage %}">著作權聲明</a>
-		<a href="{% pageurl termofusepage %}">網站使用條款聲明</a>
+		<a href="{% pageurl copyrightpage fallback='comming_soon' %}">{{copyrightpage.title}}</a>
+		<a href="{% pageurl termofusepage fallback='comming_soon' %}">{{termofusepage.title}}</a>
 	</footer>
 </body>
 </html>

@@ -26,16 +26,15 @@ class HomePage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        try:
-            sitemappage = SitemapPage.objects.first()
-        except SitemapPage.DoesNotExist:
-            sitemappage = None
+        homepage = HomePage.objects.first()
         intropage = IntroPage.objects.first()
         feedbackpage = FeedbackPage.objects.first()
         applicationformpage = ApplicationFormPage.objects.first()
         aboutuspage = AboutUsPage.objects.first()
         termofusepage = TermsOfUsePage.objects.first()
         copyrightpage = CopyrightPage.objects.first()
+        sitemappage = SitemapPage.objects.first()
+        context['homepage'] = homepage
         context['sitemappage'] = sitemappage
         context['intropage'] = intropage
         context['feedbackpage'] = feedbackpage
@@ -67,6 +66,7 @@ class RichTextBasePage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
+        homepage = HomePage.objects.first()
         sitemappage = SitemapPage.objects.first()
         intropage = IntroPage.objects.first()
         feedbackpage = FeedbackPage.objects.first()
@@ -74,6 +74,7 @@ class RichTextBasePage(Page):
         aboutuspage = AboutUsPage.objects.first()
         termofusepage = TermsOfUsePage.objects.first()
         copyrightpage = CopyrightPage.objects.first()
+        context['homepage'] = homepage
         context['sitemappage'] = sitemappage
         context['intropage'] = intropage
         context['feedbackpage'] = feedbackpage

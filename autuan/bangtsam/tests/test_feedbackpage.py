@@ -1,16 +1,54 @@
+from wagtail.models import Page, Site
 from wagtail.test.utils import WagtailPageTestCase
+from wagtail.test.utils.form_data import nested_form_data
 
-from bangtsam.models import FeedbackPage
+from bangtsam.models import HomePage, FeedbackPage
+from bangtsam.tests.utils import tshong_superuser
 
 
 class FeedbackPageTest(WagtailPageTestCase):
 
+    @classmethod
+    def setUpTestData(cls):
+        root = Page.get_first_root_node()
+        Site.objects.create(
+            hostname="testserver",
+            root_page=root,
+            is_default_site=True,
+            site_name="testserver",
+        )
+        homepage = HomePage(title="Home")
+        root.add_child(instance=homepage)
+        cls.homepage = homepage
+        cls.superuser = tshong_superuser()
+
+    def test_can_create_feedbackpage_with_blank_feedbackurl(self):
+        self.client.force_login(self.superuser)
+        self.assertCanCreate(
+            self.homepage, FeedbackPage,
+            nested_form_data({
+                'title': '意見回饋',
+                'slug': 'feedback',
+            })
+        )
+
     def test_feedbackurl_blank_then_hide_link_button(self):
-        self.page = FeedbackPage(
+        page = FeedbackPage(
             title='意見回饋',
             slug="feedback",
+            live=True,
         )
-        self.assertPageIsRenderable(self.page)
+        self.homepage.add_child(instance=page)
+        response = self.client.get(page.url)
+        self.assertNotContains(response, '前往填寫意見回饋表單')
 
     def test_feedbackurl_exists_then_show_link_button(self):
-        pass
+        page = FeedbackPage(
+            title='意見回饋',
+            slug="feedback",
+            feedbackurl='https://test.com/example-google-form/',
+            live=True,
+        )
+        self.homepage.add_child(instance=page)
+        response = self.client.get(page.url)
+        self.assertContains(response, '前往填寫意見回饋表單')

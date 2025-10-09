@@ -23,7 +23,7 @@ from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from bangtsam.admin import autai_site
-
+from bangtsam import urls as bangtsam_urls
 
 urlpatterns = [
     path('kuanli/', autai_site.urls),
@@ -33,5 +33,6 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns = urlpatterns + [
+    path("", include(bangtsam_urls)),
     path("", include(wagtail_urls)),
 ]

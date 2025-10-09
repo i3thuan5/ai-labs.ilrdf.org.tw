@@ -27,3 +27,31 @@ class HomePageTest(WagtailPageTestCase):
 
     def test_can_create_TermsOfUsePage_under_home_page(self):
         self.assertCanCreateAt(HomePage, TermsOfUsePage)
+
+    def test_SitemapPage_parent_pages_only_HomePage(self):
+        self.assertAllowedParentPageTypes(
+            SitemapPage, {HomePage})
+
+    def test_IntroPage_parent_pages_only_HomePage(self):
+        self.assertAllowedParentPageTypes(
+            IntroPage, {HomePage})
+
+    def test_FeedbackPage_parent_pages_only_HomePage(self):
+        self.assertAllowedParentPageTypes(
+            FeedbackPage, {HomePage})
+
+    def test_ApplicationFormPage_parent_pages_only_HomePage(self):
+        self.assertAllowedParentPageTypes(
+            ApplicationFormPage, {HomePage})
+
+    def test_AboutUsPage_parent_pages_only_HomePage(self):
+        self.assertAllowedParentPageTypes(
+            AboutUsPage, {HomePage})
+
+    def test_CopyrightPage_parent_pages_only_HomePage(self):
+        self.assertAllowedParentPageTypes(
+            CopyrightPage, {HomePage})
+
+    def test_TermsOfUsePage_parent_pages_only_HomePage(self):
+        self.assertAllowedParentPageTypes(
+            TermsOfUsePage, {HomePage})

@@ -1,10 +1,28 @@
+import re
+
 from django.db import models
+from django.core.exceptions import ValidationError
 from wagtail.models import Page
 from wagtail.fields import RichTextField
+from wagtail.admin.forms import WagtailAdminPageForm
 from wagtail.admin.panels import FieldPanel
 
 
-class HomePage(Page):
+class KongkeIahForm(WagtailAdminPageForm):
+
+    def clean_slug(self):
+        slug = self.cleaned_data['slug']
+        if re.search(r"[^a-z0-9-]", slug):
+            pass
+            # raise ValidationError('限定小寫字母a到z、數字0到9、半型連接號-。')
+        return slug
+
+
+class KongkeIah:
+    base_form_class = KongkeIahForm
+
+
+class HomePage(KongkeIah, Page):
     parent_page_types = ['wagtailcore.Page']
     max_count_per_parent = 1
 
@@ -32,7 +50,7 @@ class HomePage(Page):
         return context
 
 
-class RichTextBasePage(Page):
+class RichTextBasePage(KongkeIah, Page):
     body = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [

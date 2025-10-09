@@ -8,6 +8,8 @@ class HomePage(Page):
     parent_page_types = ['wagtailcore.Page']
     max_count_per_parent = 1
 
+    template = 'bangtsam/homepage.html'
+
 
 class RichTextBasePage(Page):
     body = RichTextField(blank=True)

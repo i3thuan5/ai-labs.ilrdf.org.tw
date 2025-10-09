@@ -13,20 +13,16 @@ class KongkeIahForm(WagtailAdminPageForm):
     def clean_slug(self):
         slug = self.cleaned_data['slug']
         if re.search(r"[^a-z0-9-]", slug):
-            pass
-            # raise ValidationError('限定小寫字母a到z、數字0到9、半型連接號-。')
+            raise ValidationError('限定小寫字母a到z、數字0到9、半型連接號-。')
         return slug
 
 
-class KongkeIah:
-    base_form_class = KongkeIahForm
-
-
-class HomePage(KongkeIah, Page):
+class HomePage(Page):
     parent_page_types = ['wagtailcore.Page']
     max_count_per_parent = 1
 
     template = 'bangtsam/homepage.html'
+    base_form_class = KongkeIahForm
 
     def get_context(self, request):
         context = super().get_context(request)
@@ -50,7 +46,7 @@ class HomePage(KongkeIah, Page):
         return context
 
 
-class RichTextBasePage(KongkeIah, Page):
+class RichTextBasePage(Page):
     body = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
@@ -60,6 +56,7 @@ class RichTextBasePage(KongkeIah, Page):
     parent_page_types = ['HomePage']
     subpage_types = []
     max_count_per_parent = 1
+    base_form_class = KongkeIahForm
 
     class Meta:
         abstract = True

@@ -10,6 +10,22 @@ class HomePage(Page):
 
     template = 'bangtsam/homepage.html'
 
+    def get_context(self, request):
+        context = super().get_context(request)
+        sitemappage = SitemapPage.objects.first()
+        intropage = IntroPage.objects.first()
+        feedbackpage = FeedbackPage.objects.first()
+        applicationformpage = ApplicationFormPage.objects.first()
+        aboutuspage = AboutUsPage.objects.first()
+        termofusepage = TermsOfUsePage.objects.first()
+        context['sitemappage'] = sitemappage
+        context['intropage'] = intropage
+        context['feedbackpage'] = feedbackpage
+        context['applicationformpage'] = applicationformpage
+        context['aboutuspage'] = aboutuspage
+        context['termofusepage'] = termofusepage
+        return context
+
 
 class RichTextBasePage(Page):
     body = RichTextField(blank=True)
@@ -25,26 +41,42 @@ class RichTextBasePage(Page):
     class Meta:
         abstract = True
 
+    def get_context(self, request):
+        context = super().get_context(request)
+        sitemappage = SitemapPage.objects.first()
+        intropage = IntroPage.objects.first()
+        feedbackpage = FeedbackPage.objects.first()
+        applicationformpage = ApplicationFormPage.objects.first()
+        aboutuspage = AboutUsPage.objects.first()
+        termofusepage = TermsOfUsePage.objects.first()
+        context['sitemappage'] = sitemappage
+        context['intropage'] = intropage
+        context['feedbackpage'] = feedbackpage
+        context['applicationformpage'] = applicationformpage
+        context['aboutuspage'] = aboutuspage
+        context['termofusepage'] = termofusepage
+        return context
+
 
 class SitemapPage(RichTextBasePage):
-    pass
+    template = 'bangtsam/richtextbase.html'
 
 
 class IntroPage(RichTextBasePage):
-    pass
+    template = 'bangtsam/richtextbase.html'
 
 
 class FeedbackPage(RichTextBasePage):
-    pass
+    template = 'bangtsam/richtextbase.html'
 
 
 class ApplicationFormPage(RichTextBasePage):
-    pass
+    template = 'bangtsam/richtextbase.html'
 
 
 class AboutUsPage(RichTextBasePage):
-    pass
+    template = 'bangtsam/richtextbase.html'
 
 
 class TermsOfUsePage(RichTextBasePage):
-    pass
+    template = 'bangtsam/richtextbase.html'

@@ -3,20 +3,14 @@ from wagtail.test.utils import WagtailPageTestCase
 from wagtail.test.utils.form_data import nested_form_data
 
 from bangtsam.models import HomePage, FeedbackPage
-from bangtsam.tests.utils import tshong_superuser
+from bangtsam.tests.utils import tshong_superuser, tshong_wagtail_site
 
 
 class FeedbackPageTest(WagtailPageTestCase):
 
     @classmethod
     def setUpTestData(cls):
-        root = Page.get_first_root_node()
-        Site.objects.create(
-            hostname="testserver",
-            root_page=root,
-            is_default_site=True,
-            site_name="testserver",
-        )
+        root = tshong_wagtail_site()
         homepage = HomePage(title="Home")
         root.add_child(instance=homepage)
         cls.homepage = homepage

@@ -3,9 +3,11 @@ import re
 from django.db import models
 from django.core.exceptions import ValidationError
 from wagtail.models import Page
-from wagtail.fields import RichTextField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.forms import WagtailAdminPageForm
 from wagtail.admin.panels import FieldPanel
+
+from bangtsam.blocks import SampleBlock
 
 
 class KongkeIahForm(WagtailAdminPageForm):
@@ -106,6 +108,23 @@ class FeedbackPage(RichTextBasePage):
 class ApplicationFormPage(RichTextBasePage):
     template = 'bangtsam/richtextbase.html'
 
+    sample = StreamField([
+        ('sample_block', SampleBlock()),
+    ],
+        default=[("sample_block",  {
+            "tribe": "",
+            "sample_text": "",
+            "translation_text": "",
+            "audio": None,
+        })],
+        blank=True,
+        null=True,)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body'),
+        FieldPanel('sample'),
+    ]
+
 
 class AboutUsPage(RichTextBasePage):
     template = 'bangtsam/richtextbase.html'
@@ -117,3 +136,19 @@ class CopyrightPage(RichTextBasePage):
 
 class TermsOfUsePage(RichTextBasePage):
     template = 'bangtsam/richtextbase.html'
+
+    # people = StreamField([
+    #     ('person_block', PersonBlock()),
+    # ],
+    #     default=[("person_block",  {
+    #         "mia": "tshua",
+    #         "photo": None,
+    #         "biography": "",
+    #     })],
+    #     blank=True,
+    #     null=True,)
+
+    # content_panels = Page.content_panels + [
+    #     FieldPanel('body'),
+    #     FieldPanel('people'),
+    # ]

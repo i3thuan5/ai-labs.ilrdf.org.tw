@@ -3,12 +3,18 @@ from wagtail.test.utils import WagtailPageTestCase
 from bangtsam.models import HomePage, SitemapPage, \
     IntroPage, FeedbackPage,  ApplicationFormPage, AboutUsPage, \
     CopyrightPage, TermsOfUsePage
+from bangtsam.tests.utils import tshong_wagtail_site
 
 
 class HomePageTest(WagtailPageTestCase):
 
-    def test_can_create_HomePage_with_none_children_page(self):
-        self.fail()
+    def test_HomePage_is_renderable_with_none_children_page(self):
+        root = tshong_wagtail_site()
+        homepage = HomePage(title="族語AI成果網站")
+        root.add_child(instance=homepage)
+        response = self.client.get(homepage.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '族語AI成果網站')
 
     def test_can_create_SitemapPage_under_home_page(self):
         self.assertCanCreateAt(HomePage, SitemapPage)

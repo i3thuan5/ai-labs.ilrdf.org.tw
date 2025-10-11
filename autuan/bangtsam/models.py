@@ -106,8 +106,6 @@ class FeedbackPage(RichTextBasePage):
 
 
 class ApplicationFormPage(RichTextBasePage):
-    template = 'bangtsam/richtextbase.html'
-
     sample = StreamField([
         ('sample_block', SampleBlock()),
     ],
@@ -124,6 +122,8 @@ class ApplicationFormPage(RichTextBasePage):
         FieldPanel('body'),
         FieldPanel('sample'),
     ]
+
+    template = 'bangtsam/applicationformpage.html'
 
 
 class AboutUsPage(RichTextBasePage):

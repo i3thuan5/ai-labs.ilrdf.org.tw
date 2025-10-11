@@ -14,6 +14,20 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='applicationformpage',
             name='sample',
-            field=wagtail.fields.StreamField([('sample_block', 2)], blank=True, block_lookup={0: ('wagtail.blocks.CharBlock', (), {}), 1: ('wagtail.documents.blocks.DocumentChooserBlock', (), {}), 2: ('wagtail.blocks.StructBlock', [[('tribe', 0), ('sample_text', 0), ('translation_text', 0), ('audio', 1)]], {})}, default=[('sample_block', {'audio': None, 'sample_text': '', 'translation_text': '', 'tribe': ''})], null=True),
+            field=wagtail.fields.StreamField(
+                [('sample_block', 2)],
+                blank=True,
+                block_lookup={
+                    0: ('wagtail.blocks.CharBlock', (), {}),
+                    1: ('wagtail.documents.blocks.DocumentChooserBlock',
+                        (), {}),
+                    2: ('wagtail.blocks.StructBlock', [
+                        [('tribe', 0), ('sample_text', 0),
+                         ('translation_text', 0), ('audio', 1)]], {})
+                },
+                default=[('sample_block',
+                          {'audio': None, 'sample_text': '',
+                           'translation_text': '', 'tribe': ''})],
+                null=True),
         ),
     ]

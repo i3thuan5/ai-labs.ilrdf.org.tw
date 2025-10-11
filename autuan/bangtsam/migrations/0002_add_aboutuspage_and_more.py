@@ -16,7 +16,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AboutUsPage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                ('page_ptr', models.OneToOneField(
+                    auto_created=True,
+                    on_delete=django.db.models.deletion.CASCADE,
+                    parent_link=True,
+                    primary_key=True,
+                    serialize=False,
+                    to='wagtailcore.page')),
                 ('body', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
@@ -27,7 +33,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ApplicationFormPage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                ('page_ptr', models.OneToOneField(
+                    auto_created=True,
+                    on_delete=django.db.models.deletion.CASCADE,
+                    parent_link=True,
+                    primary_key=True,
+                    serialize=False,
+                    to='wagtailcore.page')),
                 ('body', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
@@ -38,7 +50,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='FeedbackPage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                ('page_ptr', models.OneToOneField(
+                    auto_created=True,
+                    on_delete=django.db.models.deletion.CASCADE,
+                    parent_link=True,
+                    primary_key=True,
+                    serialize=False,
+                    to='wagtailcore.page')),
                 ('body', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
@@ -49,7 +67,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='IntroPage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                ('page_ptr', models.OneToOneField(
+                    auto_created=True,
+                    on_delete=django.db.models.deletion.CASCADE,
+                    parent_link=True,
+                    primary_key=True,
+                    serialize=False,
+                    to='wagtailcore.page')),
                 ('body', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
@@ -60,7 +84,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TermsOfUsePage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                ('page_ptr', models.OneToOneField(
+                    auto_created=True,
+                    on_delete=django.db.models.deletion.CASCADE,
+                    parent_link=True,
+                    primary_key=True,
+                    serialize=False,
+                    to='wagtailcore.page')),
                 ('body', wagtail.fields.RichTextField(blank=True)),
             ],
             options={

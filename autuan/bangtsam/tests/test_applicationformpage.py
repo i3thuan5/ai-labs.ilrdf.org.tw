@@ -6,8 +6,6 @@ from bangtsam.models import HomePage, ApplicationFormPage
 from bangtsam.tests.utils import tshong_superuser, tshong_wagtail_site
 from bangtsam.tests.utils import get_test_document_file
 
-from bangtsam.tests.utils import get_test_document_file
-
 
 class ApplicationFormPageTest(WagtailPageTestCase):
 

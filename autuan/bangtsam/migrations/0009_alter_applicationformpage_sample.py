@@ -14,6 +14,16 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='applicationformpage',
             name='sample',
-            field=wagtail.fields.StreamField([('sample_block', 2)], blank=True, block_lookup={0: ('wagtail.blocks.CharBlock', (), {}), 1: ('wagtail.documents.blocks.DocumentChooserBlock', (), {}), 2: ('wagtail.blocks.StructBlock', [[('tribe', 0), ('sample_text', 0), ('translation_text', 0), ('audio', 1)]], {})}, null=True),
+            field=wagtail.fields.StreamField(
+                [('sample_block', 2)],
+                blank=True,
+                block_lookup={
+                    0: ('wagtail.blocks.CharBlock', (), {}),
+                    1: ('wagtail.documents.blocks.DocumentChooserBlock',
+                        (), {}),
+                    2: ('wagtail.blocks.StructBlock', [[
+                        ('tribe', 0), ('sample_text', 0),
+                        ('translation_text', 0), ('audio', 1)]], {})
+                }, null=True),
         ),
     ]

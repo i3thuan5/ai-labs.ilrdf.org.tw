@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('bangtsam', '0002_aboutuspage_applicationformpage_feedbackpage_and_more'),
+        ('bangtsam', '0002_add_aboutuspage_and_more'),
         ('wagtailcore', '0095_groupsitepermission'),
     ]
 
@@ -15,7 +15,13 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='HomePage',
             fields=[
-                ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.page')),
+                ('page_ptr', models.OneToOneField(
+                    auto_created=True,
+                    on_delete=django.db.models.deletion.CASCADE,
+                    parent_link=True,
+                    primary_key=True,
+                    serialize=False,
+                    to='wagtailcore.page')),
             ],
             options={
                 'abstract': False,

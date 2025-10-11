@@ -2,7 +2,6 @@ from pathlib import Path
 
 from django.core.exceptions import ValidationError
 from wagtail.blocks import CharBlock, StructBlock, StructBlockValidationError
-from wagtail.images.blocks import ImageBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 
 

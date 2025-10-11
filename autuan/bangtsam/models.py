@@ -7,6 +7,9 @@ from bangtsam.blocks import SampleBlock
 from bangtsam.forms import KongkeIahForm
 
 
+BANGTSAM_RICHTEXTBASE_HTML = 'bangtsam/richtextbase.html'
+
+
 class HomePage(Page):
     parent_page_types = ['wagtailcore.Page']
     max_count_per_parent = 1
@@ -76,11 +79,11 @@ class RichTextBasePage(Page):
 
 
 class SitemapPage(RichTextBasePage):
-    template = 'bangtsam/richtextbase.html'
+    template = BANGTSAM_RICHTEXTBASE_HTML
 
 
 class IntroPage(RichTextBasePage):
-    template = 'bangtsam/richtextbase.html'
+    template = BANGTSAM_RICHTEXTBASE_HTML
 
 
 class FeedbackPage(RichTextBasePage):
@@ -110,12 +113,12 @@ class ApplicationFormPage(RichTextBasePage):
 
 
 class AboutUsPage(RichTextBasePage):
-    template = 'bangtsam/richtextbase.html'
+    template = BANGTSAM_RICHTEXTBASE_HTML
 
 
 class CopyrightPage(RichTextBasePage):
-    template = 'bangtsam/richtextbase.html'
+    template = BANGTSAM_RICHTEXTBASE_HTML
 
 
 class TermsOfUsePage(RichTextBasePage):
-    template = 'bangtsam/richtextbase.html'
+    template = BANGTSAM_RICHTEXTBASE_HTML

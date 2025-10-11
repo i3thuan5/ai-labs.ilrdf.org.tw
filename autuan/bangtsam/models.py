@@ -109,14 +109,9 @@ class ApplicationFormPage(RichTextBasePage):
     sample = StreamField([
         ('sample_block', SampleBlock()),
     ],
-        default=[("sample_block",  {
-            "tribe": "",
-            "sample_text": "",
-            "translation_text": "",
-            "audio": None,
-        })],
         blank=True,
-        null=True,)
+        null=True,
+    )
 
     content_panels = Page.content_panels + [
         FieldPanel('body'),

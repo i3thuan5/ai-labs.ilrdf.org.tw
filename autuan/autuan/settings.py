@@ -171,5 +171,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 WAGTAIL_SITE_NAME = '成果網站內容後台'
 WAGTAILADMIN_BASE_URL = 'localhost'
 WAGTAILIMAGES_EXTENSIONS = ['svg', 'png', 'jpg', 'webp', ]
-WAGTAILDOCS_EXTENSIONS = ['docx', 'odt', 'pdf', 'txt', ]
+WAGTAILDOCS_EXTENSIONS = ['docx', 'odt', 'pdf', 'txt', 'wav', ]
 WAGTAIL_PASSWORD_RESET_ENABLED = False  # 關閉「忘記密碼？」連結

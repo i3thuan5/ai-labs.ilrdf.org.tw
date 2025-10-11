@@ -136,19 +136,3 @@ class CopyrightPage(RichTextBasePage):
 
 class TermsOfUsePage(RichTextBasePage):
     template = 'bangtsam/richtextbase.html'
-
-    # people = StreamField([
-    #     ('person_block', PersonBlock()),
-    # ],
-    #     default=[("person_block",  {
-    #         "mia": "tshua",
-    #         "photo": None,
-    #         "biography": "",
-    #     })],
-    #     blank=True,
-    #     null=True,)
-
-    # content_panels = Page.content_panels + [
-    #     FieldPanel('body'),
-    #     FieldPanel('people'),
-    # ]

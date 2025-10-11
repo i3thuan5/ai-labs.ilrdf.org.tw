@@ -1,22 +1,10 @@
-import re
-
 from django.db import models
-from django.core.exceptions import ValidationError
 from wagtail.models import Page
 from wagtail.fields import RichTextField, StreamField
-from wagtail.admin.forms import WagtailAdminPageForm
 from wagtail.admin.panels import FieldPanel
 
 from bangtsam.blocks import SampleBlock
-
-
-class KongkeIahForm(WagtailAdminPageForm):
-
-    def clean_slug(self):
-        slug = self.cleaned_data['slug']
-        if re.search(r"[^a-z0-9-]", slug):
-            raise ValidationError('限定小寫字母a到z、數字0到9、半型連接號-。')
-        return slug
+from bangtsam.forms import KongkeIahForm
 
 
 class HomePage(Page):

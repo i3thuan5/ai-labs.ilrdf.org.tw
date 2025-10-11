@@ -24,3 +24,4 @@ class SampleBlock(StructBlock):
 
     class Meta:
         icon = 'media'
+        min_num = 0

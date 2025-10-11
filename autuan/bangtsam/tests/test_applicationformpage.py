@@ -2,8 +2,8 @@ from wagtail.test.utils import WagtailPageTestCase
 from wagtail.test.utils.form_data import nested_form_data, streamfield
 from wagtail.documents import get_document_model
 
-from bangtsam.models import HomePage, ApplicationFormPage
-from bangtsam.tests.utils import tshong_superuser, tshong_wagtail_site
+from bangtsam.models import ApplicationFormPage
+from bangtsam.tests.utils import tshong_superuser, tshong_wagtail_homepage
 from bangtsam.tests.utils import get_test_document_file
 
 
@@ -11,10 +11,7 @@ class ApplicationFormPageTest(WagtailPageTestCase):
 
     @classmethod
     def setUpTestData(cls):
-        root = tshong_wagtail_site()
-        homepage = HomePage(title="Home")
-        root.add_child(instance=homepage)
-        cls.homepage = homepage
+        cls.homepage = tshong_wagtail_homepage()
         cls.superuser = tshong_superuser()
 
     def test_can_create_ApplicationFormPage_with_none_example_field(self):

@@ -1,18 +1,15 @@
 from wagtail.test.utils import WagtailPageTestCase
 from wagtail.test.utils.form_data import nested_form_data
 
-from bangtsam.models import HomePage, FeedbackPage
-from bangtsam.tests.utils import tshong_superuser, tshong_wagtail_site
+from bangtsam.models import FeedbackPage
+from bangtsam.tests.utils import tshong_superuser, tshong_wagtail_homepage
 
 
 class FeedbackPageTest(WagtailPageTestCase):
 
     @classmethod
     def setUpTestData(cls):
-        root = tshong_wagtail_site()
-        homepage = HomePage(title="Home")
-        root.add_child(instance=homepage)
-        cls.homepage = homepage
+        cls.homepage = tshong_wagtail_homepage()
         cls.superuser = tshong_superuser()
 
     def test_can_create_feedbackpage_with_blank_feedbackurl(self):

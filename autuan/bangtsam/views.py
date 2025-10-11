@@ -17,7 +17,7 @@ def comming_soon_view(request):
     aboutuspage = AboutUsPage.objects.first()
     termofusepage = TermsOfUsePage.objects.first()
     copyrightpage = CopyrightPage.objects.first()
-    context = dict()
+    context = {}
     context['homepage'] = homepage
     context['sitemappage'] = sitemappage
     context['intropage'] = intropage

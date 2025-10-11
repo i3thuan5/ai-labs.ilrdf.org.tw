@@ -5,6 +5,9 @@ import wagtail.fields
 from django.db import migrations, models
 
 
+WAGTAILCORE_PAGE = 'wagtailcore.page'
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -22,13 +25,13 @@ class Migration(migrations.Migration):
                     parent_link=True,
                     primary_key=True,
                     serialize=False,
-                    to='wagtailcore.page')),
+                    to=WAGTAILCORE_PAGE)),
                 ('body', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
             },
-            bases=('wagtailcore.page',),
+            bases=(WAGTAILCORE_PAGE,),
         ),
         migrations.CreateModel(
             name='ApplicationFormPage',
@@ -39,13 +42,13 @@ class Migration(migrations.Migration):
                     parent_link=True,
                     primary_key=True,
                     serialize=False,
-                    to='wagtailcore.page')),
+                    to=WAGTAILCORE_PAGE)),
                 ('body', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
             },
-            bases=('wagtailcore.page',),
+            bases=(WAGTAILCORE_PAGE,),
         ),
         migrations.CreateModel(
             name='FeedbackPage',
@@ -56,13 +59,13 @@ class Migration(migrations.Migration):
                     parent_link=True,
                     primary_key=True,
                     serialize=False,
-                    to='wagtailcore.page')),
+                    to=WAGTAILCORE_PAGE)),
                 ('body', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
             },
-            bases=('wagtailcore.page',),
+            bases=(WAGTAILCORE_PAGE,),
         ),
         migrations.CreateModel(
             name='IntroPage',
@@ -73,13 +76,13 @@ class Migration(migrations.Migration):
                     parent_link=True,
                     primary_key=True,
                     serialize=False,
-                    to='wagtailcore.page')),
+                    to=WAGTAILCORE_PAGE)),
                 ('body', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
             },
-            bases=('wagtailcore.page',),
+            bases=(WAGTAILCORE_PAGE,),
         ),
         migrations.CreateModel(
             name='TermsOfUsePage',
@@ -90,12 +93,12 @@ class Migration(migrations.Migration):
                     parent_link=True,
                     primary_key=True,
                     serialize=False,
-                    to='wagtailcore.page')),
+                    to=WAGTAILCORE_PAGE)),
                 ('body', wagtail.fields.RichTextField(blank=True)),
             ],
             options={
                 'abstract': False,
             },
-            bases=('wagtailcore.page',),
+            bases=(WAGTAILCORE_PAGE,),
         ),
     ]

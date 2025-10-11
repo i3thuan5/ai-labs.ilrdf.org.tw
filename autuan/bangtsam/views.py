@@ -4,8 +4,10 @@ from django.shortcuts import render
 from bangtsam.models import HomePage, SitemapPage, \
     IntroPage, FeedbackPage, ApplicationFormPage,\
     AboutUsPage, TermsOfUsePage, CopyrightPage
+from django.views.decorators.http import require_GET
 
 
+@require_GET
 def comming_soon_view(request):
     homepage = HomePage.objects.first()
     sitemappage = SitemapPage.objects.first()

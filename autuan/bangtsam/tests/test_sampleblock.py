@@ -1,15 +1,9 @@
 from django.test import TestCase
 from django.core.exceptions import ValidationError
-from django.core.files.base import ContentFile
 from wagtail.documents import get_document_model
 
 from bangtsam.blocks import SampleBlock
-
-
-def get_test_document_file(file_suffix):
-    fake_file = ContentFile(b"A boring example document")
-    fake_file.name = f"test.{file_suffix}"
-    return fake_file
+from bangtsam.tests.utils import get_test_document_file
 
 
 class SampleBlockTest(TestCase):

@@ -1,4 +1,4 @@
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags static %}
 
 <!DOCTYPE html>
 <html lang="zh-TW">
@@ -18,6 +18,7 @@
         {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
         {% endblock %}
     </title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <style>
     	.main-content img {
     		max-width: 100%;
@@ -58,6 +59,7 @@
 		<a href="{% pageurl copyrightpage fallback='comming_soon' %}">{{copyrightpage.title}}</a>
 		<a href="{% pageurl termofusepage fallback='comming_soon' %}">{{termofusepage.title}}</a>
 	</footer>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>
 

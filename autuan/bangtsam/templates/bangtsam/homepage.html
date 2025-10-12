@@ -18,6 +18,13 @@
         {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
         {% endblock %}
     </title>
+    <style>
+    	.main-content img {
+    		max-width: 100%;
+    		height: auto;
+    		background-color: #dcdcdc;
+    	} 
+    </style>
 </head>
 <body>
 	<header>
@@ -42,7 +49,9 @@
 		<h1 id="main">
 			{% block main_h1 %}{{ page.title }}{% endblock %}
 		</h1>
+		<div class="main-content">
 		{% block main_content %}{% endblock %}
+		</div>
 	</main>
 	<hr>
 	<footer>頁腳區...

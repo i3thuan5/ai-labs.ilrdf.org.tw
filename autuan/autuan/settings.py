@@ -174,3 +174,4 @@ WAGTAILIMAGES_EXTENSIONS = ['svg', 'png', 'jpg', 'webp', ]
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 3 * 1024 * 1024
 WAGTAILDOCS_EXTENSIONS = ['docx', 'odt', 'pdf', 'txt', 'wav', ]
 WAGTAIL_PASSWORD_RESET_ENABLED = False  # 關閉「忘記密碼？」連結
+WAGTAILAPI_SEARCH_ENABLED = False

@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
 			<!-- Modal -->
 			<div class="modal fade" id="myModal${mid}" tabindex="-1" 
 				aria-labelledby="modalabel${mid}" aria-hidden="true">
-			  <div class="modal-dialog modal-fullscreen">
-			    <div class="modal-content">
+			  <div class="modal-dialog modal-dialog-centered">
+			    <div class="modal-content border-0">
 			      <div class="modal-header border-bottom-0">
 					<span id="modalabel${mid}" class="visually-hidden">放大檢視：${alt}</span>
 			        <button type="button" class="btn-close btn-close-white" 

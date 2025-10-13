@@ -22,17 +22,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
 			<div class="modal fade" id="myModal${mid}" tabindex="-1" 
 				aria-labelledby="modalabel${mid}" aria-hidden="true">
 			  <div class="modal-dialog modal-dialog-centered">
-			    <div class="modal-content border-0">
+			    <div class="modal-content">
 			      <div class="modal-header border-bottom-0">
 					<span id="modalabel${mid}" class="visually-hidden">放大檢視：${alt}</span>
-			        <button type="button" class="btn-close btn-close-white" 
+			        <button type="button" class="btn-close" 
 			            data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
 					<div class="container">
 					    <div class="row">
 					      <div class="col-12">
-			      			<img src="${src}" alt="${alt}" class="sa-img"></div>
+			      			<img src="${src}" alt="${alt}" class="border border-dark sa-img"></div>
 					    </div>
 					</div>
 			      </div>

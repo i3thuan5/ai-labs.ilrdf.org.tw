@@ -21,24 +21,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
 			<!-- Modal -->
 			<div class="modal fade" id="myModal${mid}" tabindex="-1" 
 				aria-labelledby="modalabel${mid}" aria-hidden="true">
-			  <div class="modal-dialog">
+			  <div class="modal-dialog modal-fullscreen">
 			    <div class="modal-content">
-			      <div class="modal-header">
-					<span id="modalabel${mid}"></span>
-			        <button type="button" class="btn-close" 
+			      <div class="modal-header border-bottom-0">
+					<span id="modalabel${mid}" class="visually-hidden">放大檢視：${alt}</span>
+			        <button type="button" class="btn-close btn-close-white" 
 			            data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
-					<div class="container-fluid">
+					<div class="container">
 					    <div class="row">
 					      <div class="col-12">
-			      			<img src="${src}" alt="${alt}" class="img-fluid"></div>
+			      			<img src="${src}" alt="${alt}" class="sa-img"></div>
 					    </div>
 					</div>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" 
-			            data-bs-dismiss="modal">Close</button>
 			      </div>
 			    </div>
 			  </div>

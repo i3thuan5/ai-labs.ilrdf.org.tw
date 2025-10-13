@@ -10,11 +10,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		wrapper.setAttribute('data-bs-target', '#myModal' + i);
 		content_root.insertBefore(wrapper, img);
 		wrapper.appendChild(img);
-		createModelElement(i);
+		createModelElement(i, img);
 	}
 
-	function createModelElement(mid){
+	function createModelElement(mid, img){
 		const parser = new DOMParser();
+		const src = img.getAttribute('src');
+		const alt = img.getAttribute('alt');
 		let html = `
 			<!-- Modal -->
 			<div class="modal fade" id="myModal${mid}" tabindex="-1" 
@@ -23,11 +25,20 @@ document.addEventListener("DOMContentLoaded", (event) => {
 			    <div class="modal-content">
 			      <div class="modal-header">
 					<span id="modalabel${mid}"></span>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			        <button type="button" class="btn-close" 
+			            data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
-			      <div class="modal-body"></div>
+			      <div class="modal-body">
+					<div class="container-fluid">
+					    <div class="row">
+					      <div class="col-12">
+			      			<img src="${src}" alt="${alt}" class="img-fluid"></div>
+					    </div>
+					</div>
+			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-secondary" 
+			            data-bs-dismiss="modal">Close</button>
 			      </div>
 			    </div>
 			  </div>

@@ -166,6 +166,13 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Session related
+
+SESSION_COOKIE_AGE = 30  # 30 minutes
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_SAVE_EVERY_REQUEST = True
+
+
 # Wagtail
 
 WAGTAIL_SITE_NAME = '成果網站內容後台'

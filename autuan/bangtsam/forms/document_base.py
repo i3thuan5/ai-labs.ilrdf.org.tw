@@ -6,10 +6,11 @@ class CustomDocumentForm(BaseDocumentForm):
 
     def clean(self):
         cleaned_data = super().clean()
+        file_max_size = settings.SAPOLITA_DOCS_MAX_UPLOAD_SIZE
         if (
             "file" in cleaned_data
-            and cleaned_data["file"].size > settings.SAPOLITA_DOCS_MAX_UPLOAD_SIZE
+            and cleaned_data["file"].size > file_max_size
         ):
-            max_size_mb = settings.SAPOLITA_DOCS_MAX_UPLOAD_SIZE / (1024*1024)
+            max_size_mb = file_max_size / (1024*1024)
             self.add_error("file", f"文件檔案請小於{max_size_mb}MB以下。")
         return cleaned_data

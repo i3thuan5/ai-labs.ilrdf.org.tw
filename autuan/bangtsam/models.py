@@ -1,6 +1,3 @@
-import re
-from wagtail.admin.forms import WagtailAdminPageForm
-from django.core.exceptions import ValidationError
 from django.db import models
 from wagtail.models import Page
 from wagtail.fields import RichTextField, StreamField

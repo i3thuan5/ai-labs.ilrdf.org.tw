@@ -9,6 +9,8 @@ VIRTUAL_HOST = os.getenv('VIRTUAL_HOST').split(',')
 
 ALLOWED_HOSTS = VIRTUAL_HOST
 
+STATIC_ROOT = '/staticfiles/'
+
 # Wagtail
 
 WAGTAILADMIN_BASE_URL = VIRTUAL_HOST[0]

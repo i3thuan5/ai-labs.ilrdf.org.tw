@@ -6,7 +6,7 @@ class CustomDocumentForm(BaseDocumentForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        file_max_size = settings.SAPOLITA_DOCS_MAX_UPLOAD_SIZE
+        file_max_size = settings.CUSTOM_WAGTAILDOCS_MAX_UPLOAD_SIZE
         if (
             "file" in cleaned_data
             and cleaned_data["file"].size > file_max_size

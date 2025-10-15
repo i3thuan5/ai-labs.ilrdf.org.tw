@@ -44,7 +44,6 @@ class DocumentFormTest(TestCase):
             ])
 
     def test_invalid_none_file_data(self):
-        content_string = b'hello world'
         form_data = {
             "title": "1KB Document.txt",
             "tags": [],

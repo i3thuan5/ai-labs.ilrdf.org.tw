@@ -1,0 +1,6 @@
+{% extends "bangtsam/homepage.html" %}
+{% load wagtailcore_tags %}
+
+{% block main_content %} 
+{{page.body|richtext}}
+{% endblock %}

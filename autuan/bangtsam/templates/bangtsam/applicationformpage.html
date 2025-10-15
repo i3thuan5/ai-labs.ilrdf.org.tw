@@ -1,0 +1,20 @@
+{% extends "bangtsam/homepage.html" %}
+{% load wagtailcore_tags %}
+
+{% block main_content %} 
+{{page.body|richtext}}
+{% if page.sample %}
+{% for subblock in page.sample %}
+<p>
+{{subblock.value.tribe}}
+</p>
+<p>
+{{subblock.value.sample_text}}
+</p>
+<p>
+{{subblock.value.translation_text}}
+</p>
+ <audio controls src="{{subblock.value.audio.file.url}}"></audio>
+{% endfor %}
+{% endif %}
+{% endblock %}

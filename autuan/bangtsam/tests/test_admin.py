@@ -1,12 +1,6 @@
 from django.test import TestCase
-from django.contrib.auth.models import User
 from django.urls import reverse
-
-
-def tshong_superuser():
-    superuser = User.objects.create_superuser(
-        'kuanliuan', 'kuan@ithuan.tw', 'ku#va0ti17@')
-    return superuser
+from bangtsam.tests.utils import tshong_superuser
 
 
 class AutaiTest(TestCase):

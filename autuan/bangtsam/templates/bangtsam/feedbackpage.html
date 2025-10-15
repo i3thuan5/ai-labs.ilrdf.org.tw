@@ -1,0 +1,9 @@
+{% extends "bangtsam/homepage.html" %}
+{% load wagtailcore_tags %}
+
+{% block main_content %} 
+{{page.body|richtext}}
+{% if page.feedbackurl %}
+<a href="{{page.feedbackurl}}">前往填寫意見回饋表單</a>
+{% endif %}
+{% endblock %}

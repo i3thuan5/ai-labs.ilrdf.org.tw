@@ -82,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'bangtsam.context_processors.theh_wagtail_pages',
             ],
         },
     },
@@ -178,5 +179,9 @@ SESSION_SAVE_EVERY_REQUEST = True
 WAGTAIL_SITE_NAME = '成果網站內容後台'
 WAGTAILADMIN_BASE_URL = 'localhost'
 WAGTAILIMAGES_EXTENSIONS = ['svg', 'png', 'jpg', 'webp', ]
-WAGTAILDOCS_EXTENSIONS = ['docx', 'odt', 'pdf', 'txt', ]
+WAGTAILIMAGES_MAX_UPLOAD_SIZE = 3 * 1024 * 1024
+WAGTAILDOCS_EXTENSIONS = ['docx', 'odt', 'pdf', 'txt', 'wav', ]
 WAGTAIL_PASSWORD_RESET_ENABLED = False  # 關閉「忘記密碼？」連結
+WAGTAILAPI_SEARCH_ENABLED = False
+CUSTOM_WAGTAILDOCS_MAX_UPLOAD_SIZE = 5 * 1024 * 1024
+WAGTAILDOCS_DOCUMENT_FORM_BASE = 'bangtsam.forms.document_base.CustomDocumentForm'

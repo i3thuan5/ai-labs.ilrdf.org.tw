@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		let img = img_tin[i];
 		let wrapper = document.createElement('button');
 		wrapper.setAttribute('type', 'button');	
-		wrapper.setAttribute('data-bs-toggle', 'modal');
-		wrapper.setAttribute('data-bs-target', '#myModal' + i);
-		content_root.insertBefore(wrapper, img);
+		wrapper.dataset.bsToggle = 'modal';
+		wrapper.dataset.bsTarget = '#myModal' + i;
+		img.before(wrapper);
 		wrapper.appendChild(img);
 		createModelElement(i, img);
 	}

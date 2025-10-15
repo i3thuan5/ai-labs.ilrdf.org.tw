@@ -52,10 +52,9 @@ class DocumentFormTest(TestCase):
         file_data = {}
         form_cls = get_document_form(models.Document)
         form = form_cls(form_data, file_data)
-        # self.assertFormError(
-        #     form, 'file',
-        #     [
-        #         '必要欄位',
-        #         '不允許副檔名為 “” 。可用的像是: docx, odt, pdf, txt, wav。'
-        #     ])
-        self.assertTrue(form.is_valid(), msg=form.errors)
+        self.assertFormError(
+            form, 'file',
+            [
+                '必要欄位',
+                '不允許副檔名為 “” 。可用的像是: docx, odt, pdf, txt, wav。'
+            ])

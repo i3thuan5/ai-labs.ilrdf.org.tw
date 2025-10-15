@@ -18,19 +18,18 @@ class ThehWagtailPagesTest(WagtailPageTestCase):
         self.assertEqual(response.context['termofusepage'], None)
         self.assertEqual(response.context['copyrightpage'], None)
 
-
-def test_page_must_be_live(self):
-    homepage = tshong_wagtail_homepage()
-    homepage.add_child(
-        instance=IntroPage(
-            title='計畫介紹', slug='intro', live=False
+    def test_page_must_be_live(self):
+        homepage = tshong_wagtail_homepage()
+        homepage.add_child(
+            instance=IntroPage(
+                title='計畫介紹', slug='intro', live=False
+            )
         )
-    )
-    homepage.add_child(
-        instance=SitemapPage(
-            title='網站地圖', slug='sitemap', live=True
+        homepage.add_child(
+            instance=SitemapPage(
+                title='網站地圖', slug='sitemap', live=True
+            )
         )
-    )
-    response = self.client.get(homepage.url)
-    self.assertNotContains(response, '/introslug/')
-    self.assertContains(response, '/sitemap/')
+        response = self.client.get(homepage.url)
+        self.assertNotContains(response, '/introslug/')
+        self.assertContains(response, '/sitemap/')

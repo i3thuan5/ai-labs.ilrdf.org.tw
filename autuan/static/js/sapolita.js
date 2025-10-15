@@ -49,11 +49,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	    }
 
 		document.body.appendChild(modalElement);
-		var myModal = new bootstrap.Modal(document.getElementById('myModal' + mid), {
-			backdrop: true,
-			keyboard: true,
-			focus: true
-		});
 		modalElement.addEventListener('shown.bs.modal', function (event) {
 			const upclosebtn = modalElement.getElementsByClassName('btn-close')[0];
 			if(upclosebtn){

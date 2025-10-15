@@ -27,7 +27,7 @@ class ApplicationFormPageTest(WagtailPageTestCase):
 
     def test_can_create_ApplicationFormPage_with_1_example_field(self):
         self.client.force_login(self.superuser)
-        fake_file = get_document_model().objects.create(
+        audio_file = get_document_model().objects.create(
             title="Mini wav",
             file=get_test_document_file(file_suffix='wav'),
         )
@@ -41,7 +41,7 @@ class ApplicationFormPageTest(WagtailPageTestCase):
                         'tribe': 'Pangcah',
                         'sample_text': 'Maranam',
                         'translation_text': '早安。',
-                        'audio': fake_file.id,
+                        'audio': audio_file.id,
                     }),
                 ]),
             })

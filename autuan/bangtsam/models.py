@@ -4,7 +4,7 @@ from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.panels import FieldPanel
 
 from bangtsam.blocks import SampleBlock
-from bangtsam.forms import KongkeIahForm
+from bangtsam.forms.admin_page import KongkeIahForm
 
 
 BANGTSAM_RICHTEXTBASE_HTML = 'bangtsam/richtextbase.html'
@@ -16,26 +16,6 @@ class HomePage(Page):
 
     template = 'bangtsam/homepage.html'
     base_form_class = KongkeIahForm
-
-    def get_context(self, request):
-        context = super().get_context(request)
-        homepage = HomePage.objects.first()
-        intropage = IntroPage.objects.first()
-        feedbackpage = FeedbackPage.objects.first()
-        applicationformpage = ApplicationFormPage.objects.first()
-        aboutuspage = AboutUsPage.objects.first()
-        termofusepage = TermsOfUsePage.objects.first()
-        copyrightpage = CopyrightPage.objects.first()
-        sitemappage = SitemapPage.objects.first()
-        context['homepage'] = homepage
-        context['sitemappage'] = sitemappage
-        context['intropage'] = intropage
-        context['feedbackpage'] = feedbackpage
-        context['applicationformpage'] = applicationformpage
-        context['aboutuspage'] = aboutuspage
-        context['termofusepage'] = termofusepage
-        context['copyrightpage'] = copyrightpage
-        return context
 
 
 class RichTextBasePage(Page):
@@ -56,26 +36,6 @@ class RichTextBasePage(Page):
 
     class Meta:
         abstract = True
-
-    def get_context(self, request):
-        context = super().get_context(request)
-        homepage = HomePage.objects.first()
-        sitemappage = SitemapPage.objects.first()
-        intropage = IntroPage.objects.first()
-        feedbackpage = FeedbackPage.objects.first()
-        applicationformpage = ApplicationFormPage.objects.first()
-        aboutuspage = AboutUsPage.objects.first()
-        termofusepage = TermsOfUsePage.objects.first()
-        copyrightpage = CopyrightPage.objects.first()
-        context['homepage'] = homepage
-        context['sitemappage'] = sitemappage
-        context['intropage'] = intropage
-        context['feedbackpage'] = feedbackpage
-        context['applicationformpage'] = applicationformpage
-        context['aboutuspage'] = aboutuspage
-        context['termofusepage'] = termofusepage
-        context['copyrightpage'] = copyrightpage
-        return context
 
 
 class SitemapPage(RichTextBasePage):

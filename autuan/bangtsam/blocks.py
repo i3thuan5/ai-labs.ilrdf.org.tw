@@ -14,7 +14,7 @@ class SampleBlock(StructBlock):
     def clean(self, value):
         result = super().clean(value)
         audio = result["audio"]
-        file_type = ''.join(Path(audio.file.path).suffix)
+        file_type = ''.join(Path(audio.file.path).suffixes)
         if file_type != '.wav':
             raise StructBlockValidationError(block_errors={
                 "audio": ValidationError("音檔欄位限定上傳.wav格式")

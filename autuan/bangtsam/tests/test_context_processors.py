@@ -1,6 +1,6 @@
 from wagtail.test.utils import WagtailPageTestCase
 
-from bangtsam.models import HomePage, IntroPage, SitemapPage
+from bangtsam.models import IntroPage, SitemapPage
 from bangtsam.tests.utils import tshong_wagtail_homepage
 
 

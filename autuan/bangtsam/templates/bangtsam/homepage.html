@@ -1,6 +1,8 @@
 {% extends "khing/base.html" %}
 {% load wagtailcore_tags %}
 
+{% block title_suffix %}{% endblock %}
+
 {% block main_content %}
 {{page.body|richtext}}
 {% if page.feedbackurl %}

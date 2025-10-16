@@ -1,0 +1,58 @@
+{% load wagtailcore_tags static %}
+
+<aside>
+	<div class="offcanvas offcanvas-end" tabindex="-1" 
+		id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+
+	  <div class="offcanvas-header border-bottom">
+	    <span class="offcanvas-title" id="offcanvasRightLabel">
+        {% wagtail_site as current_site %}
+        {% if current_site and current_site.site_name %}
+        {{ current_site.site_name }}
+        {% endif %}
+	    </span>
+	    <button type="button" class="btn-close" data-bs-dismiss="offcanvas">
+	    	<span class="visually-hidden">關閉主選單</span>
+	    </button>
+	  </div>
+
+
+欠目前頁面aria-current
+欠目前頁面class加.active
+
+
+	  <div class="offcanvas-body pt-0 px-0">
+	  	<div class="list-group list-group-flush">
+		  	<a href="{% pageurl homepage %}" class="list-group-item list-group-item-action">首頁</a>
+		  	{% if intropage %}
+			<a href="{% pageurl intropage fallback='comming_soon' %}" 
+			class="list-group-item list-group-item-action">{{ intropage.title }}</a>
+			{% endif %}
+			<button type="button" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="collapseSysUrl">⌄ 族語AI應用系統</button>
+			<div class="row">
+			  <div class="col">
+			    <div class="collapse multi-collapse" id="collapseSysUrl">
+			    	<div class="list-group list-group-flush">
+			    	</div>
+		       		<a href="#" class="list-group-item list-group-item-action ps-5">語音辨識系統</a>
+					<a href="#" class="list-group-item list-group-item-action ps-5">語音合成系統</a>
+					<a href="#" class="list-group-item list-group-item-action ps-5">基礎翻譯系統</a>
+			    </div>
+			  </div>
+			</div>
+			{% if feedbackpage %}
+			<a href="{% pageurl feedbackpage fallback='comming_soon' %}" 
+			class="list-group-item list-group-item-action">{{ feedbackpage.title }}</a>
+			{% endif %}
+			{% if applicationformpage %}
+			<a href="{% pageurl applicationformpage fallback='comming_soon' %}" 
+			class="list-group-item list-group-item-action">{{ applicationformpage.title }}</a>
+			{% endif %}
+			{% if aboutuspage %}
+			<a href="{% pageurl aboutuspage fallback='comming_soon' %}" 
+			class="list-group-item list-group-item-action">{{ aboutuspage.title }}</a>
+			{% endif %}
+	  	</div>
+	  </div>
+	</div>	
+</aside>

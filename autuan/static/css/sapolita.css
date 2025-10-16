@@ -1,8 +1,6 @@
 @font-face{
    font-family: tauhu-oo;
-	 src: local("TauhuOo20.05-Regular"),
-	 url(../font/TauhuOo20.05-Regular.woff2) format("woff2"),
-	 url(../font/TauhuOo20.05-Regular.otf) format("opentype");
+	 src: local("TauhuOo20.05-Regular"), url(../font/TauhuOo20.05-Regular.woff2) format("woff2");
 }
 
 body {

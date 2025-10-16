@@ -23,10 +23,14 @@
 </head>
 <body>
 	<header>
-		頁首區...
-		<nav aria-label="無障礙選單">
-			<a href="#main">跳去主內容</a>
-			<a href="{% pageurl sitemappage fallback='comming_soon' %}">{{sitemappage.title}}</a>
+		<nav aria-label="無障礙選單" class="visually-hidden-focusable">
+			<div class="container-xl">
+				<a href="#main" class="d-inline-flex p-2 m-1">跳去主內容1</a>
+				<a href="#main" class="d-inline-flex p-2 m-1">跳去主內容2</a>
+				{% if sitemappage %}
+				<a href="{% pageurl sitemappage fallback='comming_soon' %}" class="d-inline-flex p-2 m-1">{{sitemappage.title}}</a>
+				{% endif %}
+			</div>
 		</nav>
 		<nav aria-label="主選單">
 			<span>語音辨識系統</span>

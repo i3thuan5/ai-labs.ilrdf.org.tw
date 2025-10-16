@@ -1,3 +1,15 @@
+@font-face{
+   font-family: tauhu-oo;
+	 src: local("TauhuOo20.05-Regular"), url(../font/TauhuOo20.05-Regular.woff2) format("woff2");
+}
+
+body {
+	font-family: tauhu-oo, sans-serif;
+}
+
+h1, h2, h3, h4 {
+	font-weight: 700;
+}
 
 #main-content img {
 	max-width: 100%;

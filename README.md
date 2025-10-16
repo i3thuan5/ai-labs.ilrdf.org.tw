@@ -61,17 +61,14 @@ pip install tox
 
 3. 人工審閱匯出結果，若發現顯示「Unknown」須手動查詢套件授權並回填。
 
-
 ## 產生favicon.ico
 
+1. 繪製SVG格式的favicon原圖
+2. 開終端機，用`convert`指令轉出各尺寸的PNG：
 
-1. 繪製svg
-
-2. 指令轉換：
-
-```
-convert -background transparent -define 'icon:auto-resize=32' logo.svg favicon.ico
-convert -size 180x180 logo.svg apple-touch-icon.png
-convert -size 192x192 logo.svg icon-192.png
-convert -size 512x512 logo.svg icon-512.png
-```
+      ```bash
+      convert -background transparent -define 'icon:auto-resize=32' logo.svg favicon.ico
+      convert -size 180x180 logo.svg apple-touch-icon.png
+      convert -size 192x192 logo.svg icon-192.png
+      convert -size 512x512 logo.svg icon-512.png
+      ```

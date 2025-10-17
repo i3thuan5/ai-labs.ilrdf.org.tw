@@ -67,3 +67,13 @@ a:focus-visible {
 .list-group-item-action:focus-visible {
   outline: none;
 }
+
+audio {
+	max-width: 90%;
+}
+
+@media (min-width: 576px) {
+	audio {
+		max-width: none;
+	}
+}

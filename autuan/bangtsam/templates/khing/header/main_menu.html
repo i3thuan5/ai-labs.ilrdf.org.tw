@@ -24,25 +24,29 @@
 	    </button>
 	  </div>
 	  <div class="offcanvas-body pt-0 px-0">
-	  	<div class="list-group list-group-flush">
+	  	<ul class="list-unstyled">
 	  		{% include 'khing/header/link.html' with wagtail_iah=homepage iah_title='首頁' %}
 	  		{% include 'khing/header/link.html' with wagtail_iah=intropage %}
-			<button type="button" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="collapseSysUrl">⌄ 族語AI應用系統</button>
-			<div class="row">
-			  <div class="col">
-			    <div class="collapse multi-collapse" id="collapseSysUrl">
-			    	<div class="list-group list-group-flush">
-			    	</div>
-		       		<a href="#" class="list-group-item list-group-item-action border-top-0 ps-5">語音辨識系統</a>
-					<a href="#" class="list-group-item list-group-item-action ps-5">語音合成系統</a>
-					<a href="#" class="list-group-item list-group-item-action ps-5">基礎翻譯系統</a>
-	  				{% include 'khing/header/link.html' with wagtail_iah=feedbackpage indent=5 %}
-			    </div>
-			  </div>
-			</div>
+			<li>
+				<button type="button" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="collapseSysUrl">⌄ 族語AI應用系統</button>
+				<div class="container">	
+					<div class="row">
+					  <div class="col">
+					    <div class="collapse multi-collapse" id="collapseSysUrl">
+					    	<ul class="list-unstyled">
+					       		<li><a href="#" class="btn btn-outline-primary border-0">語音辨識系統<li></a>
+								<li><a href="#" class="btn btn-outline-primary border-0">語音合成系統</a>
+								<li><a href="#" class="btn btn-outline-primary border-0">基礎翻譯系統</a>
+				  				{% include 'khing/header/link.html' with wagtail_iah=feedbackpage indent=0 %}
+			  				</ul>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			</li>
 	  		{% include 'khing/header/link.html' with wagtail_iah=applicationformpage %}
 	  		{% include 'khing/header/link.html' with wagtail_iah=aboutuspage %}
-	  	</div>
+	  	</ul>
 	  </div>
 	</div>	
 </aside>

@@ -1,10 +1,11 @@
 {% load wagtailcore_tags %}
 
 {% if wagtail_iah %}
-<a href="{% pageurl wagtail_iah fallback='comming_soon' %}" 
-	class="list-group-item list-group-item-action 
-		{% if page.id == wagtail_iah.id %}active{% endif %}
-		{% if indent %}ps-{{indent}}{% endif %}"
+<li><a href="{% pageurl wagtail_iah fallback='comming_soon' %}"
+	class="btn
+		{% if page.id == wagtail_iah.id %}btn-outline-secondary{% else %}btn-outline-primary{% endif %}
+		 p-2 border-0
+		{% if indent %}ms-{{indent}}{% endif %}"
 		{% if page.id == wagtail_iah.id %}aria-current="page"{% endif %}>{% if iah_title %}
-			{{iah_title}}{% else %}{{ wagtail_iah.title }}{% endif %}</a>
+			{{iah_title}}{% else %}{{ wagtail_iah.title }}{% endif %}</a></li>
 {% endif %}

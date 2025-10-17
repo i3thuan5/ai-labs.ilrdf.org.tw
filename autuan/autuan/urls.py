@@ -30,8 +30,8 @@ urlpatterns = [
     path('kuanli/', autai_site.urls),
     path('katayalan/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
-    path('', include(wagtail_urls)),
     path('', include(bangtsam_urls)),
+    path('', include(wagtail_urls)),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,6 @@
+{% load wagtailcore_tags %}
+
+<footer>
+	<a href="{% pageurl copyrightpage fallback='comming_soon' %}">{{copyrightpage.title}}</a>
+	<a href="{% pageurl termofusepage fallback='comming_soon' %}">{{termofusepage.title}}</a>
+</footer>

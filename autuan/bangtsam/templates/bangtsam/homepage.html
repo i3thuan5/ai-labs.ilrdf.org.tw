@@ -1,68 +1,11 @@
-{% load wagtailcore_tags static %}
+{% extends "khing/base.html" %}
+{% load wagtailcore_tags %}
 
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="robots" content="noindex,nofollow">
-    {% if page.search_description %}
-    <meta name="description" content="{{ page.search_description }}" />
-    {% endif %}
-	<title>
-        {% block title %}
-        {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
-        {% endblock %}
-        {% block title_suffix %}
-        {% wagtail_site as current_site %}
-        {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
-        {% endblock %}
-    </title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sapolita.css' %}">
-</head>
-<body>
+{% block title_suffix %}{% endblock %}
 
-<nav aria-label="無障礙選單" class="visually-hidden-focusable" role="navigation">
-	<div class="container-xl">
-		<a href="#main" class="d-inline-flex p-2 m-1">跳去主內容1</a>
-		<a href="#main" class="d-inline-flex p-2 m-1">跳去主內容2</a>
-		{% if sitemappage %}
-		<a href="{% pageurl sitemappage fallback='comming_soon' %}" class="d-inline-flex p-2 m-1">{{sitemappage.title}}</a>
-		{% endif %}
-	</div>
-</nav>
-
-<header class="navbar sticky-top" role="navigation">
-	<nav aria-label="主選單" class="container-fluid">
-		<span class="navbar-brand"><!--Leave blank--></span>
-	    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-	      <span class="navbar-toggler-icon"></span>
-	      <span class="visually-hidden">主選單</span>
-	    </button>
-	</nav>
-</header>
-
-{% include 'bangtsam/main_menu.html' %}
-
-{% block main %}
-	<main>
-		<div class="text-center py-5 bg-dark text-white">
-			<div class="my-5">
-				<h1 id="main">{% block main_h1 %}{{ page.title }}{% endblock %}</h1>
-				<span>財團法人原住民族語言研究發展基金會</span>
-			</div>
-		</div>
-		<div id="main-content">{% block main_content %}{% endblock %}</div>
-	</main>
+{% block main_content %}
+{{page.body|richtext}}
+{% if page.feedbackurl %}
+<a href="{{page.feedbackurl}}">前往填寫意見回饋表單</a>
+{% endif %}
 {% endblock %}
-
-	<footer>頁腳區...
-		<a href="{% pageurl copyrightpage fallback='comming_soon' %}">{{copyrightpage.title}}</a>
-		<a href="{% pageurl termofusepage fallback='comming_soon' %}">{{termofusepage.title}}</a>
-	</footer>
-	<script src="{% static 'js/bootstrap.min.js' %}"></script>
-	<script src="{% static 'js/sapolita.js' %}"></script>
-</body>
-</html>
-

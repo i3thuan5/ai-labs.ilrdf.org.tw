@@ -1,0 +1,29 @@
+{% load wagtailcore_tags static %}
+
+<footer class="bg-light">
+	<div class="container">
+		<div class="text-center">
+			<span>Copyright © 2025</span>
+			<span>財團法人原住民族語言研究發展基金會 版權所有</span>
+		</div>
+		<div class="row">
+			<div class="col-12 col-lg-6">
+				<img class="img-fluid" src="{% static 'logo/ilrdf-logo.png' %}"
+					alt="財團法人原住民族語言研究發展基金會logo">
+			</div>
+			<div class="col-12 col-lg-3">
+				<p>電話：(02)2341-8508</p>
+				<p>傳真：(02)2341-8256</p>
+				<p>信箱：ilrdf@ilrdf.org.tw</p>
+				<p>地址：100029台北市中正區羅斯福路一段63號</p>
+			</div>
+			<div class="col-12 col-lg-3">
+				<ul class="list-unstyled">
+					<li class="mb-3">{% include 'khing/footer/link.html' with wagtail_iah=copyrightpage %}</li>
+					<li class="mb-3">{% include 'khing/footer/link.html' with wagtail_iah=termofusepage %}</li>
+					<li class="mb-3"><img src="{% static 'logo/accessibility-AA-mark.png' %}" alt="待申請尚未通過無障礙標章AA"></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>

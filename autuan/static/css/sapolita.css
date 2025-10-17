@@ -3,6 +3,7 @@
 	 src: local("TauhuOo20.05-Regular"), url(../font/TauhuOo20.05-Regular.woff2) format("woff2");
 }
 
+
 body {
 	font-family: tauhu-oo, sans-serif;
 }
@@ -46,7 +47,7 @@ h1, h2, h3, h4 {
 	border-color: rgba(0,0,0,0.5);
 }
 
-.navbar-toggler.btn:hover {
+.navbar-toggler.btn:hover, .navbar-toggler.btn:focus {
 	background-color: #606060;
 	border-color: #606060;
 }

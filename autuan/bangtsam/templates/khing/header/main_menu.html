@@ -12,8 +12,8 @@
 <aside>
 	<div class="offcanvas offcanvas-end" tabindex="-1" 
 		id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-	  <div class="offcanvas-header border-bottom border-3 pb-3">
-	    <span class="offcanvas-title" id="offcanvasRightLabel">
+	  <div class="offcanvas-header border-bottom border-1 pb-3">
+	    <span class="offcanvas-title fs-4" id="offcanvasRightLabel">
         {% wagtail_site as current_site %}
         {% if current_site and current_site.site_name %}
         {{ current_site.site_name }}
@@ -33,7 +33,7 @@
 			    <div class="collapse multi-collapse" id="collapseSysUrl">
 			    	<div class="list-group list-group-flush">
 			    	</div>
-		       		<a href="#" class="list-group-item list-group-item-action ps-5">語音辨識系統</a>
+		       		<a href="#" class="list-group-item list-group-item-action border-top-0 ps-5">語音辨識系統</a>
 					<a href="#" class="list-group-item list-group-item-action ps-5">語音合成系統</a>
 					<a href="#" class="list-group-item list-group-item-action ps-5">基礎翻譯系統</a>
 	  				{% include 'khing/header/link.html' with wagtail_iah=feedbackpage indent=5 %}

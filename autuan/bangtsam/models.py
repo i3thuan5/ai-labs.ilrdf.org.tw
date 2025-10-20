@@ -57,6 +57,7 @@ class FeedbackPage(RichTextBasePage):
 
 
 class ApplicationFormPage(RichTextBasePage):
+    sample_title = models.CharField(max_length=255, blank=True, null=True)
     sample = StreamField([
         ('sample_block', SampleBlock()),
     ],
@@ -66,6 +67,7 @@ class ApplicationFormPage(RichTextBasePage):
 
     content_panels = Page.content_panels + [
         FieldPanel('body'),
+        FieldPanel('sample_title'),
         FieldPanel('sample'),
     ]
 

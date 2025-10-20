@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", (event) => {
 	const content_root = document.getElementById('main-content');
-	const img_tin = [...content_root.getElementsByTagName('img')];
+	let img_tin = [];
+	if (content_root) {
+		img_tin = [...content_root.getElementsByTagName('img')];
+	}
 
 	for (let i=0;i<img_tin.length;i++){
 		let img = img_tin[i];

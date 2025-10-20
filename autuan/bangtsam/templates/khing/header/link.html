@@ -1,11 +1,12 @@
 {% load wagtailcore_tags %}
 
 {% if wagtail_iah %}
-<li><a href="{% pageurl wagtail_iah fallback='comming_soon' %}"
+<a href="{% pageurl wagtail_iah fallback='comming_soon' %}"
 	class="btn
-		{% if page.id == wagtail_iah.id %}btn-outline-secondary{% else %}btn-outline-primary{% endif %}
-		 p-2 border-0
+		{% if page.id == wagtail_iah.id %}btn-outline-secondary
+		{% else %}btn-outline-primary{% endif %}
+		 p-2 my-2 border-0
 		{% if indent %}ms-{{indent}}{% endif %}"
 		{% if page.id == wagtail_iah.id %}aria-current="page"{% endif %}>{% if iah_title %}
-			{{iah_title}}{% else %}{{ wagtail_iah.title }}{% endif %}</a></li>
+			{{iah_title}}{% else %}{{ wagtail_iah.title }}{% endif %}</a>
 {% endif %}

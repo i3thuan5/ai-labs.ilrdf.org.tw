@@ -25,27 +25,27 @@
 	  </div>
 	  <div class="offcanvas-body pt-0 px-0">
 	  	<ul class="list-unstyled">
-	  		{% include 'khing/header/link.html' with wagtail_iah=homepage iah_title='首頁' %}
-	  		{% include 'khing/header/link.html' with wagtail_iah=intropage %}
+	  		<li>{% include 'khing/header/link.html' with wagtail_iah=homepage iah_title='首頁' %}</li>
+	  		<li>{% include 'khing/header/link.html' with wagtail_iah=intropage %}</li>
 			<li>
-				<button type="button" class="list-group-item list-group-item-action" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="collapseSysUrl">⌄ 族語AI應用系統</button>
+				<button type="button" class="btn btn-outline-dark border-0 my-1" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="sysCollapsible"><span id="collapseSysArrow" class="me-1">▸</span>族語AI應用系統</button>
 				<div class="container">	
 					<div class="row">
 					  <div class="col">
-					    <div class="collapse multi-collapse" id="collapseSysUrl">
+					    <div class="collapse multi-collapse" id="sysCollapsible">
 					    	<ul class="list-unstyled">
-					       		<li><a href="#" class="btn btn-outline-primary border-0">語音辨識系統<li></a>
-								<li><a href="#" class="btn btn-outline-primary border-0">語音合成系統</a>
-								<li><a href="#" class="btn btn-outline-primary border-0">基礎翻譯系統</a>
-				  				{% include 'khing/header/link.html' with wagtail_iah=feedbackpage indent=0 %}
+					       		<li><a href="#" class="btn btn-outline-primary p-2 my-1 border-0">語音辨識系統<li></a>
+								<li><a href="#" class="btn btn-outline-primary p-2 my-1 border-0">語音合成系統</a>
+								<li><a href="#" class="btn btn-outline-primary p-2 my-1 border-0">基礎翻譯系統</a>
+				  				<li>{% include 'khing/header/link.html' with wagtail_iah=feedbackpage indent=0 %}</li>
 			  				</ul>
 					    </div>
 					  </div>
 					</div>
 				</div>
 			</li>
-	  		{% include 'khing/header/link.html' with wagtail_iah=applicationformpage %}
-	  		{% include 'khing/header/link.html' with wagtail_iah=aboutuspage %}
+	  		<li>{% include 'khing/header/link.html' with wagtail_iah=applicationformpage %}</li>
+	  		<li>{% include 'khing/header/link.html' with wagtail_iah=aboutuspage %}</li>
 	  	</ul>
 	  </div>
 	</div>	

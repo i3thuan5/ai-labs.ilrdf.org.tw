@@ -1,0 +1,5 @@
+-r requirements-dev.in
+
+gunicorn==23.0.0
+psycopg2-binary
+sentry-sdk

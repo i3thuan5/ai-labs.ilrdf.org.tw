@@ -21,6 +21,9 @@ h1, h2, h3, h4 {
 h2, h3 {
 	margin-top: 3rem;
 }
+h2:first-child {
+	margin-top: 0;
+}
 .h3, h3{
 	font-size:calc(1.1rem + .1vw);
 }
@@ -94,6 +97,22 @@ audio {
 	}
 }
 
+h2 > a, h3 > a {
+	opacity: 0;
+}
+
+h2:hover > a, h3:hover > a {
+	opacity: 1;
+}
+
 .w-75ch {
 	max-width: 75ch;
+}
+
+.hide {
+	display: none;
+}
+
+.z-index-0 {
+	z-index: 0;
 }

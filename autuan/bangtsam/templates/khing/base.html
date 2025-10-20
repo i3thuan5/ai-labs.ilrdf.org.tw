@@ -35,15 +35,23 @@
 {% include 'khing/header/main_menu.html' %}
 {% block main %}
 <main class="container">
-	<h1 id="main" class="text-center mb-5">{% block main_h1 %}{{ page.title }}{% endblock %}</h1>
-	<div id="main-content" class="w-75ch mx-auto pb-5">{% block main_content %}{% endblock %}</div>
+	<div class="row">
+        <h1 id="main" class="mb-5">{% block main_h1 %}{{ page.title }}{% endblock %}</h1>
+        <nav aria-label="頁面索引" class="col-12 col-lg-3 z-index-0">
+            <div class="sticky-top border border-primary rounded p-2 mb-5 hide" id="toc">
+            </div>
+        </nav>
+        <div class="col-12 col-lg-9 pb-5">
+            <div id="main-content" class="w-75ch">{% block main_content %}{% endblock %}</div>
+        </div>
+    </div>
 </main>
 {% endblock %}
 {% include 'khing/footer/footer.html' %}
 {% block js_script %}
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/toc.js' %}"></script>
 <script src="{% static 'js/sapolita.js' %}"></script>
 {% endblock %}
 </body>
 </html>
-

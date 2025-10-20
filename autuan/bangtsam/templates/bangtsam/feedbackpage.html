@@ -4,6 +4,8 @@
 {% block main_content %} 
 {{page.body|richtext}}
 {% if page.feedbackurl %}
-<a href="{{page.feedbackurl}}">前往填寫意見回饋表單</a>
+<div class="d-grid gap-2 col-12 col-md-6 mx-auto">
+	<a href="{{page.feedbackurl}}" class="btn btn-primary py-2">前往填寫意見回饋表單</a>
+</div>
 {% endif %}
 {% endblock %}

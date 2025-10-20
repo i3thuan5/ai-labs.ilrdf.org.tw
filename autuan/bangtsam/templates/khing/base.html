@@ -34,9 +34,9 @@
 {% include 'khing/accessibility_nav.html' %}
 {% include 'khing/header/main_menu.html' %}
 {% block main %}
-<main>
-	<h1 id="main">{% block main_h1 %}{{ page.title }}{% endblock %}</h1>
-	<div id="main-content">{% block main_content %}{% endblock %}</div>
+<main class="container">
+	<h1 id="main" class="text-center mb-5">{% block main_h1 %}{{ page.title }}{% endblock %}</h1>
+	<div id="main-content" class="w-75ch mx-auto pb-5">{% block main_content %}{% endblock %}</div>
 </main>
 {% endblock %}
 {% include 'khing/footer/footer.html' %}

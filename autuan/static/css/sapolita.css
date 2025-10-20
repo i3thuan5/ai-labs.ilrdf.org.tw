@@ -3,13 +3,30 @@
 	 src: local("TauhuOo20.05-Regular"), url(../font/TauhuOo20.05-Regular.woff2) format("woff2");
 }
 
-
 body {
 	font-family: tauhu-oo, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+	margin-top: auto;
 }
 
 h1, h2, h3, h4 {
 	font-weight: 700;
+	margin-bottom: 1.2rem;
+}
+h2, h3 {
+	margin-top: 3rem;
+}
+.h3, h3{
+	font-size:calc(1.1rem + .1vw);
+}
+@media (min-width:1200px){.h3,h3{font-size:1.5rem}}
+p {
+	line-height: 1.7rem;
 }
 
 #main-content img {
@@ -17,7 +34,6 @@ h1, h2, h3, h4 {
 	height: auto;
 	background-color: #dcdcdc;
 }
-
 
 @media (min-width: 576px) {
 	.modal-dialog {
@@ -76,4 +92,8 @@ audio {
 	audio {
 		max-width: none;
 	}
+}
+
+.w-75ch {
+	max-width: 75ch;
 }

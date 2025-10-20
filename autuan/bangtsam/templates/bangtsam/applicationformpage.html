@@ -3,18 +3,18 @@
 
 {% block main_content %} 
 {{page.body|richtext}}
+
+{% if page.sample_title %}
+<h2>{{page.sample_title}}</h2>
+{% endif %}
 {% if page.sample %}
 {% for subblock in page.sample %}
-<p>
-{{subblock.value.tribe}}
-</p>
-<p>
-{{subblock.value.sample_text}}
-</p>
-<p>
-{{subblock.value.translation_text}}
-</p>
- <audio controls src="{{subblock.value.audio.file.url}}"></audio>
+<div class="container-fluid px-3 text-secondary">
+	<h3>{{subblock.value.tribe}}</h3>
+	<p class="mb-1">{{subblock.value.sample_text}}</p>
+	<p class="mb-1">{{subblock.value.translation_text}}</p>
+	<audio controls src="{{subblock.value.audio.file.url}}"></audio>
+</div>
 {% endfor %}
 {% endif %}
 {% endblock %}

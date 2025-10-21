@@ -1,3 +1,18 @@
+function createLiA(h) {
+  "use strict";
+
+  let link = `#${h.getAttribute("id")}`;
+  let text = h.innerText;
+  let li = document.createElement("li");
+  li.classList.add("nav-item");
+  let a = document.createElement("a");
+  a.setAttribute("href", link);
+  a.classList.add("nav-link");
+  a.innerHTML = text;
+  li.append(a);
+  return li;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
@@ -7,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .getElementById("main-content")
       .querySelectorAll("h2, h3");
     } catch (e) {
-      headings = [];
   }
   let hlength = headings.length;
   let toc = [];
@@ -28,19 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       h.setAttribute("id", hid);
     }
-  }
-
-  function createLiA(h) {
-    let link = `#${h.getAttribute("id")}`;
-    let text = h.innerText;
-    let li = document.createElement("li");
-    li.classList.add("nav-item");
-    let a = document.createElement("a");
-    a.setAttribute("href", link);
-    a.classList.add("nav-link");
-    a.innerHTML = text;
-    li.append(a);
-    return li;
   }
 
   function convertHeadDictToHTML() {

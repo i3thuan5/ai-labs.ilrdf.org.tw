@@ -1,12 +1,15 @@
 {% load wagtailcore_tags %}
 
 {% if wagtail_iah %}
-<a href="{% pageurl wagtail_iah fallback='comming_soon' %}"
-	class="btn
-		{% if page.id == wagtail_iah.id %}btn-outline-secondary
-		{% else %}btn-outline-primary{% endif %}
-		 text-white p-2 my-2 border-0
+<a	class="btn p-2 my-2 border-0
+		{% if page.id == wagtail_iah.id %}disabled
+		{% else %}btn-outline-primary text-white
+		{% endif %} 
 		{% if indent %}ms-{{indent}}{% endif %}"
-		{% if page.id == wagtail_iah.id %}aria-current="page"{% endif %}>{% if iah_title %}
-			{{iah_title}}{% else %}{{ wagtail_iah.title }}{% endif %}</a>
+	{% if page.id == wagtail_iah.id %}
+	aria-current="page"	tabindex="-1" role="button" aria-disabled="true"
+	{% else %}
+	href="{% pageurl wagtail_iah fallback='comming_soon' %}"
+	{% endif %}
+>{% if iah_title %}{{iah_title}}{% else %}{{ wagtail_iah.title }}{% endif %}</a>
 {% endif %}

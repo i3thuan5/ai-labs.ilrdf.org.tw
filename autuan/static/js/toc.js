@@ -16,12 +16,10 @@ function createLiA(h) {
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
+  let mainContent = document.getElementById("main-content");
   let headings = [];
-  try {
-    headings = document
-      .getElementById("main-content")
-      .querySelectorAll("h2, h3");
-    } catch (e) {
+  if (mainContent) {
+    headings = mainContent.querySelectorAll("h2, h3");
   }
   let hlength = headings.length;
   let toc = [];

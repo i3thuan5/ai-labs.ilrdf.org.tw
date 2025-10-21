@@ -54,13 +54,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	    }
 
 		document.body.appendChild(modalElement);
-		modalElement.addEventListener('shown.bs.modal', function (event) {
-			const upclosebtn = modalElement.getElementsByClassName('btn-close')[0];
-			if(upclosebtn){
-				console.log('upclosebtn', upclosebtn)
-				upclosebtn.focus();
-			}
-		});
 	}
 
 	function toggleCollapseSysBtn(){

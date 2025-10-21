@@ -1,10 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
-  console.log("toc.js")
-  let headings = document
-    .getElementById("main-content")
-    .querySelectorAll("h2, h3");
+  let headings = [];
+  try {
+    headings = document
+      .getElementById("main-content")
+      .querySelectorAll("h2, h3");
+    } catch (e) {
+      headings = [];
+  }
   let hlength = headings.length;
   let toc = [];
   let tocitem = {};

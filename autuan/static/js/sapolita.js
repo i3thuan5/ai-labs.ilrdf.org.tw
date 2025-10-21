@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", (event) => {
-	const content_root = document.getElementById('main-content');
+    "use strict";
+
+  	const content_root = document.getElementById('main-content');
 	let img_tin = [];
 	if (content_root) {
 		img_tin = [...content_root.getElementsByTagName('img')];

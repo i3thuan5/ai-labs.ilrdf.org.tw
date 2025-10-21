@@ -3,6 +3,15 @@
 	 src: local("TauhuOo20.05-Regular"), url(../font/TauhuOo20.05-Regular.woff2) format("woff2");
 }
 
+:root,
+[data-bs-theme=light] {
+  --bs-primary: #D04410;
+  --bs-link-color: #2F5ACB;
+  --bs-link-hover-color: #172C64;
+  --bs-nav-link-color:;
+  --bs-nav-link-hover-color:;
+}
+
 body {
 	font-family: tauhu-oo, sans-serif;
   display: flex;
@@ -111,11 +120,11 @@ audio {
 }
 
 h2 > a, h3 > a {
-	opacity: 0;
+	display: none;
 }
 
 h2:hover > a, h3:hover > a {
-	opacity: 1;
+	display: inline;
 }
 
 .w-75ch {

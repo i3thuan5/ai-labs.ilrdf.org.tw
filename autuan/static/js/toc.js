@@ -51,16 +51,14 @@ document.addEventListener("DOMContentLoaded", function () {
       titleElment.innerText = '頁面索引';
       tocElement.appendChild(titleElment);
       listElment.classList.add("nav", "flex-column");
-      for (let i = 0; i < toc.length; i++) {
-        let h2 = toc[i].h2;
-        let h3s = toc[i].h3s;
-        let lv2 = createLiA(h2);
-        if (h3s) {
+      for (let item of toc) {
+        let lv2 = createLiA(item.h2);
+        if (item.h3s) {
           let lv3 = document.createElement("ul");
           lv3.classList.add("nav", "flex-column", "ms-3");
-          for (let j = 0; j < h3s.length; j++) {
-            let li3 = createLiA(h3s[j]);
-            lv3.append(li3);
+          for (let h of item.h3s) {
+            let li = createLiA(h);
+            lv3.append(li);
           }
           lv2.append(lv3);
         }

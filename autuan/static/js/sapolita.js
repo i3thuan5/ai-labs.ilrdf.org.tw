@@ -9,13 +9,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 	for (let i=0;i<img_tin.length;i++){
 		let img = img_tin[i];
-		let wrapper = document.createElement('button');
-		wrapper.setAttribute('type', 'button');	
-		wrapper.dataset.bsToggle = 'modal';
-		wrapper.dataset.bsTarget = '#myModal' + i;
-		img.before(wrapper);
-		wrapper.appendChild(img);
+		wrapImgWithButtonElement(i, img);
 		createModelElement(i, img);
+	}
+
+	function wrapImgWithButtonElement(mid, img){
+		let btnElm = document.createElement('button');
+		let figureElm = document.createElement('figure');
+		btnElm.setAttribute('type', 'button');
+		btnElm.classList.add("modal-toggler-btn", "border-0");
+		btnElm.dataset.bsToggle = 'modal';
+		btnElm.dataset.bsTarget = '#myModal' + mid;
+		img.before(btnElm);
+		btnElm.appendChild(img);
 	}
 
 	function createModelElement(mid, img){
@@ -23,7 +29,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		const src = img.getAttribute('src');
 		const alt = img.getAttribute('alt');
 		let html = `
-			<!-- Modal -->
 			<div class="modal fade" id="myModal${mid}" tabindex="-1" 
 				aria-labelledby="modalabel${mid}" aria-hidden="true">
 			  <div class="modal-dialog modal-dialog-centered">

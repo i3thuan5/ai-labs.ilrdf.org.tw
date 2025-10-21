@@ -72,3 +72,21 @@ pip install tox
       convert -size 192x192 logo.svg icon-192.png
       convert -size 512x512 logo.svg icon-512.png
       ```
+
+## 色盤
+
+主色調：
+
+- 橘 #D04410
+- 深橘 #AC370C
+
+導覽列按鈕背景色：#D04410
+導覽列按鈕字色：#fff
+
+藍色按鈕背景色
+
+超連結字色：橘，#AC370C
+超連結指標停留字色：藍，#172C64
+
+
+內文背景色：#fff

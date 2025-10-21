@@ -6,10 +6,37 @@
 :root,
 [data-bs-theme=light] {
   --bs-primary: #D04410;
-  --bs-link-color: #2F5ACB;
+  --bs-primary-rgb: 208, 68, 16;
+  --bs-danger: #AD0001;
+  --bs-danger-rgb: 173, 0, 1;
+  --bs-success: #2F5ACB;
+  --bs-success-rgb: 47, 90, 203;
+  --bs-link-color: #AC370C;
   --bs-link-hover-color: #172C64;
-  --bs-nav-link-color:;
-  --bs-nav-link-hover-color:;
+}
+
+.btn-primary,
+.btn-outline-primary {
+	--bs-btn-bg: #D04410;
+	--bs-btn-border-color: #D04410;
+	--bs-btn-hover-bg: #AC370C;
+	--bs-btn-hover-border-color: #AC370C;
+}
+
+.btn-danger,
+.btn-outline-danger {
+	--bs-btn-bg: #d10000;
+	--bs-btn-border-color: #d10000;
+	--bs-btn-hover-bg: #AD0001;
+	--bs-btn-hover-border-color: #AD0001;
+}
+
+.btn-success,
+.btn-outline-success {
+	--bs-btn-bg: #2f5acb;
+	--bs-btn-border-color: #2f5acb;
+	--bs-btn-hover-bg: #274dab;
+	--bs-btn-hover-border-color: #274dab;
 }
 
 body {

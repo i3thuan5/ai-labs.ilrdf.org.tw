@@ -5,7 +5,7 @@
 	class="btn
 		{% if page.id == wagtail_iah.id %}btn-outline-secondary
 		{% else %}btn-outline-primary{% endif %}
-		 p-2 my-2 border-0
+		 text-white p-2 my-2 border-0
 		{% if indent %}ms-{{indent}}{% endif %}"
 		{% if page.id == wagtail_iah.id %}aria-current="page"{% endif %}>{% if iah_title %}
 			{{iah_title}}{% else %}{{ wagtail_iah.title }}{% endif %}</a>

@@ -45,8 +45,9 @@
 .btn-outline-success {
 	--bs-btn-bg: #2F5ACB;
 	--bs-btn-border-color: #2F5ACB;
-	--bs-btn-hover-bg: #274dab;
-	--bs-btn-hover-border-color: #274dab;
+	--bs-btn-hover-bg: #274DAB;
+	--bs-btn-hover-border-color: #274DAB;
+	--bs-btn-focus-box-shadow: rgba(94, 140, 255, 0.9) 0px 0px 0px 4px;
 }
 
 .btn-disabled {

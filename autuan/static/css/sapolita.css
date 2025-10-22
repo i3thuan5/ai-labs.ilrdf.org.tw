@@ -7,13 +7,14 @@
 [data-bs-theme=light] {
   --bs-primary: #D04410;
   --bs-primary-rgb: 208, 68, 16;
+  --sa-primary-subtle: #F4855D;
+  --sa-primary-subtle-rgb: 244, 133, 93;
   --bs-danger: #AD0001;
   --bs-danger-rgb: 173, 0, 1;
   --bs-success: #2F5ACB;
   --bs-success-rgb: 47, 90, 203;
   --bs-link-color: #AC370C;
   --bs-link-hover-color: #2F5ACB;
-  --a-outline-color: #D04410;
 }
 
 .btn {
@@ -30,7 +31,7 @@
 	--bs-btn-hover-border-color: #AC370C;
 	--bs-btn-active-bg: #AC370C;
 	--bs-btn-active-border-color: #AC370C;
-	--bs-btn-focus-box-shadow: rgba(244, 133, 93, 0.9) 0px 0px 0px 4px;
+	--bs-btn-focus-box-shadow: rgba(var(--sa-primary-subtle-rgb), 0.9) 0px 0px 0px 4px;
 }
 
 .btn-danger,
@@ -73,7 +74,7 @@
 .offcanvas-header .btn-close:hover,
 .offcanvas-header .btn-close:focus
  {
-	box-shadow: rgba(244, 133, 93, 0.9) 0px 0px 0px 4px;
+	box-shadow: rgba(var(--sa-primary-subtle-rgb), 0.9) 0px 0px 0px 4px;
 }
 
 .nav-link {
@@ -148,7 +149,7 @@ p {
 }
 
 .modal-toggler-btn img{
-	box-shadow: rgba(244, 133, 93, 0) 0px 0px 0px 4px;
+	box-shadow: rgba(var(--sa-primary-subtle-rgb), 0) 0px 0px 0px 4px;
 	transition: color .15s ease-in-out,
 	background-color .15s ease-in-out,border-color .15s ease-in-out,
 	box-shadow .15s ease-in-out, outline .15s ease-in-out;
@@ -157,7 +158,7 @@ p {
 .modal-toggler-btn:active img,
 .modal-toggler-btn:focus img
 {
-	box-shadow: rgba(244, 133, 93, 0.9) 0px 0px 0px 4px;
+	box-shadow: rgba(var(--sa-primary-subtle-rgb), 0.9) 0px 0px 0px 4px;
 }
 
 .fixed-menu {
@@ -194,7 +195,7 @@ p {
 }
 
 a:focus-visible {
-  outline: 3px solid var(--a-outline-color);
+  outline: 3px solid var(--sa-primary-subtle);
   outline-offset: 5px;
   border-radius: 2px;
 }

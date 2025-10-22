@@ -15,11 +15,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 	function wrapImgWithButtonElement(mid, img){
 		let btnElm = document.createElement('button');
-		let figureElm = document.createElement('figure');
 		btnElm.setAttribute('type', 'button');
-		btnElm.classList.add("modal-toggler-btn", "border-0");
+		btnElm.classList.add("modal-toggler-btn", "bg-transparent", "border-0");
 		btnElm.dataset.bsToggle = 'modal';
 		btnElm.dataset.bsTarget = '#myModal' + mid;
+		img.classList.add("border", "border-1");
 		img.before(btnElm);
 		btnElm.appendChild(img);
 	}
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 					<div class="container">
 					    <div class="row">
 					      <div class="col-12">
-			      			<img src="${src}" alt="${alt}" class="border border-dark sa-img"></div>
+			      			<img src="${src}" alt="${alt}" class="border border-1 sa-img"></div>
 					    </div>
 					</div>
 			      </div>

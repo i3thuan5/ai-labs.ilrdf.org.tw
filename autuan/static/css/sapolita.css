@@ -13,6 +13,7 @@
   --bs-success-rgb: 47, 90, 203;
   --bs-link-color: #AC370C;
   --bs-link-hover-color: #2F5ACB;
+  --a-outline-color: #D04410;
 }
 
 .btn {
@@ -166,7 +167,7 @@ p {
 }
 
 a:focus-visible {
-  outline: 3px solid var(--bs-primary);
+  outline: 3px solid var(--a-outline-color);
   outline-offset: 5px;
   border-radius: 2px;
 }
@@ -206,5 +207,18 @@ h2:hover > a, h3:hover > a {
 }
 
 .modal-toggler-btn {
-	background: none;
+ 	outline: none;
+}
+
+.modal-toggler-btn img{
+	box-shadow: rgba(244, 133, 93, 0) 0px 0px 0px 4px;
+	transition: color .15s ease-in-out,
+	background-color .15s ease-in-out,border-color .15s ease-in-out,
+	box-shadow .15s ease-in-out, outline .15s ease-in-out;
+}
+
+.modal-toggler-btn:active img,
+.modal-toggler-btn:focus img
+{
+	box-shadow: rgba(244, 133, 93, 0.9) 0px 0px 0px 4px;
 }

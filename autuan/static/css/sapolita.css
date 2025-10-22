@@ -18,7 +18,7 @@
 
 .btn {
 	--bs-btn-disabled-opacity: 1;
-	--bs-btn-disabled-bg: #fff;
+	--bs-btn-disabled-bg: #FFFFFF;
 	--bs-btn-disabled-color: #D04410;
 }
 
@@ -35,8 +35,8 @@
 
 .btn-danger,
 .btn-outline-danger {
-	--bs-btn-bg: #d10000;
-	--bs-btn-border-color: #d10000;
+	--bs-btn-bg: #D10000;
+	--bs-btn-border-color: #D10000;
 	--bs-btn-hover-bg: #AD0001;
 	--bs-btn-hover-border-color: #AD0001;
 }
@@ -51,7 +51,7 @@
 }
 
 .btn-disabled {
-	--bs-btn-disabled-bg: #fff;
+	--bs-btn-disabled-bg: #FFFFFF;
 }
 
 .btn-close {
@@ -111,7 +111,7 @@ p {
 #main-content img {
 	max-width: 100%;
 	height: auto;
-	background-color: #dcdcdc;
+	background-color: #DCDCDC;
 }
 
 @media (min-width: 576px) {
@@ -151,8 +151,8 @@ p {
 	}
 }
 .menu-btn.btn {
-	color: #000;
-	background-color: #ffffff;
+	color: #000000;
+	background-color: #FFFFFF;
 	border-color: #707070;
 }
 .menu-btn.btn .toggler-icon {

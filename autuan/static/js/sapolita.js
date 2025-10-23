@@ -57,4 +57,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
 			}
 		});
 	}
+
+	function toggleCollapseSysBtn(){
+		const icon = document.getElementById("collapseSysArrow");
+		const collapsible = document.getElementById('sysCollapsible');
+		collapsible.addEventListener('hide.bs.collapse', event => {
+		  icon.innerHTML = '▸';
+		});
+		collapsible.addEventListener('show.bs.collapse', event => {
+		  icon.innerHTML = '▾';
+		})
+	}
+	toggleCollapseSysBtn();
 });

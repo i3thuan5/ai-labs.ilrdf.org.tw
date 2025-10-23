@@ -1,0 +1,5 @@
+{% load wagtailcore_tags %}
+{% if wagtail_iah %}
+<a href="{% pageurl wagtail_iah fallback='comming_soon' %}" 
+	{% if page.id == wagtail_iah.id %}aria-current="page"{% endif %}>{{wagtail_iah.title}}</a>
+{% endif %}

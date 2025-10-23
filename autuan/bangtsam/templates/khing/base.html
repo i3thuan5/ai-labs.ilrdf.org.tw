@@ -31,39 +31,19 @@
     <link rel="stylesheet" href="{% static 'css/sapolita.css' %}">
 </head>
 <body>
-	<header>
-		頁首區...
-		<nav aria-label="無障礙選單">
-			<a href="#main">跳去主內容</a>
-			<a href="{% pageurl sitemappage fallback='comming_soon' %}">{{sitemappage.title}}</a>
-		</nav>
-		<nav aria-label="主選單">
-			<span>語音辨識系統</span>
-			<span>語音合成系統</span>
-			<span>基礎翻譯系統</span>
-			<a href="{% pageurl feedbackpage fallback='comming_soon' %}">{{feedbackpage.title}}</a>
-			<a href="{% pageurl intropage fallback='comming_soon' %}">{{intropage.title}}</a>
-			<a href="{% pageurl applicationformpage fallback='comming_soon' %}">
-			{{applicationformpage.title}}</a>
-			<a href="{% pageurl aboutuspage fallback='comming_soon' %}">{{aboutuspage.title}}</a>
-		</nav>
-	</header>
-	<hr>
-	<main>
-		<h1 id="main">
-			{% block main_h1 %}{{ page.title }}{% endblock %}
-		</h1>
-		<div id="main-content">
-		{% block main_content %}{% endblock %}
-		</div>
-	</main>
-	<hr>
-	<footer>頁腳區...
-		<a href="{% pageurl copyrightpage fallback='comming_soon' %}">{{copyrightpage.title}}</a>
-		<a href="{% pageurl termofusepage fallback='comming_soon' %}">{{termofusepage.title}}</a>
-	</footer>
-	<script src="{% static 'js/bootstrap.min.js' %}"></script>
-	<script src="{% static 'js/sapolita.js' %}"></script>
+{% include 'khing/accessibility_nav.html' %}
+{% include 'khing/header/main_menu.html' %}
+{% block main %}
+<main>
+	<h1 id="main">{% block main_h1 %}{{ page.title }}{% endblock %}</h1>
+	<div id="main-content">{% block main_content %}{% endblock %}</div>
+</main>
+{% endblock %}
+{% include 'khing/footer/footer.html' %}
+{% block js_script %}
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/sapolita.js' %}"></script>
+{% endblock %}
 </body>
 </html>
 

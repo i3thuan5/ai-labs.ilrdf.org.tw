@@ -24,7 +24,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="{% static 'favicon/favicon.ico' %}" sizes="32x32">
 	<link rel="icon" href="{% static 'favicon/logo.svg' %}" type="image/svg+xml">
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	<link rel="apple-touch-icon" href="{% static 'favicon/apple-touch-icon.png' %}">
 	<link rel="manifest" href="{% url 'webmanifest' %}" />
 	<meta name="msapplication-config" content="none"/>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
@@ -34,16 +34,33 @@
 {% include 'khing/accessibility_nav.html' %}
 {% include 'khing/header/main_menu.html' %}
 {% block main %}
-<main>
-	<h1 id="main">{% block main_h1 %}{{ page.title }}{% endblock %}</h1>
-	<div id="main-content">{% block main_content %}{% endblock %}</div>
+<main class="container py-3 py-lg-5">
+	<div class="row">
+        <nav aria-label="breadcrumb" class="col-12 mb-5">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% pageurl homepage %}">首頁</a></li>
+            {% if page.id == feedbackpage.id %}
+            <li class="breadcrumb-item active">族語AI應用系統</li>
+            {% endif %}
+            <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+          </ol>
+        </nav>
+        <h1 id="main" class="mb-5">{% block main_h1 %}{{ page.title }}{% endblock %}</h1>
+        <nav aria-label="頁面索引" class="col-12 col-lg-3 z-index-0">
+            <div class="sticky-top border border-primary rounded p-2 mb-5 hide" id="toc">
+            </div>
+        </nav>
+        <div class="col-12 col-lg-9 pb-5">
+            <div id="main-content" class="w-75ch">{% block main_content %}{% endblock %}</div>
+        </div>
+    </div>
 </main>
 {% endblock %}
 {% include 'khing/footer/footer.html' %}
 {% block js_script %}
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/toc.js' %}"></script>
 <script src="{% static 'js/sapolita.js' %}"></script>
 {% endblock %}
 </body>
 </html>
-

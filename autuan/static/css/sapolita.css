@@ -3,13 +3,33 @@
 	 src: local("TauhuOo20.05-Regular"), url(../font/TauhuOo20.05-Regular.woff2) format("woff2");
 }
 
-
 body {
 	font-family: tauhu-oo, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer {
+	margin-top: auto;
 }
 
 h1, h2, h3, h4 {
 	font-weight: 700;
+	margin-bottom: 1.2rem;
+}
+h2, h3 {
+	margin-top: 3rem;
+}
+h2:first-child {
+	margin-top: 0;
+}
+.h3, h3{
+	font-size:calc(1.1rem + .1vw);
+}
+@media (min-width:1200px){.h3,h3{font-size:1.5rem}}
+p {
+	line-height: 1.7rem;
 }
 
 #main-content img {
@@ -17,7 +37,6 @@ h1, h2, h3, h4 {
 	height: auto;
 	background-color: #dcdcdc;
 }
-
 
 @media (min-width: 576px) {
 	.modal-dialog {
@@ -43,18 +62,31 @@ h1, h2, h3, h4 {
     height: 100%;
 }
 
-.navbar-toggler.btn {
-	background-color: #ffffff;
-	border-color: rgba(0,0,0,0.5);
+.fixed-menu {
+	max-width: min-content;
+	left: auto;
+	top: 2px;
+	right: 2px;
 }
-
-.navbar-toggler.btn:hover, .navbar-toggler.btn:focus {
-	background-color: #707070;
+@media screen and (min-width: 576px){
+	.fixed-menu {
+		top: 1rem;
+		right: 1rem;
+	}
+}
+.menu-btn.btn {
+	background-color: #ffffff;
+	border-color: #707070;
+}
+.menu-btn.btn .toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(112, 112, 112, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.menu-btn.btn:hover, .menu-btn.btn:focus {
+	background-color: #303030;
 	border-color: #303030;
 }
-
-.navbar-toggler.btn:hover .navbar-toggler-icon,
-.navbar-toggler.btn:focus .navbar-toggler-icon {
+.menu-btn.btn:hover .toggler-icon,
+.menu-btn.btn:focus .toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
@@ -76,4 +108,24 @@ audio {
 	audio {
 		max-width: none;
 	}
+}
+
+h2 > a, h3 > a {
+	opacity: 0;
+}
+
+h2:hover > a, h3:hover > a {
+	opacity: 1;
+}
+
+.w-75ch {
+	max-width: 75ch;
+}
+
+.hide {
+	display: none;
+}
+
+.z-index-0 {
+	z-index: 0;
 }

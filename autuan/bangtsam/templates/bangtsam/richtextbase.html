@@ -1,6 +1,8 @@
 {% extends "khing/base.html" %}
 {% load wagtailcore_tags %}
 
-{% block main_content %} 
+{% block main_content %}
+<div>
 {{page.body|richtext}}
+</div> 
 {% endblock %}

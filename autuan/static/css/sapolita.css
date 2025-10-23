@@ -234,25 +234,21 @@ h2:hover > a, h3:hover > a {
 	z-index: 0;
 }
 
+.z-index-99 {
+	z-index: 99;
+}
+
 main.hero {
 	background-color: #E2E2E2;
 	background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 575px){
-	main.hero {
-		background-image: url('../images/feedback-banner.webp');
-		background-size: contain;
-		background-position: bottom;
-	}
+main.hero > .position-relative {
+	min-height: 70vh;
 }
 
-@media screen and (max-width: 767px){
-	main.hero {
-		background-image: url('../images/feedback-banner.webp');
-		background-size: contain;
-		background-position: bottom;
-	}
+.main-m-hero > img{
+	max-height: 64px;
 }
 
 @media screen and (min-width: 768px){
@@ -261,5 +257,8 @@ main.hero {
 		background-repeat: no-repeat;
 		background-position: left;
 		background-size: contain;
+	}
+	main.hero > .position-relative {
+		min-height: auto;
 	}
 }

@@ -233,3 +233,33 @@ h2:hover > a, h3:hover > a {
 .z-index-0 {
 	z-index: 0;
 }
+
+main.hero {
+	background-color: #E2E2E2;
+	background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 575px){
+	main.hero {
+		background-image: url('../images/feedback-banner.webp');
+		background-size: contain;
+		background-position: bottom;
+	}
+}
+
+@media screen and (max-width: 767px){
+	main.hero {
+		background-image: url('../images/feedback-banner.webp');
+		background-size: contain;
+		background-position: bottom;
+	}
+}
+
+@media screen and (min-width: 768px){
+	main.hero {
+		background-image: url('../images/hero.webp');
+		background-repeat: no-repeat;
+		background-position: left;
+		background-size: contain;
+	}
+}

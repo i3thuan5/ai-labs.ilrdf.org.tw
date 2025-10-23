@@ -5,11 +5,14 @@
 
 {% block main %}
 <main>
-	<div class="py-5 bg-dark text-white text-center">
-		<h1 id="main" class="py-5">{{ page.title }}</h1>
+	<div class="py-5 text-center">
+		<div class="py-5">
+			<h1 id="main">{{ page.title }}</h1>
+			<p>財團法人原住民族語言研究發展基金會</p>
+		</div>
 		<div class="container-fluid">
 			<div class="row justify-content-center">
-				<div class="col-12 col-lg-2 mb-3">
+				<div class="col-12 col-md-2 mb-3">
 					<a href="#" class="btn btn-primary d-flex flex-column">
 						<span>{% include 'icon/mic-fill.html' %}
 							{% include 'icon/caret-right-fill.html' %}
@@ -18,16 +21,16 @@
 						<span class="d-inline-block">語音辨識系統</span>
 					</a>
 				</div>
-				<div class="col-12 col-lg-2 mb-3">
-					<a href="#" class="btn btn-success d-flex flex-column">
+				<div class="col-12 col-md-2 mb-3">
+					<a href="#" class="btn btn-danger d-flex flex-column">
 						<span>{% include 'icon/chat-left-text-fill.html' %}
 							{% include 'icon/caret-right-fill.html' %}
 							{% include 'icon/volume-down-fill.html' %}</span>
 						<span>語音合成系統</span>
 					</a>
 				</div>
-				<div class="col-12 col-lg-2 mb-3">
-					<a href="#" class="btn btn-warning d-flex flex-column">
+				<div class="col-12 col-md-2 mb-3">
+					<a href="#" class="btn btn-success d-flex flex-column">
 						<span>{% include 'icon/translate.html' %}</span>
 						<span>基礎翻譯系統</span>
 					</a>

@@ -9,13 +9,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 	for (let i=0;i<img_tin.length;i++){
 		let img = img_tin[i];
-		let wrapper = document.createElement('button');
-		wrapper.setAttribute('type', 'button');	
-		wrapper.dataset.bsToggle = 'modal';
-		wrapper.dataset.bsTarget = '#myModal' + i;
-		img.before(wrapper);
-		wrapper.appendChild(img);
+		wrapImgWithButtonElement(i, img);
 		createModelElement(i, img);
+	}
+
+	function wrapImgWithButtonElement(mid, img){
+		let btnElm = document.createElement('button');
+		btnElm.setAttribute('type', 'button');
+		btnElm.classList.add("modal-toggler-btn", "bg-transparent", "border-0");
+		btnElm.dataset.bsToggle = 'modal';
+		btnElm.dataset.bsTarget = '#myModal' + mid;
+		img.classList.add("border", "border-1");
+		img.before(btnElm);
+		btnElm.appendChild(img);
 	}
 
 	function createModelElement(mid, img){
@@ -23,7 +29,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		const src = img.getAttribute('src');
 		const alt = img.getAttribute('alt');
 		let html = `
-			<!-- Modal -->
 			<div class="modal fade" id="myModal${mid}" tabindex="-1" 
 				aria-labelledby="modalabel${mid}" aria-hidden="true">
 			  <div class="modal-dialog modal-dialog-centered">
@@ -37,7 +42,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 					<div class="container">
 					    <div class="row">
 					      <div class="col-12">
-			      			<img src="${src}" alt="${alt}" class="border border-dark sa-img"></div>
+			      			<img src="${src}" alt="${alt}" class="border border-1 sa-img"></div>
 					    </div>
 					</div>
 			      </div>
@@ -54,13 +59,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	    }
 
 		document.body.appendChild(modalElement);
-		modalElement.addEventListener('shown.bs.modal', function (event) {
-			const upclosebtn = modalElement.getElementsByClassName('btn-close')[0];
-			if(upclosebtn){
-				console.log('upclosebtn', upclosebtn)
-				upclosebtn.focus();
-			}
-		});
 	}
 
 	function toggleCollapseSysBtn(){

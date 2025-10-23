@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function convertHeadDictToHTML() {
     if (hlength) {
       let tocElement = document.getElementById("toc");
-      let titleElment = document.createElement("span");
+      let titleElment = document.createElement("p");
       let listElment = document.createElement("ul");
       titleElment.innerText = '頁面索引';
       tocElement.appendChild(titleElment);

@@ -1,8 +1,8 @@
 {% load wagtailcore_tags %}
 
 <nav aria-label="無障礙選單" class="visually-hidden-focusable" role="navigation">
-	<div class="container-xl">
-		<a href="#main" class="d-inline-flex p-2 m-1">跳去主內容</a>
+	<div class="container-xl py-2">
+		<a href="#main" class="d-inline-flex p-1 m-1">跳去主內容</a>
 		{% if sitemappage %}
 		<a href="{% pageurl sitemappage fallback='comming_soon' %}" class="d-inline-flex p-2 m-1">{{sitemappage.title}}</a>
 		{% endif %}

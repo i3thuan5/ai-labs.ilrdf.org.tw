@@ -45,10 +45,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function convertHeadDictToHTML() {
     if (hlength) {
       let tocElement = document.getElementById("toc");
+      let navElement = document.createElement("nav");
       let titleElment = document.createElement("p");
       let listElment = document.createElement("ul");
+      navElement.setAttribute("aria-label", "頁面索引");
+      navElement.classList.add("sticky-top","border","border-primary",
+        "rounded","bg-primary","bg-opacity-10","p-2","mb-5");
       titleElment.innerText = '頁面索引';
-      tocElement.appendChild(titleElment);
+      navElement.appendChild(titleElment);
       listElment.classList.add("nav", "flex-column");
       for (let item of toc) {
         let lv2 = createLiA(item.h2);
@@ -63,8 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         listElment.appendChild(lv2);
       }
-      tocElement.appendChild(listElment);
-      tocElement.classList.remove("hide");
+      navElement.appendChild(listElment);
+      tocElement.appendChild(navElement);
     }
   }
 

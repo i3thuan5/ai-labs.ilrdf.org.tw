@@ -15,8 +15,10 @@
 {% endif %} -->
 
 {% if wagtail_iah %}
-<a	class="nav-link 
-		{% if page.id == wagtail_iah.id %}active disabled{% endif %} "
+<a	class="
+	{% if is_dropbown %}dropdown-item{% else %}nav-link{% endif %}
+	{% if page.id == wagtail_iah.id %}active disabled{% endif %}
+	"
 	{% if page.id == wagtail_iah.id %}
 	aria-current="page"	aria-disabled="true"
 	{% else %}

@@ -229,6 +229,10 @@ p {
 	}
 }
 
+#toc .sticky-top {
+	top: 4rem;
+}
+
 #toc .nav-link {
   --bs-nav-link-hover-color: var(--bs-success);
 }

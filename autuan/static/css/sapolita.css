@@ -205,7 +205,8 @@ p {
 	--bs-navbar-color: #FFFFFF;
 }
 
-.navbar a:hover {
+.navbar a:hover,
+.dropdown-toggle:hover {
 	text-decoration: underline;
 }
 

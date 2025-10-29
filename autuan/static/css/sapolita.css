@@ -223,6 +223,12 @@ p {
 	--bs-navbar-toggler-border-color: #FFFFFF;
 }
 
+@media screen and (max-width: 300px){
+	.navbar.sticky-top {
+		position: static;
+	}
+}
+
 #toc .nav-link {
   --bs-nav-link-hover-color: var(--bs-success);
 }

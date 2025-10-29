@@ -1,10 +1,10 @@
 {% load wagtailcore_tags static %}
 
-<nav class="navbar navbar-expand-lg bg-primary text-white" aria-labelledby="top-nav-toggler">
+<nav class="navbar navbar-expand-lg bg-primary text-white sticky-top" aria-labelledby="top-nav-toggler">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">{% wagtail_site as current_site %}
         {% if current_site and current_site.site_name %}{{ current_site.site_name }}{% endif %}</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="主選單">
       <span class="navbar-toggler-icon"></span>
 	  <span class="visually-hidden text-white" id="top-nav-toggler">主選單</span>
     </button>

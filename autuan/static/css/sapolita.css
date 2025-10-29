@@ -5,6 +5,7 @@
 
 :root,
 [data-bs-theme=light] {
+  --bs-body-font-size: 1.2rem;
   --bs-primary: #D04410;
   --bs-primary-rgb: 208, 68, 16;
   --sa-primary-subtle: #F4855D;
@@ -117,7 +118,7 @@ h2:first-child {
 @media (min-width:1200px){.h3,h3{font-size:1.5rem}}
 
 p {
-	line-height: 1.7rem;
+	line-height: 2rem;
 }
 
 #main-content img {

@@ -167,7 +167,7 @@ p {
 
 .navbar-brand {
   --bs-navbar-brand-color: #FFFFFF;
-  --bs-navbar-brand-hover-color: rgba(255, 255, 255, 0.9);
+  --bs-navbar-brand-hover-color: #FFFFFF;
 }
 
 .navbar-brand,

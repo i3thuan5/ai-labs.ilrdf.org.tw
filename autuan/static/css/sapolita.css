@@ -179,6 +179,7 @@ p {
 
 .dropdown-menu {
 	--bs-dropdown-min-width: 2rem;
+	--bs-dropdown-font-size: var(--bs-body-font-size);
 }
 
 .dropdown-item {
@@ -251,7 +252,13 @@ p {
 }
 
 a, p, span {
-	overflow-wrap: break-word;
+	overflow-wrap: anywhere;
+}
+
+@media (min-width: 576px) {
+	a, p, span {
+		overflow-wrap: break-word;
+	}
 }
 
 a:focus-visible {

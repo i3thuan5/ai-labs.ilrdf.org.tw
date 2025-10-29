@@ -27,6 +27,7 @@
 	--bs-btn-disabled-opacity: 1;
 	--bs-btn-disabled-bg: #FFFFFF;
 	--bs-btn-disabled-color: #D04410;
+	--bs-btn-font-size: var(--bs-body-font-size);
 }
 
 .btn-primary,

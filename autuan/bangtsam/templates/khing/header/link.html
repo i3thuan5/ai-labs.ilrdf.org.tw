@@ -2,8 +2,9 @@
 
 {% if wagtail_iah %}
 <a	class="
-	{% if is_dropbown %}dropdown-item{% else %}nav-link{% endif %}
-	{% if page.id == wagtail_iah.id %}active disabled rounded{% endif %}
+	{% if is_dropbown %}dropdown-item{% else %}nav-link	px-2{% endif %}
+	{% if page.id == wagtail_iah.id %}active disabled{% endif %}
+	rounded
 	"
 	{% if page.id == wagtail_iah.id %}
 	aria-current="page"	aria-disabled="true"

@@ -2,7 +2,7 @@ from django.test import TestCase, override_settings
 
 
 @override_settings(DEBUG=False)
-class TestViewHandle404(TestCase):
+class TestViewHandler(TestCase):
     def test_handler_renders_404_response(self):
         response = self.client.get('/not-exist/')
         self.assertContains(

@@ -265,6 +265,9 @@ a:focus-visible,
 	z-index: 10;
 }
 
+a:focus {
+	color: var(--bs-success);
+}
 
 audio {
 	max-width: 90%;

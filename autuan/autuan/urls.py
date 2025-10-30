@@ -34,8 +34,8 @@ urlpatterns = [
     path('', include(wagtail_urls)),
 ]
 
-handler500 = "bangtsam.views.http500view"
-handler404 = "bangtsam.views.http404view"
+handler500 = "bangtsam.views.handle500"
+handler404 = "bangtsam.views.handle404"
 
 if settings.DEBUG:
     # Serve static and media files from development server

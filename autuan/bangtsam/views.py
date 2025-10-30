@@ -13,25 +13,26 @@ def webmanifest_view(request):
 
 
 @require_GET
-def http500view(request):
-    return render(request,
-                  'bangtsam/richtextbase.html',
-                  context={}, status=500)
+def handle500(request):
+    return render(
+        request,
+        'handler/handler.html',
+        context={},
+        status=500
+    )
 
 
 @require_GET
-def http404view(request, exception):
+def handle404(request, exception):
     return render(
         request,
-        'bangtsam/richtextbase.html',
+        'handler/handler.html',
         context={
             'page': {
                 'title': '404錯誤 - 找不到此頁面',
                 'search_description': '找不到此頁面',
-                'body': (
-                    '''<p>頁面可能被刪除、移動，或是網址輸入錯誤。'''
-                    '''您可點擊目前瀏覽器返回上一頁的功能，或利用本網站導覽列回到首頁。</p>'''
-                ),
+                'body': (''
+                         ),
             },
         },
         status=404

@@ -210,6 +210,7 @@ p {
 	text-decoration: underline;
 }
 
+
 .nav-link {
 	--bs-nav-link-hover-color: #FFFFFF;
 }
@@ -252,15 +253,18 @@ a, p, span {
 	}
 }
 
-a:focus-visible {
-  outline: 3px solid var(--sa-primary-subtle);
-  outline-offset: 5px;
+a:focus-visible,
+.dropdown-toggle:focus-visible {
+  outline: 3px solid var(--bs-success);
   border-radius: 2px;
 }
 
-.list-group-item-action:focus-visible {
-  outline: none;
+.navbar-brand:focus-visible,
+.navbar .nav-link:focus-visible {
+	position: relative;
+	z-index: 10;
 }
+
 
 audio {
 	max-width: 90%;

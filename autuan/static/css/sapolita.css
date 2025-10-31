@@ -15,6 +15,11 @@
   --bs-success-rgb: 47, 90, 203;
   --bs-link-color: #AC370C;
   --bs-link-hover-color: #2F5ACB;
+  --sa-deep-grey: #E2E2E2;
+}
+
+.breadcrumb {
+  --bs-breadcrumb-item-active-color: #5E5E5E;
 }
 
 .btn {
@@ -232,4 +237,36 @@ h2:hover > a, h3:hover > a {
 
 .z-index-0 {
 	z-index: 0;
+}
+
+.z-index-99 {
+	z-index: 99;
+}
+
+main.hero {
+	background-repeat: no-repeat;
+}
+
+main.hero > .position-relative {
+	min-height: 70vh;
+}
+
+.main-m-hero > img{
+	max-height: 64px;
+}
+
+@media screen and (min-width: 768px){
+	main.hero {
+		background-image: url('../images/hero.webp');
+		background-repeat: no-repeat;
+		background-position: left;
+		background-size: contain;
+	}
+	main.hero > .position-relative {
+		min-height: auto;
+	}
+}
+
+.bg-deep-grey {
+	background-color: var(--sa-deep-grey);
 }

@@ -1,0 +1,10 @@
+{% load wagtailcore_tags %}
+<nav aria-label="breadcrumb" class="col-12 mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% pageurl homepage %}">首頁</a></li>
+    {% if page.id == feedbackpage.id %}
+    <li class="breadcrumb-item active">族語AI應用系統</li>
+    {% endif %}
+    <li class="breadcrumb-item active" aria-current="page">{{ page.title }}</li>
+  </ol>
+</nav>

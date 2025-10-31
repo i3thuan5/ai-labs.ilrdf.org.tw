@@ -1,11 +1,28 @@
 {% extends "khing/base.html" %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags static %}
 
-{% block main_content %} 
-{{page.body|richtext}}
-{% if page.feedbackurl %}
-<div class="d-grid gap-2 col-12 col-md-6 mx-auto">
-	<a href="{{page.feedbackurl}}" class="btn btn-primary py-2">前往填寫意見回饋表單</a>
-</div>
-{% endif %}
+{% block main %}
+<main class="position-relative">
+	<div class="position-relative z-index-99 container py-3 py-lg-5">
+		<article class="row">
+	    {% include 'khing/main/breadcrumb.html' %}
+	    {% include 'khing/main/h1.html' %}
+	    {% include 'khing/main/toc.html' %}
+		<div class="col-12 col-lg-9 pb-5">
+		    <div id="main-content" class="w-75ch pb-5">
+		    	{{page.body|richtext}}
+				{% if page.feedbackurl %}
+				<div class="d-grid gap-2 col-12 col-md-6 mx-auto pb-5">
+				       <a href="{{page.feedbackurl}}" class="btn btn-primary py-2">前往填寫意見回饋表單</a>
+				</div>
+				{% endif %}
+		    </div>
+		</div>
+		</article>
+	<aside class="position-absolute bottom-0 start-0 z-0 w-100 overflow-hidden">
+    	<img src="{% static 'images/feedback-banner.webp' %}" alt="" class="mx-auto">
+	</aside>
+	</div>
+</main>
+
 {% endblock %}

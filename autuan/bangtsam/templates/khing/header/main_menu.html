@@ -1,49 +1,38 @@
 {% load wagtailcore_tags static %}
-<header class="d-md-block fixed-top fixed-menu">
-	<button class="btn btn-dark menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-	  <span class="navbar-toggler-icon toggler-icon"></span>
-	  <span class="visually-hidden">主選單</span>
-	</button>
-</header>
 
-<aside>
-	<div class="offcanvas offcanvas-end bg-primary text-white" tabindex="-1" 
-		id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-	  <div class="offcanvas-header border-bottom border-1 pb-3">
-	    <span class="offcanvas-title fs-4" id="offcanvasRightLabel">
-        {% wagtail_site as current_site %}
-        {% if current_site and current_site.site_name %}
-        {{ current_site.site_name }}
-        {% endif %}
-	    </span>
-	    <button type="button" class="btn-close" data-bs-dismiss="offcanvas">
-	    	<span class="visually-hidden">關閉主選單</span>
-	    </button>
-	  </div>
-	  <div class="offcanvas-body pt-0 px-0">
-	  	<ul class="list-unstyled ms-2">
-	  		<li>{% include 'khing/header/link.html' with wagtail_iah=homepage iah_title='首頁' %}</li>
-	  		<li>{% include 'khing/header/link.html' with wagtail_iah=intropage %}</li>
-			<li>
-				<button type="button" class="btn btn-outline-primary text-white border-0 my-1" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="sysCollapsible"><span id="collapseSysArrow" class="me-1 text-white">▸</span>族語AI應用系統</button>
-				<div class="container">	
-					<div class="row">
-					  <div class="col">
-					    <div class="collapse multi-collapse" id="sysCollapsible">
-					    	<ul class="list-unstyled">
-					       		<li><a href="#" class="btn btn-outline-primary text-white p-2 my-1 border-0">語音辨識系統<li></a>
-								<li><a href="#" class="btn btn-outline-primary text-white p-2 my-1 border-0">語音合成系統</a>
-								<li><a href="#" class="btn btn-outline-primary text-white p-2 my-1 border-0">基礎翻譯系統</a>
-				  				<li>{% include 'khing/header/link.html' with wagtail_iah=feedbackpage indent=0 %}</li>
-			  				</ul>
-					    </div>
-					  </div>
-					</div>
-				</div>
-			</li>
-	  		<li>{% include 'khing/header/link.html' with wagtail_iah=applicationformpage %}</li>
-	  		<li>{% include 'khing/header/link.html' with wagtail_iah=aboutuspage %}</li>
-	  	</ul>
-	  </div>
-	</div>	
-</aside>
+<nav class="navbar navbar-expand-lg bg-primary text-white sticky-top" aria-labelledby="top-nav-toggler">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">{% wagtail_site as current_site %}
+        {% if current_site and current_site.site_name %}{{ current_site.site_name }}{% endif %}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="主選單">
+      <span class="navbar-toggler-icon"></span>
+	  <span class="visually-hidden text-white" id="top-nav-toggler">主選單</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          {% include 'khing/header/link.html' with wagtail_iah=homepage iah_title='首頁' %} 
+        </li>
+        <li class="nav-item">
+          {% include 'khing/header/link.html' with wagtail_iah=intropage %}
+        </li>
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle px-2 bg-primary rounded border-0 shadow-none" data-bs-toggle="dropdown" aria-expanded="false">族語AI應用系統</button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">語音辨識系統</a></li>
+            <li><a class="dropdown-item" href="#">語音合成系統</a></li>
+            <li><a class="dropdown-item" href="#">基礎翻譯系統</a></li>
+            <li>{% include 'khing/header/link.html' with wagtail_iah=feedbackpage is_dropbown=True %}</li>
+          </ul>
+        </li>
+        <li class="nav-item">
+        	{% include 'khing/header/link.html' with wagtail_iah=applicationformpage %}
+        </li>
+        <li class="nav-item">
+        	{% include 'khing/header/link.html' with wagtail_iah=aboutuspage %}
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+

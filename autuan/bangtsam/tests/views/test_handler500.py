@@ -1,10 +1,12 @@
 from django.test import TestCase, override_settings
 from django.test import Client
 from django.urls import path
+from django.views.decorators.http import require_GET
 
 from bangtsam.urls import urlpatterns
 
 
+@require_GET
 def problematic_view(request):
     raise Exception("Simulating a server error for testing handler500")
 

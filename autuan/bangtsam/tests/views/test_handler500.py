@@ -8,7 +8,7 @@ from bangtsam.urls import urlpatterns
 
 @require_GET
 def problematic_view(request):
-    raise Exception("Simulating a server error for testing handler500")
+    raise ValueError("Simulating a server error for testing handler500")
 
 
 urlpatterns += [

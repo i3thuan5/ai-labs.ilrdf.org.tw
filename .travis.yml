@@ -54,3 +54,19 @@ jobs:
         - pip install tox
       script:
         - tox -e checkmigrations
+    - name: Check migrations
+      install:
+        - pip install tox
+      script:
+        - tox -e checkmigrations
+    - stage: configuation_test
+      # if: branch =~ /^(release)/
+      name: Check django deploy settings
+      install:
+        - pip install tox
+      script:
+        - tox -e checkdeploy
+    # - name: Check nginx configuration
+    #   script:
+    #     - nginx -t
+

@@ -1,0 +1,51 @@
+# Python
+
+.env.template
+tox.ini
+.tox/
+*venv/
+
+# 問題：看無是按怎be-sai寫 */venv/
+# 參考文件：https://docs.docker.com/build/concepts/context/#syntax
+
+# Database
+
+*db.sqlite3
+
+# JS
+
+*/node_modules/
+
+# Static File
+
+*/media/
+*/__pycache__/
+
+# Docker
+
+.dockerignore
+docker-compose.yml
+Dockerfile
+
+# Git
+
+.git/
+.github/
+.gitignore
+
+# For Test
+
+.travis.yml
+.yamllint.yml
+.gherkin-lintrc
+*/tests/
+features/
+
+# Documents
+
+LICENSE
+README.md
+licenses-of-frontend.txt
+licenses-of-requirements.txt
+requirements-dev.in
+requirements-dev.txt

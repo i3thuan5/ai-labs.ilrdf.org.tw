@@ -1,0 +1,9 @@
+services:
+  nginx:
+  nginx-proxy:
+  django-gunicorn:
+    build: .
+  django-static:
+  postgres:
+
+volumes:

@@ -1,9 +1,53 @@
 services:
-  nginx:
-  nginx-proxy:
-  django-gunicorn:
-    build: .
-  django-static:
+  # nginx-proxy:
+  #   image:
+  #   ports:
+  #     - 127.0.0.1:80:80
+
+  # nginx:
+  #   image:
+  #   volumes:
+  #     - static
+
+  # django-gunicorn:
+  #   build: .
+  #   secrets:
+  #     - SECRET_KEY
+    # volumes:
+    #   - "postgres-data:/var/lib/postgresql/18/docker"
+  #   environment:
+  #     SECRET_KEY:
+  #     VIRTUAL_HOST:
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD_FILE: 
+  #   restart: always
+
   postgres:
+    image: postgres:18.0-alpine
+    volumes:
+      - "postgres-data:/var/lib/postgresql/18/docker"
+    secrets:
+      - postgres_passwd
+    environment:
+      POSTGRES_DB: "postgresdb_inline"
+      POSTGRES_USER: "postgresuser_inline"
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_passwd
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-d", "postgresdb_inline", "-U", "postgresuser_inline" ]
+      interval: "10s"
+      timeout: "5s"
+      retries: 5
+    restart: always
+
 
 volumes:
+  postgres-data:
+  # static-data:
+
+# network:
+  # enable_ipv4
+  # enable_ipv6
+
+secrets:
+  postgres_passwd:
+    file: ./postgres_passwd.txt

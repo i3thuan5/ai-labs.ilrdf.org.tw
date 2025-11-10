@@ -24,6 +24,7 @@ requirements-dev.txt
 .dockerignore
 docker-compose.yml
 Dockerfile
+postgres_passwd.txt
 
 # Git
 

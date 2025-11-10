@@ -33,7 +33,7 @@ services:
       POSTGRES_USER: "postgresuser_inline"
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_passwd
     healthcheck:
-      test: [ "CMD", "pg_isready", "-d", "postgresdb_inline", "-U", "postgresuser_inline" ]
+      test: [ "CMD", "pg_isready","-d", "postgresdb_inline", "-U", "postgresuser_inline" ]
       interval: "10s"
       timeout: "5s"
       retries: 5

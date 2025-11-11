@@ -31,9 +31,9 @@ services:
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_passwd
+      POSTGRES_PASSWORD: /run/secrets/postgres_passwd
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB || exit 1"]
       interval: "10s"
       timeout: "5s"
       retries: 5
@@ -51,3 +51,5 @@ volumes:
 secrets:
   postgres_passwd:
     environment: POSTGRES_PASSWD_SECRET
+
+# secrets.*.environment：當.env沒定義該變數，就會擋下。但空字串不會擋。

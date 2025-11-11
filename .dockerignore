@@ -1,18 +1,21 @@
+# 問題一：看無是按怎be-sai寫 */venv/
+# 參考文件：https://docs.docker.com/build/concepts/context/#syntax
+# 問題二：__pycache__無成功，猶是會包入去。
+
 # Python
 
-tox.ini
-.tox/
-requirements-*.in
-requirements-dev.txt
-*venv/
-
-# 問題：看無是按怎be-sai寫 */venv/
-# 參考文件：https://docs.docker.com/build/concepts/context/#syntax
+**/__pycache__
+**/*.pyc
 
 # Environments
 
 .env
 .env.template
+tox.ini
+.tox/
+requirements-*.in
+requirements-dev.txt
+*venv/
 
 # Database
 
@@ -21,7 +24,6 @@ requirements-dev.txt
 # Static File
 
 */media/
-**/*__pycache__/
 
 # Docker
 

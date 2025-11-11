@@ -1,14 +1,18 @@
 # Python
 
-.env.template
 tox.ini
 .tox/
-*venv/
 requirements-*.in
 requirements-dev.txt
+*venv/
 
 # 問題：看無是按怎be-sai寫 */venv/
 # 參考文件：https://docs.docker.com/build/concepts/context/#syntax
+
+# Environments
+
+.env
+.env.template
 
 # Database
 
@@ -24,7 +28,6 @@ requirements-dev.txt
 .dockerignore
 docker-compose.yml
 Dockerfile
-postgres_passwd.txt
 
 # Git
 

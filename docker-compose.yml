@@ -50,4 +50,4 @@ volumes:
 
 secrets:
   postgres_passwd:
-    file: ./postgres_passwd.txt
+    environment: POSTGRES_PASSWD_SECRET

@@ -9,18 +9,23 @@ services:
   #   volumes:
   #     - static
 
-  # django-gunicorn:
-  #   build: .
-  #   secrets:
-  #     - SECRET_KEY
-    # volumes:
-    #   - "postgres-data:/var/lib/postgresql/18/docker"
-  #   environment:
-  #     SECRET_KEY:
-  #     VIRTUAL_HOST:
-  #     POSTGRES_USER: ${POSTGRES_USER}
-  #     POSTGRES_PASSWORD_FILE: 
-  #   restart: always
+  django-gunicorn:
+    build: .
+    secrets:
+      - django_secret_key
+      - postgres_passwd
+    volumes:
+      - "staticfiles:/staticfiles/"
+    environment:
+      DJANGO_SECRET_KEY: /run/secrets/django_secret_key
+      VIRTUAL_HOST: "127.0.0.1"
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: /run/secrets/postgres_passwd
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   postgres:
     image: postgres:18.0-alpine
@@ -42,7 +47,7 @@ services:
 
 volumes:
   postgres-data:
-  # static-data:
+  staticfiles:
 
 # network:
   # enable_ipv4
@@ -51,5 +56,8 @@ volumes:
 secrets:
   postgres_passwd:
     environment: POSTGRES_PASSWD_SECRET
+  django_secret_key:
+    environment: DJANGO_SECRET_KEY
 
 # secrets.*.environment：當.env沒定義該變數，就會擋下。但空字串不會擋。
+# 問題四：教典有加label

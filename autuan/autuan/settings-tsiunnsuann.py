@@ -4,7 +4,7 @@ from .settings import *  # noqa
 # Core
 
 DEBUG = False
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 VIRTUAL_HOST = os.getenv('VIRTUAL_HOST').split(',')
 ALLOWED_HOSTS = VIRTUAL_HOST
 
@@ -17,8 +17,8 @@ STATIC_ROOT = '/staticfiles/'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mypostgres',
-        "USER": "mypgsqluser",
+        'NAME': os.getenv('POSTGRES_DB'),
+        "USER": os.getenv('POSTGRES_USER'),
         "PASSWORD": os.getenv('POSTGRES_PASSWORD'),
         "HOST": "127.0.0.1",
         "PORT": "5432",

@@ -1,11 +1,6 @@
-# 問題一：看無是按怎be-sai寫 */venv/
-# 參考文件：https://docs.docker.com/build/concepts/context/#syntax
-# 問題二：__pycache__無成功，猶是會包入去。
-
 # Python
 
-**/__pycache__
-**/*.pyc
+**/__pycache__/
 
 # Environments
 
@@ -15,7 +10,7 @@ tox.ini
 .tox/
 requirements-*.in
 requirements-dev.txt
-*venv/
+venv/
 
 # Database
 
@@ -43,7 +38,7 @@ Dockerfile
 .yamllint.yml
 .gherkin-lintrc
 features/
-**/*tests/
+**/tests/
 
 # Documents
 

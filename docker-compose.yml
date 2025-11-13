@@ -4,24 +4,24 @@ services:
   #   ports:
   #     - 127.0.0.1:80:80
 
-  # nginx:
-  #   image: nginx:1.28.0-alpine
-  #   volumes:
-  #     - "staticfiles:/staticfiles/"
-  #     - "/etc/nginx/nginx.conf::ro"
-  #   depends_on:
-  #     django-gunicorn
+  nginx:
+    image: nginx:1.28.0-alpine
+    ports:
+      - 77:80
+    volumes:
+      - "staticfiles:/staticfiles/"
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf:ro"
+    depends_on:
+      - django-gunicorn
 
   django-gunicorn:
     ports:
       - 8000:8000
     build: .
-    secrets:
+    secrets: &django_secrets
       - django_secret_key
       - postgres_passwd
-    volumes:
-      - "staticfiles:/staticfiles/"
-    environment:
+    environment: &django_envs
       DJANGO_SECRET_KEY: /run/secrets/django_secret_key
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       POSTGRES_DB: ${POSTGRES_DB}
@@ -31,6 +31,15 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+
+  django-static:
+    build: .
+    command: python manage.py collectstatic --noinput
+    restart: no
+    volumes:
+      - "staticfiles:/staticfiles/"
+    secrets: *django_secrets
+    environment: *django_envs
 
   postgres:
     image: postgres:18.0-alpine
@@ -75,3 +84,4 @@ secrets:
 #  This refers to the Linux system user (from /etc/passwd in the image) that 
 #  the postgres daemon runs as, and as such is unrelated to the POSTGRES_USER option. 
 #  See the section titled "Arbitrary --user Notes" for more details.
+# 問題四：django-gunicorn、postgres設定好勢，毋過local連無。

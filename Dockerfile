@@ -1,17 +1,19 @@
 FROM python:3.12
 WORKDIR /app
 
+ENV DJANGO_SETTINGS_MODULE=autuan.settings-tsiunnsuann
+
+COPY django_gunicorn_start.sh ./
+RUN chmod +x django_gunicorn_start.sh
 COPY requirements-prod.txt ./
 RUN pip install --no-cache-dir -r requirements-prod.txt
 
 COPY autuan/ ./
 
-ENV DJANGO_SETTINGS_MODULE=autuan.settings-tsiunnsuann
-
 EXPOSE 8000
-CMD python manage.py collectstatic --noinput && \
-	gunicorn --workers 2 autuan.wsgi
+CMD ["./django_gunicorn_start.sh"]
 
-# 問題二：不包RUN python manage.py migrate？https://forum.djangoproject.com/t/serving-django-static-files-in-nginx-docker/33969
-# 問題三：發現不能用RUN python manage.py collectstatic --noinput
-# 問題四：要能外連應該就是設定EXPOSE？
+
+# 問題二：看教典不包python manage.py migrate？
+# 問題三：python manage.py collectstatic --noinput為啥物是run time才做，毋是build time？
+# 日後按怎判斷？

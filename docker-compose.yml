@@ -68,8 +68,7 @@ secrets:
 # 問題一：教典pg是按怎有標label？
 # 問題二：pg_isready袂去對密碼kah資料庫名，烏白傳嘛無要緊。毋過無較好的healthcheck指令的款。
 #    - https://www.postgresql.org/docs/current/app-pg-isready.html
-# 問題三：
-# POSTGRES_USER Docker Hub README這段：
+# 問題三：POSTGRES_USER 設了無效？看無Docker Hub README這段：
 #  Be aware that if this parameter is specified, 
 #  PostgreSQL will still show The files belonging to this database system will 
 #  be owned by user "postgres" during initialization. 

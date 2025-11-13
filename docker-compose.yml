@@ -5,11 +5,16 @@ services:
   #     - 127.0.0.1:80:80
 
   # nginx:
-  #   image:
+  #   image: nginx:1.28.0-alpine
   #   volumes:
-  #     - static
+  #     - "staticfiles:/staticfiles/"
+  #     - "/etc/nginx/nginx.conf::ro"
+  #   depends_on:
+  #     django-gunicorn
 
   django-gunicorn:
+    ports:
+      - 8000:8000
     build: .
     secrets:
       - django_secret_key
@@ -18,7 +23,7 @@ services:
       - "staticfiles:/staticfiles/"
     environment:
       DJANGO_SECRET_KEY: /run/secrets/django_secret_key
-      VIRTUAL_HOST: "127.0.0.1"
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: /run/secrets/postgres_passwd
@@ -60,4 +65,14 @@ secrets:
     environment: DJANGO_SECRET_KEY
 
 # secrets.*.environment：當.env沒定義該變數，就會擋下。但空字串不會擋。
-# 問題四：教典有加label
+# 問題一：教典pg是按怎有標label？
+# 問題二：pg_isready袂去對密碼kah資料庫名，烏白傳嘛無要緊。毋過無較好的healthcheck指令的款。
+#    - https://www.postgresql.org/docs/current/app-pg-isready.html
+# 問題三：
+# POSTGRES_USER Docker Hub README這段：
+#  Be aware that if this parameter is specified, 
+#  PostgreSQL will still show The files belonging to this database system will 
+#  be owned by user "postgres" during initialization. 
+#  This refers to the Linux system user (from /etc/passwd in the image) that 
+#  the postgres daemon runs as, and as such is unrelated to the POSTGRES_USER option. 
+#  See the section titled "Arbitrary --user Notes" for more details.

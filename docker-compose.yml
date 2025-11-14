@@ -24,8 +24,6 @@ services:
     environment: &django_envs
       DJANGO_SECRET_KEY: /run/secrets/django_secret_key
       VIRTUAL_HOST: ${VIRTUAL_HOST}
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: /run/secrets/postgres_passwd
     restart: always
     depends_on:
@@ -48,11 +46,11 @@ services:
     secrets:
       - postgres_passwd
     environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: /run/secrets/postgres_passwd
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB || exit 1"]
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "postgres"]
       interval: "10s"
       timeout: "5s"
       retries: 5

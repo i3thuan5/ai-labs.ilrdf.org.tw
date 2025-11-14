@@ -70,8 +70,4 @@ secrets:
   django_secret_key:
     environment: DJANGO_SECRET_KEY
 
-# 問題: nginx設定檔正確到底是愛指向tueh？
-#   docker README，設定檔指向「/etc/nginx/nginx.conf」失敗；
-#   照教典/etc/nginx/conf.d/default.conf才成功。
-# 問題：nginx.conf確實免http directive，毋過官方說明範例有用著http--neh。
 # 問題：nginx.conf改過，愛nginx -s reload，新設定才讀會著的款。敢著？

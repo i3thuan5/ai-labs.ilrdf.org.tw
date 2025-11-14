@@ -10,4 +10,4 @@ COPY autuan/ ./
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--workers", "2", "autuan.wsgi"]
+CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:8000", "autuan.wsgi"]

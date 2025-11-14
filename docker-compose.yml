@@ -16,7 +16,7 @@ services:
 
   django-gunicorn:
     ports:
-      - 8000:8000
+      - 3333:8000
     build: .
     secrets: &django_secrets
       - django_secret_key
@@ -41,6 +41,8 @@ services:
 
   postgres:
     image: postgres:18.0-alpine
+    labels:
+      - "backup.postgres=true"
     volumes:
       - "postgres-data:/var/lib/postgresql/18/docker"
     secrets:
@@ -51,9 +53,10 @@ services:
       POSTGRES_PASSWORD: /run/secrets/postgres_passwd
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
+      start_period: "10s"
+      start_interval: "1s"
       interval: "10s"
       timeout: "5s"
-      retries: 5
     restart: always
 
 
@@ -71,15 +74,4 @@ secrets:
   django_secret_key:
     environment: DJANGO_SECRET_KEY
 
-# secrets.*.environment：當.env沒定義該變數，就會擋下。但空字串不會擋。
-# 問題一：教典pg是按怎有標label？
-# 問題二：pg_isready袂去對密碼kah資料庫名，烏白傳嘛無要緊。毋過無較好的healthcheck指令的款。
-#    - https://www.postgresql.org/docs/current/app-pg-isready.html
-# 問題三：POSTGRES_USER 設了無效？看無Docker Hub README這段：
-#  Be aware that if this parameter is specified, 
-#  PostgreSQL will still show The files belonging to this database system will 
-#  be owned by user "postgres" during initialization. 
-#  This refers to the Linux system user (from /etc/passwd in the image) that 
-#  the postgres daemon runs as, and as such is unrelated to the POSTGRES_USER option. 
-#  See the section titled "Arbitrary --user Notes" for more details.
 # 問題四：django-gunicorn、postgres設定好勢，毋過local連無。

@@ -66,6 +66,8 @@ jobs:
         - pip install tox
       script:
         - tox -e checkdeploy
-        # - name: Check nginx configuration
-        #   script:
-        #     - nginx -t
+      - name: Check nginx configuration
+        install:
+        - pip install tox
+        script:
+          - tox -e checknginx

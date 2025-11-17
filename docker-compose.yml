@@ -34,11 +34,12 @@ services:
 
   django-static:
     build: .
-    command: python manage.py collectstatic --noinput
+    command: ["python", "manage.py", "collectstatic", "--noinput"]
     environment: *django_envs
     network_mode: none
     restart: no
     secrets: *django_secrets
+    user: "root"
     volumes:
       - "staticfiles:/staticfiles/"
 

@@ -1,13 +1,13 @@
 services:
-  # nginx-proxy:
 
   nginx:
     image: nginx:1.28.0-alpine
-    ports:
-      - 81:80
     volumes:
       - "staticfiles:/staticfiles/"
       - "./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro"
+    networks:
+      - nginx-bridge
+      - gunicorn-bridge
     depends_on:
       - gunicorn
       - django-static
@@ -22,6 +22,8 @@ services:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       POSTGRES_PASSWORD: /run/secrets/postgres_passwd
     restart: always
+    networks:
+      - gunicorn-bridge
     depends_on:
       postgres:
         condition: service_healthy
@@ -34,6 +36,7 @@ services:
       - "staticfiles:/staticfiles/"
     secrets: *django_secrets
     environment: *django_envs
+    network_mode: none
 
   postgres:
     image: postgres:18.0-alpine
@@ -60,9 +63,10 @@ volumes:
   postgres-data:
   staticfiles:
 
-# network:
-  # enable_ipv4
-  # enable_ipv6
+networks:
+  nginx-bridge:
+    external: true
+  gunicorn-bridge:
 
 secrets:
   postgres_passwd:

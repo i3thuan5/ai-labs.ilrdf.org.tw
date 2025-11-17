@@ -5,8 +5,7 @@ from .settings import *  # noqa
 
 DEBUG = False
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
-VIRTUAL_HOST = os.getenv('VIRTUAL_HOST').split(',')
-ALLOWED_HOSTS = VIRTUAL_HOST
+ALLOWED_HOSTS = os.getenv('DJANGO_ALLOW_HOSTS').split(',')
 
 # Static Files
 
@@ -39,7 +38,7 @@ LANGUAGE_COOKIE_HTTPONLY = True
 
 # Wagtail
 
-WAGTAILADMIN_BASE_URL = VIRTUAL_HOST[0]
+WAGTAILADMIN_BASE_URL = ALLOWED_HOSTS[0]
 
 
 if os.getenv('TOX_CHECKDEPLOY', default=False):

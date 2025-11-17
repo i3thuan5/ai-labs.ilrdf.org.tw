@@ -5,11 +5,11 @@ services:
     depends_on:
       - gunicorn
       - django-static
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
     networks:
       - nginx-bridge
       - gunicorn-bridge
-    ports:
-      - 81:80
     restart: always
     volumes:
       - "staticfiles:/staticfiles/"
@@ -22,7 +22,7 @@ services:
         condition: service_healthy
     environment: &django_envs
       DJANGO_SECRET_KEY: /run/secrets/django_secret_key
-      DJANGO_ALLOW_HOSTS: ${DJANGO_ALLOW_HOSTS}
+      DJANGO_ALLOW_HOSTS: ${VIRTUAL_HOST}
       POSTGRES_PASSWORD: /run/secrets/postgres_passwd
     networks:
       - gunicorn-bridge

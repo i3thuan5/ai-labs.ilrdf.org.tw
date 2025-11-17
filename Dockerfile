@@ -4,10 +4,9 @@ ENV DJANGO_SETTINGS_MODULE=autuan.settings-tsiunnsuann
 
 WORKDIR /app
 COPY requirements-prod.txt ./
-RUN pip install --no-cache-dir -r requirements-prod.txt
-
-RUN addgroup --gid 1000 nonroot && \
-    adduser --uid 1000 --disabled-password --ingroup nonroot --quiet nonroot
+RUN pip install --no-cache-dir -r requirements-prod.txt \
+&& addgroup --gid 1000 nonroot \
+&& adduser --uid 1000 --disabled-password --ingroup nonroot --quiet nonroot
 USER nonroot
 
 COPY autuan/ ./

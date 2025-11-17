@@ -2,53 +2,48 @@ services:
 
   nginx:
     image: nginx:1.28.0-alpine
-    ports:
-      - 81:80
-    volumes:
-      - "staticfiles:/staticfiles/"
-      - "./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro"
-    networks:
-      - nginx-bridge
-      - gunicorn-bridge
     depends_on:
       - gunicorn
       - django-static
+    networks:
+      - nginx-bridge
+      - gunicorn-bridge
+    ports:
+      - 81:80
+    restart: always
+    volumes:
+      - "staticfiles:/staticfiles/"
+      - "./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro"
 
   gunicorn:
     build: .
-    secrets: &django_secrets
-      - django_secret_key
-      - postgres_passwd
+    depends_on:
+      postgres:
+        condition: service_healthy
     environment: &django_envs
       DJANGO_SECRET_KEY: /run/secrets/django_secret_key
       VIRTUAL_HOST: ${VIRTUAL_HOST}
       POSTGRES_PASSWORD: /run/secrets/postgres_passwd
-    restart: always
     networks:
       - gunicorn-bridge
       - postgres-bridge
-    depends_on:
-      postgres:
-        condition: service_healthy
+    restart: always
+    secrets: &django_secrets
+      - django_secret_key
+      - postgres_passwd
 
   django-static:
     build: .
     command: python manage.py collectstatic --noinput
-    restart: no
-    volumes:
-      - "staticfiles:/staticfiles/"
-    secrets: *django_secrets
     environment: *django_envs
     network_mode: none
+    restart: no
+    secrets: *django_secrets
+    volumes:
+      - "staticfiles:/staticfiles/"
 
   postgres:
     image: postgres:18.0-alpine
-    labels:
-      - "backup.postgres=true"
-    volumes:
-      - "postgres-data:/var/lib/postgresql/18/docker"
-    secrets:
-      - postgres_passwd
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
@@ -59,23 +54,28 @@ services:
       start_interval: "1s"
       interval: "10s"
       timeout: "5s"
+    labels:
+      - "backup.postgres=true"
     networks:
       - postgres-bridge
     restart: always
+    secrets:
+      - postgres_passwd
+    volumes:
+      - "postgres-data:/var/lib/postgresql/18/docker"
 
+networks:
+  gunicorn-bridge:
+  nginx-bridge:
+    external: true
+  postgres-bridge:
+
+secrets:
+  django_secret_key:
+    environment: DJANGO_SECRET_KEY
+  postgres_passwd:
+    environment: POSTGRES_PASSWD_SECRET
 
 volumes:
   postgres-data:
   staticfiles:
-
-networks:
-  nginx-bridge:
-    external: true
-  gunicorn-bridge:
-  postgres-bridge:
-
-secrets:
-  postgres_passwd:
-    environment: POSTGRES_PASSWD_SECRET
-  django_secret_key:
-    environment: DJANGO_SECRET_KEY

@@ -24,6 +24,7 @@ services:
     restart: always
     networks:
       - gunicorn-bridge
+      - postgres-bridge
     depends_on:
       postgres:
         condition: service_healthy
@@ -56,6 +57,8 @@ services:
       start_interval: "1s"
       interval: "10s"
       timeout: "5s"
+    networks:
+      - postgres-bridge
     restart: always
 
 
@@ -67,6 +70,7 @@ networks:
   nginx-bridge:
     external: true
   gunicorn-bridge:
+  postgres-bridge:
 
 secrets:
   postgres_passwd:

@@ -22,9 +22,9 @@ services:
       postgres:
         condition: service_healthy
     environment: &django_envs
-      DJANGO_SECRET_KEY: /run/secrets/django_secret_key
+      DJANGO_SECRET_KEY_FILE: /run/secrets/django_secret_key
       DJANGO_ALLOW_HOSTS: ${VIRTUAL_HOST}
-      POSTGRES_PASSWORD: /run/secrets/postgres_passwd
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_passwd
       SENTRY_DSN_FILE: /run/secrets/sentry_dsn
     networks:
       - gunicorn-bridge
@@ -51,7 +51,7 @@ services:
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: /run/secrets/postgres_passwd
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres_passwd
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
       start_period: "10s"
@@ -76,9 +76,9 @@ networks:
 
 secrets:
   django_secret_key:
-    environment: DJANGO_SECRET_KEY
+    file: ./secrets/django_secret_key.txt
   postgres_passwd:
-    environment: POSTGRES_PASSWD_SECRET
+    file: ./secrets/postgres_passwd.txt
   sentry_dsn:
     file: ./secrets/sentry_dsn.txt
 

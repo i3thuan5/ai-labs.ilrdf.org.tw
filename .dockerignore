@@ -11,6 +11,7 @@ tox.ini
 requirements-*.in
 requirements-dev.txt
 venv/
+secrets/
 
 # Database
 

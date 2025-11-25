@@ -2,4 +2,4 @@
 
 gunicorn==23.0.0
 psycopg[binary]==3.2.12
-sentry-sdk==2.24.0
+sentry-sdk[django]==2.24.0

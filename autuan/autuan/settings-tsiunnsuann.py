@@ -1,3 +1,4 @@
+import logging
 import os
 import sentry_sdk
 
@@ -59,21 +60,26 @@ if os.getenv('TOX_CHECKDEPLOY', default=False):
 
 # Sentry
 
-SENTRY_DSN = os.getenv('SENTRY_DSN')
+
+logger = logging.getLogger(__name__)
+try:
+    with open(os.getenv('SENTRY_DSN_FILE'), 'r') as tong:
+        SENTRY_DSN = tong.readline()
+except:
+    SENTRY_DSN = None
+
+logger.critical("---Start logging---")
+logger.critical("SENTRY_DSN={}".format(SENTRY_DSN))
+logger.critical("POSTGRES_PASSWORD={}".format(os.getenv('POSTGRES_PASSWORD')))
+logger.critical("---End logging---")
+
 if SENTRY_DSN:
     sentry_sdk.init(
         dsn=SENTRY_DSN,
-        max_breadcrumbs=50,
-        debug=True,
         # Set traces_sample_rate to 1.0 to capture 100%
         # of transactions for tracing.
         traces_sample_rate=1.0,
         # Add request headers and IP for users,
         # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
         send_default_pii=True,
-        # By default the SDK will try to use the SENTRY_RELEASE
-        # environment variable, or infer a git commit
-        # SHA as release, however you may want to set
-        # something more human-readable.
-        # release="myapp@1.0.0",
     )

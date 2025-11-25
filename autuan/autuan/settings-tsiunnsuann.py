@@ -1,6 +1,7 @@
 import os
-from .settings import *  # noqa
+import sentry_sdk
 
+from .settings import *  # noqa
 # Core
 
 DEBUG = False
@@ -54,3 +55,25 @@ if os.getenv('TOX_CHECKDEPLOY', default=False):
     SECURE_HSTS_PRELOAD = True
 
     SECURE_SSL_REDIRECT = True
+
+
+# Sentry
+
+SENTRY_DSN = os.getenv('SENTRY_DSN')
+if SENTRY_DSN:
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        max_breadcrumbs=50,
+        debug=True,
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for tracing.
+        traces_sample_rate=1.0,
+        # Add request headers and IP for users,
+        # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+        send_default_pii=True,
+        # By default the SDK will try to use the SENTRY_RELEASE
+        # environment variable, or infer a git commit
+        # SHA as release, however you may want to set
+        # something more human-readable.
+        # release="myapp@1.0.0",
+    )

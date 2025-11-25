@@ -25,6 +25,7 @@ services:
       DJANGO_SECRET_KEY: /run/secrets/django_secret_key
       DJANGO_ALLOW_HOSTS: ${VIRTUAL_HOST}
       POSTGRES_PASSWORD: /run/secrets/postgres_passwd
+      SENTRY_DSN: /run/secrets/sentry_dsn
     networks:
       - gunicorn-bridge
       - postgres-bridge
@@ -77,6 +78,8 @@ secrets:
     environment: DJANGO_SECRET_KEY
   postgres_passwd:
     environment: POSTGRES_PASSWD_SECRET
+  sentry_dsn:
+    environment: SENTRY_DSN
 
 volumes:
   postgres-data:

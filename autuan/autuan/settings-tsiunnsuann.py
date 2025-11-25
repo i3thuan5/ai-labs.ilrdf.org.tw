@@ -1,12 +1,22 @@
-import logging
 import os
 import sentry_sdk
 
 from .settings import *  # noqa
+
+
+def read_secret(secret_name):
+    try:
+        with open(os.getenv(secret_name), 'r') as tong:
+            return tong.readline()
+    except IOError:
+        return None
+
+
 # Core
 
 DEBUG = False
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+
+SECRET_KEY = read_secret('DJANGO_SECRET_KEY_FILE')
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOW_HOSTS').split(',')
 CSRF_TRUSTED_ORIGINS = []
 for host in ALLOWED_HOSTS:
@@ -23,7 +33,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': "postgres",
         "USER": "postgres",
-        "PASSWORD": os.getenv('POSTGRES_PASSWORD'),
+        "PASSWORD": read_secret('POSTGRES_PASSWORD_FILE'),
         "HOST": "postgres",
         "PORT": "5432",
     }
@@ -60,18 +70,7 @@ if os.getenv('TOX_CHECKDEPLOY', default=False):
 
 # Sentry
 
-
-logger = logging.getLogger(__name__)
-try:
-    with open(os.getenv('SENTRY_DSN_FILE'), 'r') as tong:
-        SENTRY_DSN = tong.readline()
-except IOError:
-    SENTRY_DSN = None
-
-logger.critical("---Start logging---")
-logger.critical("SENTRY_DSN={}".format(SENTRY_DSN))
-logger.critical("POSTGRES_PASSWORD={}".format(os.getenv('POSTGRES_PASSWORD')))
-logger.critical("---End logging---")
+SENTRY_DSN = read_secret('SENTRY_DSN_FILE')
 
 if SENTRY_DSN:
     sentry_sdk.init(

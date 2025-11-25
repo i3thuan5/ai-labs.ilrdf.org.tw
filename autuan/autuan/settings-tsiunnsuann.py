@@ -65,7 +65,7 @@ logger = logging.getLogger(__name__)
 try:
     with open(os.getenv('SENTRY_DSN_FILE'), 'r') as tong:
         SENTRY_DSN = tong.readline()
-except:
+except IOError:
     SENTRY_DSN = None
 
 logger.critical("---Start logging---")

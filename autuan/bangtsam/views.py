@@ -9,6 +9,9 @@ def comming_soon_view(request):
 
 @require_GET
 def webmanifest_view(request):
+    def trigger_sentry_error():
+        division_by_zero = 1 / 0
+    trigger_sentry_error()
     return render(request, 'khing/site.webmanifest')
 
 

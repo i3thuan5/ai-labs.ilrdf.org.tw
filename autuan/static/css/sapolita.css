@@ -104,6 +104,7 @@ h1, h2, h3, h4 {
 
 h2, h3 {
 	margin-top: 3rem;
+	scroll-margin-top: 5rem;
 }
 
 h2:first-child {
@@ -184,8 +185,10 @@ p {
 
 .dropdown-item {
 	--bs-dropdown-link-color: var(--bs-primary);
-	--bs-dropdown-link-hover-color: var(--bs-success);
+	--bs-dropdown-link-hover-color: var(--bs-primary);
 	--bs-dropdown-link-hover-bg: rgba(var(--bs-primary-rgb), 0.1);
+	--bs-dropdown-link-active-color: var(--bs-primary);
+	--bs-dropdown-link-active-bg: rgba(var(--bs-primary-rgb), 0.1);
 }
 
 .dropdown-item.disabled {
@@ -205,11 +208,21 @@ p {
 	--bs-navbar-color: #FFFFFF;
 }
 
-.navbar a:hover,
-.dropdown-toggle:hover {
-	text-decoration: underline;
+.navbar .navbar-brand:hover {
+	background-color: var(--bs-primary);
+	color: #FFFFFF;
 }
 
+.navbar-nav .dropdown-toggle {
+	color: #FFFFFF;
+	background-color: var(--bs-primary);
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .dropdown-toggle:hover {
+	background-color: #FFFFFF;
+	color: var(--bs-primary);
+}
 
 .nav-link {
 	--bs-nav-link-hover-color: #FFFFFF;

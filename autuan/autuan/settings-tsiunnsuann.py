@@ -6,6 +6,9 @@ from .settings import *  # noqa
 DEBUG = False
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOW_HOSTS').split(',')
+CSRF_TRUSTED_ORIGINS = []
+for host in ALLOWED_HOSTS:
+    CSRF_TRUSTED_ORIGINS.append(f'https://{host}')
 
 # Static Files
 

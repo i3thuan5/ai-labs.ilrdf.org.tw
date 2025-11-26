@@ -68,6 +68,6 @@ jobs:
         - tox -e checkdeploy
     - name: Check nginx configuration
       install:
-      - pip install tox
+        - pip install tox
       script:
         - tox -e checknginx

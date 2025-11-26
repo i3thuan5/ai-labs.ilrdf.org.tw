@@ -70,4 +70,5 @@ jobs:
       install:
         - pip install tox
       script:
+        - docker network create nginx-bridge
         - tox -e checknginx

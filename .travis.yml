@@ -71,4 +71,8 @@ jobs:
         - pip install tox
       script:
         - docker network create nginx-bridge
+        - mkdir secrets
+        - cp testdata/random-key.txt secrets/django_secret_key.txt
+        - cp testdata/random-key.txt secrets/postgres_passwd.txt
+        - cp testdata/sentry-fake-key.txt secrets/sentry_dsn.txt
         - tox -e checknginx

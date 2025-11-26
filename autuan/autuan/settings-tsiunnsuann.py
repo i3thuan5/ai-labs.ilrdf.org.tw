@@ -1,10 +1,22 @@
 import os
+import sentry_sdk
+
 from .settings import *  # noqa
+
+
+def read_secret(secret_name):
+    try:
+        with open(os.getenv(secret_name), 'r') as tong:
+            return tong.readline()
+    except IOError:
+        return None
+
 
 # Core
 
 DEBUG = False
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+
+SECRET_KEY = read_secret('DJANGO_SECRET_KEY_FILE')
 ALLOWED_HOSTS = os.getenv('DJANGO_ALLOW_HOSTS').split(',')
 CSRF_TRUSTED_ORIGINS = []
 for host in ALLOWED_HOSTS:
@@ -21,7 +33,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': "postgres",
         "USER": "postgres",
-        "PASSWORD": os.getenv('POSTGRES_PASSWORD'),
+        "PASSWORD": read_secret('POSTGRES_PASSWORD_FILE'),
         "HOST": "postgres",
         "PORT": "5432",
     }
@@ -54,3 +66,19 @@ if os.getenv('TOX_CHECKDEPLOY', default=False):
     SECURE_HSTS_PRELOAD = True
 
     SECURE_SSL_REDIRECT = True
+
+
+# Sentry
+
+SENTRY_DSN = read_secret('SENTRY_DSN_FILE')
+
+if SENTRY_DSN:
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for tracing.
+        traces_sample_rate=0.0,
+        # Add request headers and IP for users,
+        # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+        send_default_pii=True,
+    )

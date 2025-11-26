@@ -1,3 +1,4 @@
+---
 services:
 
   nginx:
@@ -40,7 +41,7 @@ services:
     command: ["python", "manage.py", "collectstatic", "--noinput"]
     environment: *django_envs
     network_mode: none
-    restart: no
+    restart: "no"
     secrets: *django_secrets
     user: "root"
     volumes:

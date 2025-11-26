@@ -14,7 +14,7 @@ services:
       - gunicorn-bridge
     restart: always
     volumes:
-      - "staticfiles:/staticfiles/"
+      - "staticfiles:/staticfiles/:ro"
       - "./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro"
 
   gunicorn:
@@ -35,6 +35,8 @@ services:
       - django_secret_key
       - postgres_passwd
       - sentry_dsn
+    volumes:
+      - "./media:/app/media/"
 
   django-static:
     build: .

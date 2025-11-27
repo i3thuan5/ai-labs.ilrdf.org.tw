@@ -83,6 +83,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'bangtsam.context_processors.theh_wagtail_pages',
+                'bangtsam.context_processors.theh_ai_url',
             ],
         },
     },
@@ -189,3 +190,9 @@ WAGTAIL_PASSWORD_RESET_ENABLED = False  # 關閉「忘記密碼？」連結
 WAGTAILAPI_SEARCH_ENABLED = False
 CUSTOM_WAGTAILDOCS_MAX_UPLOAD_SIZE = 5 * 1024 * 1024
 WAGTAILDOCS_DOCUMENT_FORM_BASE = 'bangtsam.forms.document_base.CustomDocumentForm'
+
+
+# AI
+SAPOLITA_ASR_URL = "https://sapolita-kaldi.ithuan.tw/"
+SAPOLITA_TTS_URL = "https://hnang-kari-ai-asi-sluhay.ithuan.tw/"
+SAPOLITA_TRANSLATE_URL = "https://ithuan-formosan-translation.hf.space/"

@@ -42,4 +42,8 @@ class ThehAiWebsiteURLTest(TestCase):
         homepage = tshong_wagtail_homepage()
         response = self.client.get(homepage.url)
         self.assertContains(
+            response, 'https://sapolita-kaldi.ithuan.tw/')
+        self.assertContains(
+            response, 'https://hnang-kari-ai-asi-sluhay.ithuan.tw/')
+        self.assertContains(
             response, 'https://ithuan-formosan-translation.hf.space/')

@@ -282,6 +282,10 @@ a:focus {
 	color: var(--bs-success);
 }
 
+a.btn:focus {
+	color: var(--bs-btn-color);
+}
+
 audio {
 	max-width: 90%;
 }

@@ -12,5 +12,5 @@ class CustomDocumentForm(BaseDocumentForm):
             and cleaned_data["file"].size > file_max_size
         ):
             max_size_mb = file_max_size / (1024*1024)
-            self.add_error("file", f"文件檔案請小於{max_size_mb}MB以下。")
+            self.add_error("file", f"文件檔案請小於{max_size_mb}MiB以下。")
         return cleaned_data

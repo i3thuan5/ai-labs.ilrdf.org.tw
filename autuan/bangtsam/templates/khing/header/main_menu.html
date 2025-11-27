@@ -19,9 +19,9 @@
         <li class="nav-item dropdown ms-lg-1 mb-1 mb-lg-0">
           <button class="nav-link dropdown-toggle px-2 rounded border-0 shadow-none" data-bs-toggle="dropdown" aria-expanded="false">族語AI應用系統</button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://sapolita-kaldi.ithuan.tw/">語音辨識系統</a></li>
-            <li><a class="dropdown-item" href="https://hnang-kari-ai-asi-sluhay.ithuan.tw/">語音合成系統</a></li>
-            <li><a class="dropdown-item" href="https://ithuan-formosan-translation.hf.space">基礎翻譯系統</a></li>
+            <li><a class="dropdown-item" href="{{ ai_url.asr }}">語音辨識系統</a></li>
+            <li><a class="dropdown-item" href="{{ ai_url.tts }}">語音合成系統</a></li>
+            <li><a class="dropdown-item" href="{{ ai_url.translate }}">基礎翻譯系統</a></li>
             <li>{% include 'khing/header/link.html' with wagtail_iah=feedbackpage is_dropbown=True %}</li>
           </ul>
         </li>

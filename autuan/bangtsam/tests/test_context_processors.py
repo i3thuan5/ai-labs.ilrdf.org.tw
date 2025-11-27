@@ -1,3 +1,4 @@
+from django.test import TestCase
 from wagtail.test.utils import WagtailPageTestCase
 
 from bangtsam.models import IntroPage, SitemapPage
@@ -33,3 +34,12 @@ class ThehWagtailPagesTest(WagtailPageTestCase):
         response = self.client.get(homepage.url)
         self.assertNotContains(response, '/introslug/')
         self.assertContains(response, '/sitemap/')
+
+
+class ThehAiWebsiteURLTest(TestCase):
+
+    def test_theh_ai_url_into_template(self):
+        homepage = tshong_wagtail_homepage()
+        response = self.client.get(homepage.url)
+        self.assertContains(
+            response, 'https://ithuan-formosan-translation.hf.space/')

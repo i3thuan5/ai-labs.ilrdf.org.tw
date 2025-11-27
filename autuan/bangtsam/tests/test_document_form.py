@@ -39,7 +39,7 @@ class DocumentFormTest(TestCase):
         self.assertFormError(
             form, 'file',
             [
-                '文件檔案請小於5.0MB以下。',
+                '文件檔案請小於5.0MiB以下。',
                 '不允許副檔名為 “” 。可用的像是: docx, odt, pdf, txt, wav。'
             ])
 

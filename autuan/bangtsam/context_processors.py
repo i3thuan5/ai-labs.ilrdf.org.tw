@@ -19,7 +19,6 @@ def theh_wagtail_pages(request):
 
 
 def theh_ai_url(request):
-    context = {}
     return {
         "ai_url": {
             "asr": settings.SAPOLITA_ASR_URL,

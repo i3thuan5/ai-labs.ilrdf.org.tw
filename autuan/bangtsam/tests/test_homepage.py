@@ -1,7 +1,7 @@
 from wagtail.test.utils import WagtailPageTestCase
 
 from bangtsam.models import HomePage, SitemapPage, \
-    IntroPage, FeedbackPage,  ApplicationFormPage, AboutUsPage, \
+    IntroPage, FeedbackPage,  ApplicationFormPage, \
     CopyrightPage, TermsOfUsePage
 from bangtsam.tests.utils import tshong_wagtail_homepage
 
@@ -26,9 +26,6 @@ class HomePageTest(WagtailPageTestCase):
     def test_can_create_ApplicationFormPage_under_home_page(self):
         self.assertCanCreateAt(HomePage, ApplicationFormPage)
 
-    def test_can_create_AboutUsPage_under_home_page(self):
-        self.assertCanCreateAt(HomePage, AboutUsPage)
-
     def test_can_create_CopyrightPage_under_home_page(self):
         self.assertCanCreateAt(HomePage, CopyrightPage)
 
@@ -50,10 +47,6 @@ class HomePageTest(WagtailPageTestCase):
     def test_ApplicationFormPage_parent_pages_only_HomePage(self):
         self.assertAllowedParentPageTypes(
             ApplicationFormPage, {HomePage})
-
-    def test_AboutUsPage_parent_pages_only_HomePage(self):
-        self.assertAllowedParentPageTypes(
-            AboutUsPage, {HomePage})
 
     def test_CopyrightPage_parent_pages_only_HomePage(self):
         self.assertAllowedParentPageTypes(

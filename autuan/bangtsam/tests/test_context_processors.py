@@ -15,7 +15,6 @@ class ThehWagtailPagesTest(WagtailPageTestCase):
         self.assertEqual(response.context['intropage'], None)
         self.assertEqual(response.context['feedbackpage'], None)
         self.assertEqual(response.context['applicationformpage'], None)
-        self.assertEqual(response.context['aboutuspage'], None)
         self.assertEqual(response.context['termofusepage'], None)
         self.assertEqual(response.context['copyrightpage'], None)
 

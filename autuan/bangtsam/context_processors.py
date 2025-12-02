@@ -1,7 +1,7 @@
 
 from bangtsam.models import HomePage, SitemapPage, \
     IntroPage, FeedbackPage, ApplicationFormPage, \
-    AboutUsPage, TermsOfUsePage, CopyrightPage
+    TermsOfUsePage, CopyrightPage
 from django.conf import settings
 
 
@@ -12,7 +12,6 @@ def theh_wagtail_pages(request):
     context['intropage'] = IntroPage.objects.live().first()
     context['feedbackpage'] = FeedbackPage.objects.live().first()
     context['applicationformpage'] = ApplicationFormPage.objects.live().first()
-    context['aboutuspage'] = AboutUsPage.objects.live().first()
     context['termofusepage'] = TermsOfUsePage.objects.live().first()
     context['copyrightpage'] = CopyrightPage.objects.live().first()
     return context

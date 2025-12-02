@@ -74,10 +74,6 @@ class ApplicationFormPage(RichTextBasePage):
     template = 'bangtsam/applicationformpage.html'
 
 
-class AboutUsPage(RichTextBasePage):
-    template = BANGTSAM_RICHTEXTBASE_HTML
-
-
 class CopyrightPage(RichTextBasePage):
     template = BANGTSAM_RICHTEXTBASE_HTML
 

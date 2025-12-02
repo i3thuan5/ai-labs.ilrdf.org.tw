@@ -7,7 +7,7 @@ from .settings import *  # noqa
 def read_secret(secret_name):
     try:
         with open(os.getenv(secret_name), 'r') as tong:
-            return tong.readline()
+            return tong.readline().rstrip()
     except IOError:
         return None
 

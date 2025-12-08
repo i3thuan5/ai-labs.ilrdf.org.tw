@@ -63,16 +63,15 @@ pip install tox
 
 3. 人工審閱匯出結果，若發現顯示「Unknown」須手動查詢套件授權並回填。
 
-
 ## 正式機上線
 
 上線時陣愛做：
 
 - 到正式機，複製.env.template，新增環境變數檔`.env`。
 - 正式機設定secrets：
-    - ./secrets/django_secret_key.txt
-    - ./secrets/postgres_passwd.txt
-    - ./secrets/sentry_dsn.txt
+  - ./secrets/django_secret_key.txt
+  - ./secrets/postgres_passwd.txt
+  - ./secrets/sentry_dsn.txt
 - 正式機手動migrate：`docker compose exec gunicorn python manage.py migrate`。
 - 正式機媒體檔資料夾改權限：`chmod 1777 media/`。
 - 正式機新增後台管理員帳號：`docker compose exec gunicorn python manage.py createsuperuser`。

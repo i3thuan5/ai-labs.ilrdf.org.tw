@@ -21,6 +21,12 @@
   --sa-disabled-grey: #5E5E5E;
 }
 
+.alert-success {
+  --bs-alert-color: var(--bs-success);
+  --bs-alert-bg: #EAEFFA;
+  --bs-alert-border-color: var(--bs-success);
+}
+
 .breadcrumb {
   --bs-breadcrumb-item-active-color: var(--sa-disabled-grey);
 }

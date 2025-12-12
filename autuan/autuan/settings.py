@@ -193,6 +193,6 @@ WAGTAILDOCS_DOCUMENT_FORM_BASE = 'bangtsam.forms.document_base.CustomDocumentFor
 
 
 # AI
-SAPOLITA_ASR_URL = "https://sapolita-kaldi.ithuan.tw/"
-SAPOLITA_TTS_URL = "https://hnang-kari-ai-asi-sluhay.ithuan.tw/"
-SAPOLITA_TRANSLATE_URL = "https://ithuan-formosan-translation.hf.space/"
+SAPOLITA_ASR_URL = "/sapolita-kaldi/"
+SAPOLITA_TTS_URL = "/hnang-kari-ai-asi-sluhay/"
+SAPOLITA_TRANSLATE_URL = "/hmjil/"

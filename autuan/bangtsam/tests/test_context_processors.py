@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.conf import settings
 from wagtail.test.utils import WagtailPageTestCase
 
 from bangtsam.models import IntroPage, SitemapPage
@@ -41,8 +42,8 @@ class ThehAiWebsiteURLTest(TestCase):
         homepage = tshong_wagtail_homepage()
         response = self.client.get(homepage.url)
         self.assertContains(
-            response, 'https://sapolita-kaldi.ithuan.tw/')
+            response, settings.SAPOLITA_ASR_URL)
         self.assertContains(
-            response, 'https://hnang-kari-ai-asi-sluhay.ithuan.tw/')
+            response, settings.SAPOLITA_TTS_URL)
         self.assertContains(
-            response, 'https://ithuan-formosan-translation.hf.space/')
+            response, settings.SAPOLITA_TRANSLATE_URL)

@@ -71,6 +71,14 @@ jobs:
         - pip install tox
       script:
         - docker network create nginx-bridge
+        - git clone https://github.com/i3thuan5/Formosan-AI.git
+        - cd Formosan-AI/
+        - echo ASR_VIRTUAL_HOST=localhost > .env
+        - echo ASR_KALDI_VIRTUAL_HOST=localhost >> .env
+        - echo TTS_VIRTUAL_HOST=localhost >> .env
+        - echo MT_VIRTUAL_HOST=localhost >> .env
+        - docker compose up -d
+        - cd ..
         - mkdir secrets
         - cp testdata/random-key.txt secrets/django_secret_key.txt
         - cp testdata/random-key.txt secrets/postgres_passwd.txt

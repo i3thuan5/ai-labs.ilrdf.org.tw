@@ -59,13 +59,13 @@ jobs:
         - pip install tox
       script:
         - tox -e checkmigrations
-    - stage: configuation_test
-      # if: branch =~ /^(release)/
-      name: Check django deploy settings
+    - name: Check django deploy settings
       install:
         - pip install tox
       script:
         - tox -e checkdeploy
+    - stage: Integration Test
+      # if: branch =~ /^(release)/
     - name: Check nginx configuration
       install:
         - pip install tox
@@ -77,6 +77,7 @@ jobs:
         - echo ASR_KALDI_VIRTUAL_HOST=localhost >> .env
         - echo TTS_VIRTUAL_HOST=localhost >> .env
         - echo MT_VIRTUAL_HOST=localhost >> .env
+        - sed '/deploy/,+6d' -i deploy/docker-compose-production.yml
         - >
           docker compose -f docker-compose.yml -f deploy/docker-compose-production.yml
           up -d --quiet-pull
@@ -85,4 +86,8 @@ jobs:
         - cp testdata/random-key.txt secrets/django_secret_key.txt
         - cp testdata/random-key.txt secrets/postgres_passwd.txt
         - cp testdata/sentry-fake-key.txt secrets/sentry_dsn.txt
+        - sleep 6m
         - tox -e checknginx
+      after_failure:
+        - cd Formosan-AI/
+        - docker compose logs

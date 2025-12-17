@@ -1,3 +1,0 @@
- Name                      Version   License
- bootstrap                 5.2.3     MIT license
- TauhuOo20.05-Regular      20.05     SIL Open Font License 1.1

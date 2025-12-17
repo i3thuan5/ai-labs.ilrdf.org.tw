@@ -47,21 +47,36 @@ pip install tox
 
 ### 羅列套件授權類型
 
-`pip-licenses.txt`是記專案有用的第三方套件授權，是利用[pip-licenses](https://github.com/raimon49/pip-licenses)自動彙整。請注意，它是利用pip查找本機已安裝的套件資訊，因此請確認本機僅安裝專案有用的套件再利用pip-licenses。
+利用開源套件[pip-licenses](https://github.com/raimon49/pip-licenses)自動彙整第三方套件授權。請注意，它是利用pip查找本機已安裝的套件資訊，因此應用Docker容器，確保所列出的授權清單與套件清單相對應。
 
-1. 先安裝pip-licenses：
+1. 先建立一份Docker映像檔（image）`sapolita-for-licenses`：
+   
+   ```bash
+   docker build -t sapolita-for-licenses .
+   ```
+
+2. 用`sapolita-for-licenses`建立Docker容器，安裝並執行pip-licenses：
 
       ```bash
-      pip install pip-licenses
+      docker run --user 0 --rm sapolita-for-licenses:latest /bin/bash -c "pip install pip-licenses && pip-licenses"
       ```
 
-2. 列出專案的第三方套件授權：
+3. 審閱匯出結果：
 
-      ```bash
-      pip-licenses > licenses-of-requirements.txt
+      ```
+      Collecting pip-licenses
+      Downloading pip_licenses-5.5.0-py3-none-any.whl.metadata (32 kB)
+      Collecting prettytable>=3.12.0 (from pip-licenses)
+      [notice] A new release of pip is available: 25.0.1 -> 25.3
+      [notice] To update, run: pip install --upgrade pip
+      Name                                Version    License                    
+      Django                              5.2.7      BSD License            
+      Willow                              1.11.0     BSD License
+      ...
+      anyascii                            0.3.3      ISC License (ISCL)     
       ```
 
-3. 人工審閱匯出結果，若發現顯示「Unknown」須手動查詢套件授權並回填。
+若發現顯示「Unknown」須手動查詢套件授權。
 
 ## 正式機上線
 

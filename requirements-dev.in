@@ -1,4 +1,4 @@
-django==5.2.7
+django==5.2.9
 wagtail==7.1.1
 django-axes==8.0.0
 django-password-policies-validator==1.0.3

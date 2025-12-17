@@ -30,7 +30,7 @@ defusedxml==0.7.1
     # via
     #   -r requirements-dev.txt
     #   willow
-django==5.2.7
+django==5.2.9
     # via
     #   -r requirements-dev.txt
     #   django-axes
@@ -147,7 +147,7 @@ typing-extensions==4.15.0
     #   django-stubs-ext
     #   django-tasks
     #   psycopg
-urllib3==2.5.0
+urllib3==2.6.0
     # via
     #   -r requirements-dev.txt
     #   requests

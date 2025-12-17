@@ -66,7 +66,7 @@ jobs:
         - tox -e checkdeploy
     - stage: Integration Test
       # if: branch =~ /^(release)/
-    - name: Check nginx configuration
+      name: Check nginx configuration
       install:
         - pip install tox
       script:
@@ -80,12 +80,14 @@ jobs:
         - sed '/deploy/,+6d' -i deploy/docker-compose-production.yml
         - >
           docker compose -f docker-compose.yml -f deploy/docker-compose-production.yml
-          up -d --quiet-pull
+          up -d --quiet-pull > /dev/null
         - cd ..
         - mkdir secrets
         - cp testdata/random-key.txt secrets/django_secret_key.txt
         - cp testdata/random-key.txt secrets/postgres_passwd.txt
         - cp testdata/sentry-fake-key.txt secrets/sentry_dsn.txt
+        - docker compose pull --quiet > /dev/null
+        - docker compose build --quiet > /dev/null
         - sleep 6m
         - tox -e checknginx
       after_failure:

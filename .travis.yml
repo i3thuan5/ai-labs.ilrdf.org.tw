@@ -78,8 +78,8 @@ jobs:
         - echo TTS_VIRTUAL_HOST=localhost >> .env
         - echo MT_VIRTUAL_HOST=localhost >> .env
         - >
-          docker compose up -d --quiet-pull
-          -f docker-compose.yml -f deploy/docker-compose-production.yml
+          docker compose -f docker-compose.yml -f deploy/docker-compose-production.yml
+          up -d --quiet-pull
         - cd ..
         - mkdir secrets
         - cp testdata/random-key.txt secrets/django_secret_key.txt

@@ -45,23 +45,9 @@ pip install tox
 
 4. 檢查`requirements-dev.txt`更新狀態。
 
-### 羅列套件授權類型
+### 第三方套件
 
-`pip-licenses.txt`是記專案有用的第三方套件授權，是利用[pip-licenses](https://github.com/raimon49/pip-licenses)自動彙整。請注意，它是利用pip查找本機已安裝的套件資訊，因此請確認本機僅安裝專案有用的套件再利用pip-licenses。
-
-1. 先安裝pip-licenses：
-
-      ```bash
-      pip install pip-licenses
-      ```
-
-2. 列出專案的第三方套件授權：
-
-      ```bash
-      pip-licenses > licenses-of-requirements.txt
-      ```
-
-3. 人工審閱匯出結果，若發現顯示「Unknown」須手動查詢套件授權並回填。
+請見[第三方套件資訊.md](te-sann-hong.md)。
 
 ## 正式機上線
 

@@ -77,7 +77,9 @@ jobs:
         - echo ASR_KALDI_VIRTUAL_HOST=localhost >> .env
         - echo TTS_VIRTUAL_HOST=localhost >> .env
         - echo MT_VIRTUAL_HOST=localhost >> .env
-        - docker compose up -d
+        - >
+          docker compose up -d --quiet-pull
+          -f docker-compose.yml -f deploy/docker-compose-production.yml
         - cd ..
         - mkdir secrets
         - cp testdata/random-key.txt secrets/django_secret_key.txt

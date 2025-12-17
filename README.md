@@ -45,9 +45,9 @@ pip install tox
 
 4. 檢查`requirements-dev.txt`更新狀態。
 
-### 套件授權
+### 第三方套件
 
-請見[license.md](license.md)。
+請見[第三方套件資訊.md](te-sann-hong.md)。
 
 ## 正式機上線
 

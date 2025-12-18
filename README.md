@@ -51,13 +51,17 @@ pip install tox
 
 ## 正式機上線
 
-上線時陣愛做：
+上線前愛做：
 
 - 到正式機，複製.env.template，新增環境變數檔`.env`。
 - 正式機設定secrets：
   - ./secrets/django_secret_key.txt
   - ./secrets/postgres_passwd.txt
   - ./secrets/sentry_dsn.txt
-- 正式機手動migrate：`docker compose exec gunicorn python manage.py migrate`。
 - 正式機媒體檔資料夾改權限：`chmod 1777 media/`。
+- 開[https://github.com/i3thuan5/Formosan-AI](https://github.com/i3thuan5/Formosan-AI) ê docker compose服務。
+
+上線後愛做：
+
+- 正式機手動migrate：`docker compose exec gunicorn python manage.py migrate`。
 - 正式機新增後台管理員帳號：`docker compose exec gunicorn python manage.py createsuperuser`。

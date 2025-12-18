@@ -11,6 +11,7 @@ services:
       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
     networks:
       - nginx-bridge
+      - ai-labs-bridge
       - gunicorn-bridge
     restart: always
     volumes:
@@ -73,9 +74,11 @@ services:
       - "postgres-data:/var/lib/postgresql/18/docker"
 
 networks:
-  gunicorn-bridge:
   nginx-bridge:
     external: true
+  ai-labs-bridge:
+    external: true
+  gunicorn-bridge:
   postgres-bridge:
 
 secrets:

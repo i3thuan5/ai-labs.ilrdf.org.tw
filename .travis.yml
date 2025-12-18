@@ -59,20 +59,37 @@ jobs:
         - pip install tox
       script:
         - tox -e checkmigrations
-    - stage: configuation_test
-      # if: branch =~ /^(release)/
-      name: Check django deploy settings
+    - name: Check django deploy settings
       install:
         - pip install tox
       script:
         - tox -e checkdeploy
-    - name: Check nginx configuration
+    - stage: Integration Test
+      # if: branch =~ /^(release)/
+      name: Check nginx configuration
       install:
         - pip install tox
       script:
         - docker network create nginx-bridge
+        - git clone https://github.com/i3thuan5/Formosan-AI.git
+        - cd Formosan-AI/
+        - echo ASR_VIRTUAL_HOST=localhost > .env
+        - echo ASR_KALDI_VIRTUAL_HOST=localhost >> .env
+        - echo TTS_VIRTUAL_HOST=localhost >> .env
+        - echo MT_VIRTUAL_HOST=localhost >> .env
+        - sed '/deploy/,+6d' -i deploy/docker-compose-production.yml
+        - >
+          docker compose -f docker-compose.yml -f deploy/docker-compose-production.yml
+          up -d --quiet-pull > /dev/null
+        - cd ..
         - mkdir secrets
         - cp testdata/random-key.txt secrets/django_secret_key.txt
         - cp testdata/random-key.txt secrets/postgres_passwd.txt
         - cp testdata/sentry-fake-key.txt secrets/sentry_dsn.txt
+        - docker compose pull --quiet > /dev/null
+        - docker compose build --quiet > /dev/null
+        - sleep 6m
         - tox -e checknginx
+      after_failure:
+        - cd Formosan-AI/
+        - docker compose logs

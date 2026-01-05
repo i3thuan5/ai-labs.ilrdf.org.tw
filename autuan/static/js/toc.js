@@ -26,6 +26,13 @@ document.addEventListener("DOMContentLoaded", function () {
   let tocitem = {};
 
   function initHeadDict() {
+    if (hlength) {
+        let h = headings[0];
+        if (h.tagName != "H2") {
+          hlength = 0;
+          return;
+        }
+    }
     for (let soo = 0; soo < hlength; soo++) {
       let h = headings[soo];
       let hid = `hid${soo}`;

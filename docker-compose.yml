@@ -42,7 +42,7 @@ services:
 
   django-static:
     build: .
-    command: ["python", "manage.py", "collectstatic", "--noinput"]
+    command: ["python", "manage.py", "collectstatic", "--noinput", "--clear"]
     environment: *django_envs
     network_mode: none
     restart: "no"

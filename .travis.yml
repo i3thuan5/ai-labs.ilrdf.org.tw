@@ -89,6 +89,7 @@ jobs:
         - docker compose pull --quiet > /dev/null
         - docker compose build --quiet > /dev/null
         - sleep 6m
+        - chmod 1777 model_cache_asr/ model_cache_asr_kaldi/ model_cache_mt/ model_cache_tts/
         - tox -e checknginx
       after_failure:
         - cd Formosan-AI/

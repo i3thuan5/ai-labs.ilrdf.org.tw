@@ -27,10 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initHeadDict() {
     if (hlength) {
-        let h = headings[0];
-        if (h.tagName != "H2") {
+        if (headings[0].tagName != "H2") {
           hlength = 0;
-          return;
         }
     }
     for (let soo = 0; soo < hlength; soo++) {

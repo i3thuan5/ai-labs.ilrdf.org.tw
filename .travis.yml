@@ -82,14 +82,14 @@ jobs:
         - chmod 1777 model_cache_asr/ model_cache_asr_kaldi/ model_cache_mt/ model_cache_tts/
         - >
           docker compose -f docker-compose.yml -f deploy/docker-compose-production.yml
-          up -d --quiet-pull > /dev/null
+          up -d --quiet-pull > /dev/null 2>&1
         - cd ..
         - mkdir secrets
         - cp testdata/random-key.txt secrets/django_secret_key.txt
         - cp testdata/random-key.txt secrets/postgres_passwd.txt
         - cp testdata/sentry-fake-key.txt secrets/sentry_dsn.txt
         - docker compose pull --quiet > /dev/null
-        - docker compose build --quiet > /dev/null
+        - docker compose build
         - sleep 6m
         - tox -e checknginx
       after_failure:

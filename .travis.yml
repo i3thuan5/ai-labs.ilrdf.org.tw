@@ -73,10 +73,10 @@ jobs:
         - docker network create nginx-bridge
         - git clone https://github.com/i3thuan5/Formosan-AI.git
         - cd Formosan-AI/
-        - echo ASR_VIRTUAL_HOST=localhost > .env
-        - echo ASR_KALDI_VIRTUAL_HOST=localhost >> .env
-        - echo TTS_VIRTUAL_HOST=localhost >> .env
-        - echo MT_VIRTUAL_HOST=localhost >> .env
+        - echo ASR_VIRTUAL_HOST=localhost1 > .env
+        - echo ASR_KALDI_VIRTUAL_HOST=localhost2 >> .env
+        - echo TTS_VIRTUAL_HOST=localhost3 >> .env
+        - echo MT_VIRTUAL_HOST=localhost4 >> .env
         - sed '/deploy/,+6d' -i deploy/docker-compose-production.yml
         - mkdir model_cache_asr/ model_cache_asr_kaldi/ model_cache_mt/ model_cache_tts/
         - chmod 1777 model_cache_asr/ model_cache_asr_kaldi/ model_cache_mt/ model_cache_tts/

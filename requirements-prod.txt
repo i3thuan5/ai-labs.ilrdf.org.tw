@@ -147,7 +147,7 @@ typing-extensions==4.15.0
     #   django-stubs-ext
     #   django-tasks
     #   psycopg
-urllib3==2.6.0
+urllib3==2.6.3
     # via
     #   -r requirements-dev.txt
     #   requests

@@ -11,7 +11,6 @@ services:
       LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
     networks:
       - nginx-bridge
-      - ai-labs-bridge
       - gunicorn-bridge
     restart: always
     volumes:
@@ -75,8 +74,6 @@ services:
 
 networks:
   nginx-bridge:
-    external: true
-  ai-labs-bridge:
     external: true
   gunicorn-bridge:
   postgres-bridge:

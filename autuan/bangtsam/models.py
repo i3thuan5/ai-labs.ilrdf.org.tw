@@ -80,3 +80,7 @@ class CopyrightPage(RichTextBasePage):
 
 class TermsOfUsePage(RichTextBasePage):
     template = BANGTSAM_RICHTEXTBASE_HTML
+
+
+class VideoPage(RichTextBasePage):
+    template = 'bangtsam/video.html'

@@ -341,9 +341,9 @@ main.hero > .position-relative {
 @media screen and (min-width: 768px){
 	main.hero {
 		background-image: url('../images/hero.webp');
-		background-repeat: no-repeat;
+		background-repeat: repeat-y;
 		background-position: left;
-		background-size: contain;
+		background-size: 200px;
 	}
 	main.hero > .position-relative {
 		min-height: 60vh;

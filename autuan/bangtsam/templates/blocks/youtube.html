@@ -1,0 +1,10 @@
+{% load wagtailcore_tags %}
+{% load wagtailembeds_tags %}
+
+<section>
+    <h2>{{ value.title }}</h2>
+
+    {{ value.youtube_url }}
+
+    {{ value.accessibility_text|richtext }}
+</section>

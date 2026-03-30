@@ -1,0 +1,11 @@
+{% extends "khing/base.html" %}
+{% load wagtailcore_tags wagtailembeds_tags %}
+
+{% block main_content %}
+<div>
+	{{page.body|richtext}}
+	{% for block in page.manual %}
+		{{ block }}
+	{% endfor %}
+</div> 
+{% endblock %}

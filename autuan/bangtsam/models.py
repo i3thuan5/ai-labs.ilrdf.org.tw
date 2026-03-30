@@ -3,7 +3,7 @@ from wagtail.models import Page
 from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.panels import FieldPanel
 
-from bangtsam.blocks import SampleBlock
+from bangtsam.blocks import SampleBlock, YoutubeBlock
 from bangtsam.forms.admin_page import KongkeIahForm
 
 
@@ -84,3 +84,13 @@ class TermsOfUsePage(RichTextBasePage):
 
 class VideoPage(RichTextBasePage):
     template = 'bangtsam/video.html'
+
+    manual = StreamField(
+        [
+            ('Youtube', YoutubeBlock()),
+        ],
+    )
+
+    content_panels = RichTextBasePage.content_panels + [
+        FieldPanel('manual'),
+    ]

@@ -4,7 +4,9 @@
 {% block main_content %}
 <div>
 	{{page.body|richtext}}
-
+	{% for block in page.manual %}
+		{{ block }}
+	{% endfor %}
 	<h2>族語語音辨識系統操作影片</h2>
 	{% embed 'https://www.youtube.com/watch?v=xe2mWYsOHAE&list=PLiE9IU4Trw0U38U297iJmM3XLQqokYN_k&index=3' max_width=560 %}
 

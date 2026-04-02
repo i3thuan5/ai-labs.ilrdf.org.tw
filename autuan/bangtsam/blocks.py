@@ -1,8 +1,10 @@
 from pathlib import Path
 
 from django.core.exceptions import ValidationError
-from wagtail.blocks import CharBlock, StructBlock, StructBlockValidationError
+from wagtail.blocks import CharBlock, RichTextBlock
+from wagtail.blocks import StructBlock, StructBlockValidationError
 from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
 
 
 class SampleBlock(StructBlock):
@@ -24,3 +26,12 @@ class SampleBlock(StructBlock):
     class Meta:
         icon = 'media'
         min_num = 0
+
+
+class YoutubeBlock(StructBlock):
+    class Meta:
+        template = "blocks/youtube.html"
+
+    title = CharBlock()
+    youtube_url = EmbedBlock(max_width=560)
+    accessibility_text = RichTextBlock()

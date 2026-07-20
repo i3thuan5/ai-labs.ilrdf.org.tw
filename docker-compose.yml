@@ -8,7 +8,6 @@ services:
       - django-static
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
-      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
     networks:
       - nginx-bridge
       - ai-labs-bridge

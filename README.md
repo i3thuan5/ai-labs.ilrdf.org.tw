@@ -70,7 +70,7 @@ pip install tox
 
 由於原語會每次提供檔案不同，因此要特別注意，除了 .crt 之外，還需要有 root.cer, uca1.cer, uca2.cer，才能產生完整的憑證鍊。
 
-以 20270127 到期的憑證為例： 
+以 20270127 到期的憑證為例：
 
 ```bash
 cat ILRDFServer.crt uca_1.cer uca_2.cer root.cer > ilrdf.org.tw.2026.chained.crt

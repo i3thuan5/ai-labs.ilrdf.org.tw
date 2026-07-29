@@ -1,4 +1,4 @@
-# Sapolita-Website
+# ai-labs.ilrdf.org.tw
 
 族語AI成果網站
 
@@ -65,3 +65,33 @@ pip install tox
 
 - 正式機手動migrate：`docker compose exec gunicorn python manage.py migrate`。
 - 正式機新增後台管理員帳號：`docker compose exec gunicorn python manage.py createsuperuser`。
+
+定期更新憑證：
+
+由於原語會每次提供檔案不同，以 20270127 到期的憑證為例： 
+
+```bash
+cat ILRDFServer.crt uca_1.cer uca_2.cer root.cer > ilrdf.org.tw.2026.chained.crt
+cp ILRDFServer.key ilrdf.org.tw.2026.key
+```
+
+用 scp 上傳到 diyong3 主機後，先備份現有憑證
+
+```bash
+cd git/Zugi
+docker cp zugi-nginx-proxy-1:/etc/nginx/certs/ilrdf.org.tw.key ~/ilrdf.org.tw.old.key
+docker cp zugi-nginx-proxy-1:/etc/nginx/certs/ilrdf.org.tw.crt ~/ilrdf.org.tw.old.chained.crt
+```
+
+再寫入新憑證
+
+```bash
+docker cp ~/ilrdf.org.tw.2026.key zugi-nginx-proxy-1:/etc/nginx/certs/ilrdf.org.tw.key
+docker cp ~/ilrdf.org.tw.2026.chained.crt zugi-nginx-proxy-1:/etc/nginx/certs/ilrdf.org.tw.crt
+```
+
+最後重啟 nginx
+
+```bash
+docker compose exec nginx-proxy nginx -s reload
+```

@@ -31,12 +31,13 @@ django==5.2.9
     #   django-treebeard
     #   djangorestframework
     #   laces
+    #   modelsearch
     #   wagtail
 django-axes==8.0.0
     # via -r requirements-dev.in
 django-filter==25.2
     # via wagtail
-django-modelcluster==6.4
+django-modelcluster==6.5
     # via wagtail
 django-password-policies-validator==1.0.3
     # via -r requirements-dev.in
@@ -46,8 +47,10 @@ django-stubs-ext==5.2.7
     # via django-tasks
 django-taggit==6.1.0
     # via wagtail
-django-tasks==0.8.1
-    # via wagtail
+django-tasks==0.12.0
+    # via
+    #   modelsearch
+    #   wagtail
 django-treebeard==4.7.1
     # via wagtail
 djangorestframework==3.16.1
@@ -61,6 +64,8 @@ filetype==1.2.0
 idna==3.10
     # via requests
 laces==0.1.2
+    # via wagtail
+modelsearch==1.2.2
     # via wagtail
 openpyxl==3.1.5
     # via wagtail
@@ -85,7 +90,7 @@ typing-extensions==4.15.0
     #   django-tasks
 urllib3==2.6.3
     # via requests
-wagtail==7.1.1
+wagtail==7.3.2
     # via -r requirements-dev.in
 willow[heif]==1.11.0
     # via

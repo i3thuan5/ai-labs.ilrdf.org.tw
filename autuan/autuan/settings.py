@@ -68,6 +68,7 @@ MIDDLEWARE = [
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     'password_policies.middleware.PasswordExpirationMiddleware',
     'axes.middleware.AxesMiddleware',
+    'bangtsam.middleware.ContentSecurityPolicyMiddleware',
 ]
 
 ROOT_URLCONF = 'autuan.urls'
@@ -190,6 +191,56 @@ WAGTAIL_PASSWORD_RESET_ENABLED = False  # 關閉「忘記密碼？」連結
 WAGTAILAPI_SEARCH_ENABLED = False
 CUSTOM_WAGTAILDOCS_MAX_UPLOAD_SIZE = 5 * 1024 * 1024
 WAGTAILDOCS_DOCUMENT_FORM_BASE = 'bangtsam.forms.document_base.CustomDocumentForm'
+
+
+# Content Security Policy
+# 由 bangtsam.middleware.ContentSecurityPolicyMiddleware 依路徑前綴擇一送出。
+
+# 走後台政策的路徑前綴，其餘一律走前台政策。
+CSP_ADMIN_PATH_PREFIXES = (
+    '/katayalan/',  # Wagtail 內容後台
+    '/kuanli/',     # Django admin
+)
+
+# 前台：站內模板零個 inline script、零個 inline style，
+# 因此可以完全不用 'unsafe-inline' 與 'unsafe-eval'。
+# frame-ancestors、form-action、base-uri 不會 fallback 到 default-src，
+# 必須各自明寫，否則 ZAP 會判為 Wildcard Directive。
+CSP_POLICY_FRONTEND = '; '.join((
+    "default-src 'self'",
+    "script-src 'self'",
+    "style-src 'self'",
+    # Bootstrap 的 CSS 以 data: URI 內嵌 SVG 圖示（navbar-toggler、btn-close 等）
+    "img-src 'self' data:",
+    "font-src 'self'",
+    "connect-src 'self'",
+    # 內文以 wagtail embeds 內嵌 YouTube 影片
+    "frame-src https://www.youtube.com",
+    "frame-ancestors 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "object-src 'none'",
+))
+
+# 後台：Wagtail admin 的 inline script/style 由上游產生，我們無法在其標籤上
+# 補 nonce，只能放寬。後台需登入，未認證的弱點掃描掃不到，
+# 這條政策的目的是縱深防禦而非清除告警。
+CSP_POLICY_BACKEND = '; '.join((
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: blob:",
+    "media-src 'self' blob:",
+    "font-src 'self' data:",
+    "connect-src 'self'",
+    "worker-src 'self' blob:",
+    # 後台預覽頁面是同源 iframe
+    "frame-src 'self' https://www.youtube.com",
+    "frame-ancestors 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "object-src 'none'",
+))
 
 
 # AI

@@ -8,7 +8,6 @@ services:
       - django-static
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
-      GA_MEASUREMENT_ID: ${GA_MEASUREMENT_ID:-0000}
     networks:
       - nginx-bridge
       - ai-labs-bridge
@@ -28,6 +27,7 @@ services:
       DJANGO_SECRET_KEY_FILE: /run/secrets/django_secret_key
       DJANGO_ALLOW_HOSTS: ${VIRTUAL_HOST}
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_passwd
+      GA_MEASUREMENT_ID: ${GA_MEASUREMENT_ID:-}
       SENTRY_DSN_FILE: /run/secrets/sentry_dsn
     networks:
       - gunicorn-bridge

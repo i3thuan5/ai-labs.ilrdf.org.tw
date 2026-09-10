@@ -84,6 +84,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'bangtsam.context_processors.theh_wagtail_pages',
                 'bangtsam.context_processors.theh_ai_url',
+                'bangtsam.context_processors.theh_ga_id',
             ],
         },
     },
@@ -196,3 +197,6 @@ WAGTAILDOCS_DOCUMENT_FORM_BASE = 'bangtsam.forms.document_base.CustomDocumentFor
 SAPOLITA_ASR_URL = "/sapolita-kaldi/"
 SAPOLITA_TTS_URL = "/hnang-kari-ai-asi-sluhay/"
 SAPOLITA_TRANSLATE_URL = "/kari-seejiq-tnpusu-ai-hmjil/"
+
+# GA
+GA_MEASUREMENT_ID = os.environ.get('GA_MEASUREMENT_ID', '')

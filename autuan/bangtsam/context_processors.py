@@ -26,3 +26,6 @@ def theh_ai_url(request):
             "translate": settings.SAPOLITA_TRANSLATE_URL,
         }
     }
+
+def theh_ga_id(request):
+    return {'ga_measurement_id': settings.GA_MEASUREMENT_ID}

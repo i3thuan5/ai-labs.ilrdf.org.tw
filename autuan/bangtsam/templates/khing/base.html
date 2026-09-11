@@ -18,7 +18,7 @@
     <meta property="og:title" content="{% block og_title %}{% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{{ page.search_description }}{% endblock %}">
     <meta property="og:image" content="{% static 'favicon/favicon.svg' %}">
-    <meta property="og:url" content="TODOS">
+    <meta property="og:url" content="{{ page.full_url }}">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="{% static 'favicon/favicon.svg' %}" type="image/svg+xml">

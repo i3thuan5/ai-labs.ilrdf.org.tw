@@ -54,11 +54,6 @@ jobs:
         - pip install tox
       script:
         - tox -e checkmigrations
-    - name: Check migrations
-      install:
-        - pip install tox
-      script:
-        - tox -e checkmigrations
     - name: Check django deploy settings
       install:
         - pip install tox

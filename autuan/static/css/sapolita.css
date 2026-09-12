@@ -387,6 +387,30 @@ h2:hover > a, h3:hover > a {
 	}
 }
 
+.sa-vision__label {
+	color: #F4855D;
+	font-size: .98rem;
+	letter-spacing: .16em;
+	margin: 0 0 .9rem;
+}
+
+.sa-vision__title {
+	color: #FFFFFF;
+	font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+	font-weight: 400;
+	line-height: 1.42;
+	letter-spacing: .01em;
+	margin: 0 0 1.5rem;
+}
+
+.sa-vision__body {
+	color: #EDEAE6;
+	font-size: 1.12rem;
+	line-height: 2.2rem;
+	margin: 0 0 1.5rem;
+	padding-top: 1.5rem;
+}
+
 /* 首屏背景影片 */
 
 .sa-hero__media {
@@ -845,6 +869,51 @@ h2:hover > a, h3:hover > a {
 	margin: 0 0 1.1rem;
 	padding: 0 .25rem 0 1.9rem;
 	line-height: 2rem;
+}
+
+/* ── 合作夥伴 ───────────────────────────────────── */
+
+.sa-weave {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+	align-items: center;
+	margin-top: 1.5rem;
+}
+
+@media (min-width: 992px) {
+	.sa-weave {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+		gap: 3.5rem;
+	}
+}
+
+.sa-weave__text h2 {
+	margin-top: 0;
+	padding-bottom: 1.5rem;
+	border-bottom: 1px solid var(--sa-hairline);
+}
+
+.sa-weave__text p {
+	max-width: 42ch;
+	font-size: 1.1rem;
+	line-height: 2.15rem;
+	margin: 0;
+	margin-top: 1.5rem;
+}
+
+.sa-weave__figure {
+	margin: 0;
+	border: 1px solid var(--sa-hairline);
+	background: #FFFFFF;
+	padding: .7rem;
+	border-radius: 2px;
+}
+
+.sa-weave__figure img {
+	display: block;
+	width: 100%;
+	height: auto;
 }
 
 /* ── 其他資源 ───────────────────────────────────── */

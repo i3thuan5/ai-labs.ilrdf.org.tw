@@ -326,12 +326,12 @@ h2:hover > a, h3:hover > a {
 	z-index: 99;
 }
 
-main.hero {
+.hero {
 	background-repeat: no-repeat;
 }
 
-main.hero > .position-relative {
-	min-height: 70vh;
+.hero > .position-relative {
+	min-height: 60vh;
 }
 
 .main-m-hero > img{
@@ -339,17 +339,116 @@ main.hero > .position-relative {
 }
 
 @media screen and (min-width: 768px){
-	main.hero {
+	.hero {
 		background-image: url('../images/hero.webp');
 		background-repeat: repeat-y;
 		background-position: left;
 		background-size: 200px;
 	}
-	main.hero > .position-relative {
-		min-height: 60vh;
+	.hero > .position-relative {
+		min-height: 55vh;
 	}
 }
 
 .bg-deep-grey {
 	background-color: var(--sa-deep-grey);
+}
+/* ── 首頁：首屏導言 ─────────────────────────────────── */
+
+.sa-hero-lead {
+	max-width: 42ch;
+	text-align: left;
+}
+
+@media (min-width: 768px) {
+	.sa-hero-lead {
+		max-width: 52ch;
+		text-align: center;
+	}
+}
+
+/* ── 首頁：系統介紹滿版區塊 ─────────────────────────── */
+
+.sa-system {
+	--sa-system-color: var(--sa-primary-darker);
+	border-top: 6px solid var(--sa-system-color);
+	padding: 3rem 0;
+	scroll-margin-top: 4.5rem;
+}
+
+@media (min-width: 768px) {
+	.sa-system {
+		padding: 4.5rem 0;
+	}
+}
+
+.sa-system-asr {
+	--sa-system-color: #AC370C;
+}
+
+.sa-system-tts {
+	--sa-system-color: #AD0001;
+}
+
+.sa-system-mt {
+	--sa-system-color: #274DAB;
+}
+
+.sa-system-more {
+	--sa-system-color: #5E5E5E;
+}
+
+.sa-system h2 {
+	color: var(--sa-system-color);
+	margin-top: 0;
+}
+
+.sa-system-more h2 {
+	color: inherit;
+}
+
+.sa-system-icon {
+	color: var(--sa-system-color);
+	display: flex;
+	align-items: center;
+	gap: .4rem;
+	margin-bottom: .75rem;
+}
+
+.sa-system-icon svg {
+	width: 2rem;
+	height: 2rem;
+}
+
+.sa-system-icon .bi-caret-right-fill {
+	width: 1.1rem;
+	height: 1.1rem;
+}
+
+.sa-lead {
+	font-size: calc(1.2rem + .3vw);
+	font-weight: 700;
+	line-height: 2.2rem;
+	margin-bottom: 1.5rem;
+}
+
+.sa-figures {
+	border-top: 1px solid rgba(0, 0, 0, .2);
+	padding-top: 1.5rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
+
+.sa-figures dt {
+	color: var(--sa-system-color);
+	font-size: calc(1.4rem + .4vw);
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.sa-figures dd {
+	color: #3A3A3A;
+	font-size: 1rem;
+	line-height: 1.6rem;
+	margin-bottom: 0;
 }

@@ -185,7 +185,7 @@ p {
 }
 
 .dropdown-menu {
-	--bs-dropdown-min-width: 2rem;
+	--bs-dropdown-min-width: max-content;
 	--bs-dropdown-font-size: var(--bs-body-font-size);
 }
 
@@ -641,6 +641,29 @@ h2:hover > a, h3:hover > a {
 .sa-system-icon .bi-caret-right-fill {
 	width: 1.1rem;
 	height: 1.1rem;
+}
+
+/* ── 區塊內的並排按鈕 ───────────────────────────── */
+
+.sa-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .75rem;
+}
+
+/* 語音辨識區的第二顆按鈕：同色系細框，與主要按鈕分出主次 */
+.sa-btn-asr-alt {
+	--bs-btn-color: #AC370C;
+	--bs-btn-bg: transparent;
+	--bs-btn-border-color: #AC370C;
+	--bs-btn-hover-color: #FFFFFF;
+	--bs-btn-hover-bg: #AC370C;
+	--bs-btn-hover-border-color: #AC370C;
+	--bs-btn-active-color: #FFFFFF;
+	--bs-btn-active-bg: #8E2D0A;
+	--bs-btn-active-border-color: #8E2D0A;
+	--bs-btn-focus-shadow-rgb: var(--sa-primary-subtle-rgb);
+	border-width: 1px;
 }
 
 /* ── 織布機插圖 ─────────────────────────────────── */

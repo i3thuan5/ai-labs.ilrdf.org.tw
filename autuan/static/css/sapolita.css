@@ -591,7 +591,7 @@ h2:hover > a, h3:hover > a {
 }
 
 .sa-section-asr { --sa-system-color: #AC370C; }
-.sa-section-tts { --sa-system-color: #AD0001; }
+.sa-section-tts { --sa-system-color: #6E3B8E; }
 .sa-section-mt  { --sa-system-color: #274DAB; }
 
 .sa-eyebrow {
@@ -643,6 +643,24 @@ h2:hover > a, h3:hover > a {
 	height: 1.1rem;
 }
 
+/* ── 織布機插圖 ─────────────────────────────────── */
+
+.sa-loom {
+	max-width: 22rem;
+	margin: 2rem auto 2.5rem;
+	border: 1px solid var(--sa-hairline);
+	background: #FFFFFF;
+	padding: .7rem;
+	border-radius: 2px;
+}
+
+.sa-loom img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1984 / 2142;
+}
+
 /* ── 三系統並列比較卡 ───────────────────────────── */
 
 .sa-compare {
@@ -674,7 +692,7 @@ h2:hover > a, h3:hover > a {
 }
 
 .sa-card-asr { --sa-system-color: #AC370C; }
-.sa-card-tts { --sa-system-color: #AD0001; }
+.sa-card-tts { --sa-system-color: #6E3B8E; }
 .sa-card-mt  { --sa-system-color: #274DAB; }
 
 .sa-card h3 {
@@ -768,53 +786,27 @@ h2:hover > a, h3:hover > a {
 	padding: 1rem;
 }
 
+.sa-plate img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1260 / 633;
+	object-fit: cover;
+}
+
+#tts .sa-plate img {
+	aspect-ratio: 1260 / 688;
+}
+
+#translate .sa-plate img {
+	aspect-ratio: 1260 / 369;
+}
+
 .sa-plate__caption {
 	margin: .6rem .1rem 0;
 	color: var(--sa-muted);
 	font-size: .95rem;
 	line-height: 1.6rem;
-}
-
-/* ── 使用情境 ───────────────────────────────────── */
-
-.sa-scenarios {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 2rem;
-	padding: 0;
-	margin: 2.5rem 0 0;
-	list-style: none;
-}
-
-@media (min-width: 768px) {
-	.sa-scenarios {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 2.5rem;
-	}
-}
-
-.sa-scenario {
-	border-top: 2px solid var(--sa-ink);
-	padding-top: 1rem;
-}
-
-.sa-scenario__no {
-	display: block;
-	font-size: 1.6rem;
-	font-weight: 700;
-	line-height: 1.4;
-	color: #AC370C;
-	font-variant-numeric: tabular-nums;
-}
-
-.sa-scenario h3 {
-	margin: .25rem 0 .5rem;
-	font-size: 1.3rem;
-}
-
-.sa-scenario p {
-	margin: 0;
-	line-height: 1.95rem;
 }
 
 /* ── 常見問題 ───────────────────────────────────── */
@@ -871,6 +863,26 @@ h2:hover > a, h3:hover > a {
 	line-height: 2rem;
 }
 
+/* ── 影片 ───────────────────────────────────────── */
+
+.sa-video {
+	position: relative;
+	max-width: 60rem;
+	margin-top: 2rem;
+	border: 1px solid var(--sa-hairline);
+	background: #FFFFFF;
+	padding: .7rem;
+	border-radius: 2px;
+}
+
+.sa-video iframe {
+	display: block;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	height: auto;
+	border: 0;
+}
+
 /* ── 合作夥伴 ───────────────────────────────────── */
 
 .sa-weave {
@@ -914,6 +926,71 @@ h2:hover > a, h3:hover > a {
 	display: block;
 	width: 100%;
 	height: auto;
+}
+
+/* ── 首頁專用外框按鈕（站內設定會把 outline 變填色，這裡改回細框）──── */
+
+.sa-card .btn-outline-primary,
+.sa-card .btn-outline-danger,
+.sa-card .btn-outline-success,
+.sa-resources .btn-outline-primary {
+	--sa-outline-color: #AC370C;
+	--bs-btn-color: var(--sa-outline-color);
+	--bs-btn-bg: transparent;
+	--bs-btn-border-color: var(--sa-outline-color);
+	--bs-btn-hover-color: #FFFFFF;
+	--bs-btn-hover-bg: var(--sa-outline-color);
+	--bs-btn-hover-border-color: var(--sa-outline-color);
+	--bs-btn-active-color: #FFFFFF;
+	--bs-btn-active-bg: var(--sa-outline-color);
+	--bs-btn-active-border-color: var(--sa-outline-color);
+	--bs-btn-focus-shadow-rgb: 0, 0, 0;
+	border-width: 1px;
+	border-radius: 2px;
+}
+
+.sa-card .btn-outline-danger { --sa-outline-color: #6E3B8E; }
+.sa-card .btn-outline-success { --sa-outline-color: #274DAB; }
+
+.sa-card .btn-outline-primary:focus-visible,
+.sa-card .btn-outline-danger:focus-visible,
+.sa-card .btn-outline-success:focus-visible,
+.sa-resources .btn-outline-primary:focus-visible {
+	color: #FFFFFF;
+	background-color: var(--sa-outline-color);
+	outline: 3px solid var(--bs-success);
+	outline-offset: 2px;
+}
+
+/* 語音合成系統：改用紫色，與語音辨識的橘紅區隔 */
+
+.sa-section-tts .btn-danger {
+	--bs-btn-color: #FFFFFF;
+	--bs-btn-bg: #6E3B8E;
+	--bs-btn-border-color: #6E3B8E;
+	--bs-btn-hover-color: #FFFFFF;
+	--bs-btn-hover-bg: #5A2F75;
+	--bs-btn-hover-border-color: #5A2F75;
+	--bs-btn-active-color: #FFFFFF;
+	--bs-btn-active-bg: #4B2762;
+	--bs-btn-active-border-color: #4B2762;
+}
+
+/* 首屏分隔線 */
+
+.sa-hero hr {
+	border-top: 1px solid var(--sa-hairline-light);
+	opacity: 1;
+	margin: 0 0 2.5rem;
+}
+
+.sa-hero__statement {
+	margin-bottom: 2.5rem;
+}
+
+.sa-hero__statement .sa-vision__body {
+	max-width: 46ch;
+	border-top: 1px solid var(--sa-hairline-light);
 }
 
 /* ── 其他資源 ───────────────────────────────────── */

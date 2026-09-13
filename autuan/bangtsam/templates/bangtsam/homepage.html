@@ -42,6 +42,9 @@
       <p class="sa-eyebrow">系統總覽</p>
       <h2 id="compare-title">三套系統，一次看懂差別</h2>
       <p class="w-75ch">從你手上有的東西開始選：有錄音檔、有文字，還是想看懂一段族語。</p>
+      <figure class="sa-loom">
+        <img src="{% static 'images/loom.jpg' %}" alt="插畫：一台織布機，經線是藍紫色的紗，織出的布面帶有電路板紋樣，比喻以科技編織族語。">
+      </figure>
       <ul class="sa-compare">
         <li class="sa-card sa-card-asr">
           <p class="sa-system-icon" aria-hidden="true">
@@ -107,8 +110,8 @@
         </div>
         <div class="col-12 col-lg-5">
           <figure class="sa-plate m-0">
-            <div class="sa-plate__slot">{# TODO 換成實際截圖 <img src="{% static 'images/xxx.webp' %}" alt="語音辨識系統操作畫面"> #}圖片佔位<br>語音辨識系統操作畫面</div>
-            <figcaption class="sa-plate__caption">上傳錄音檔後的逐字稿結果畫面。</figcaption>
+            <img src="{% static 'images/asr-feature-visual.jpg' %}" alt="示意圖：左側的聲波線條向右匯聚，穿過一台織布機後化為整齊的線，比喻語音辨識把聲音整理成文字。">
+            <figcaption class="sa-plate__caption">美好的聲音，轉為色流的絲線。</figcaption>
           </figure>
         </div>
       </div>
@@ -124,7 +127,7 @@
           <p class="sa-lead w-75ch">輸入族語文字，聽見唸出來的聲音，也可以用你自己的聲音唸。</p>
           <p class="w-75ch">以 F5-TTS 模型訓練，支援 16 族 42 語別。「預設配音員」輸入文字就能合成；「自己當配音員」錄一段指定句子，系統就用你的聲音唸出族語文字。族語老師進行的 MOS 盲測中，機器合成分數 4.49–4.84，與同批真人錄音的 4.48–4.92 相當接近。</p>
           <dl class="sa-figures">
-            <div><dt>42 語別</dt><dd>可合成語別數</dd></div>
+            <div><dt>42 語別</dt><dd>全數支援</dd></div>
             <div><dt>4.84</dt><dd>太魯閣語 MOS 分數</dd></div>
             <div><dt>2 種</dt><dd>預設／自己當配音員</dd></div>
           </dl>
@@ -132,8 +135,8 @@
         </div>
         <div class="col-12 col-lg-5">
           <figure class="sa-plate m-0">
-            <div class="sa-plate__slot">{# TODO 換成實際截圖 <img src="{% static 'images/xxx.webp' %}" alt="語音合成系統操作畫面"> #}圖片佔位<br>語音合成系統操作畫面</div>
-            <figcaption class="sa-plate__caption">輸入族語文字後合成語音的畫面。</figcaption>
+            <img src="{% static 'images/tts-feature-visual.jpg' %}" alt="示意圖：左側散開的線條穿過織布機後，在右側化為起伏的聲波，比喻語音合成把文字唸成聲音。">
+            <figcaption class="sa-plate__caption">讓書寫的文字，再次溫暖地響起。</figcaption>
           </figure>
         </div>
       </div>
@@ -157,36 +160,25 @@
         </div>
         <div class="col-12 col-lg-5">
           <figure class="sa-plate m-0">
-            <div class="sa-plate__slot">{# TODO 換成實際截圖 <img src="{% static 'images/xxx.webp' %}" alt="基礎翻譯系統操作畫面"> #}圖片佔位<br>基礎翻譯系統操作畫面</div>
-            <figcaption class="sa-plate__caption">族語與華語對照的翻譯結果畫面。</figcaption>
+            <img src="{% static 'images/mt-feature-visual.jpg' %}" alt="示意圖：深藍與褐色兩束線交纏編成一條繩，比喻族語與華語互相對譯。">
+            <figcaption class="sa-plate__caption">在族語與華語之間，搭建溝通的橋樑。</figcaption>
           </figure>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="sa-section" aria-labelledby="use-title">
+  <section class="sa-section" aria-labelledby="video-title">
     <div class="container">
-      <p class="sa-eyebrow">使用情境</p>
-      <h2 id="use-title">族語老師與語推人員怎麼用</h2>
-      <p class="w-75ch">三套系統可以單獨用，也可以接起來用。</p>
-      <ol class="sa-scenarios">
-        <li class="sa-scenario">
-          <span class="sa-scenario__no">01</span>
-          <h3>課堂錄音整理成教材</h3>
-          <p>把上課或田野訪談錄音丟進語音辨識，得到逐字稿初稿，老師校對後直接排成教材文本。</p>
-        </li>
-        <li class="sa-scenario">
-          <span class="sa-scenario__no">02</span>
-          <h3>教學影片上族語字幕</h3>
-          <p>用 Whisper 版本輸出 SRT 字幕檔，套進剪輯軟體，語推組織自製的影片就有族語字幕。</p>
-        </li>
-        <li class="sa-scenario">
-          <span class="sa-scenario__no">03</span>
-          <h3>做出可以跟讀的聽力材料</h3>
-          <p>華語句子先用基礎翻譯轉成族語初稿，校對後交給語音合成唸出來，成為聽力與跟讀練習。</p>
-        </li>
-      </ol>
+      <p class="sa-eyebrow">計畫影片</p>
+      <h2 id="video-title">先看一段影片認識族語 AI</h2>
+      <p class="w-75ch">二分鐘了解本計畫。</p>
+      <div class="sa-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/2qfOiGEgsKI?rel=0"
+                title="族語 AI 計畫介紹影片" loading="lazy"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
     </div>
   </section>
 
@@ -215,17 +207,17 @@
     </div>
   </section>
 
-  <section class="sa-section" aria-labelledby="use-title">
+  <section class="sa-section" aria-labelledby="partners-title">
     <div class="container">
       <p class="sa-eyebrow">合作夥伴</p>
       <div class="sa-weave">
         <div class="sa-weave__text">
-          <h2 id="use-title">匯聚各方之力，共織傳承之網</h2>
+          <h2 id="partners-title">匯聚各方之力，共織傳承之網</h2>
           <p>原語會除了自行研發，亦積極與國內外夥伴合作，整合建置「可機讀族語語料庫」，讓族語AI的應用更多元，一同為語言的未來努力。</p>
           <p>科技，是我們為下一代編織的線。讓傳承，在對話中生生不息。</p>
         </div>
         <figure class="sa-weave__figure">
-          <img src="{% static 'images/partners-weave.jpg' %}" alt="以編繩比喻的合作關係圖：行政院、立法院、原住民族委員會與各族族人編成主繩，意傳科技、國際中心、聖經公會、教育部四條繩線匯入其中。">
+          <img src="{% static 'images/partners-weave.jpg' %}" alt="以編繩比喻的合作關係圖：行政院、立法院、原住民族委員會與各族族人編成主繩，意傳科技、國網中心、聖經公會、教育部四條繩線匯入其中。">
         </figure>
       </div>
     </div>

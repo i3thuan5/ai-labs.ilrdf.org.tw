@@ -4,45 +4,250 @@
 {% block title_suffix %}{% endblock %}
 
 {% block main %}
-<main class="hero bg-deep-grey py-md-5">
-	<div class="text-center position-relative">
+<main>
+  <section class="sa-hero">
+    <div class="sa-hero__media" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" tabindex="-1"
+             poster="{% static 'images/hero.webp' %}">
+        <source src="{% static 'videos/background_output.mp4' %}" type="video/mp4">
+      </video>
+    </div>
+    <div class="container sa-hero__inner">
+      <p class="sa-kicker">財團法人原住民族語言研究發展基金會</p>
+      <h1 id="main">族語 AI 計畫</h1>
+      <hr>
 
-		<div class="position-relative z-index-99 py-5 mt-md-5">
-			<div class="pt-5 pb-3 pb-md-5 mt-md-5">
-				<h1 id="main">{{ page.title }}</h1>
-				<p>財團法人原住民族語言研究發展基金會</p>
-			</div>
-			<div class="container-fluid pb-5">
-				<div class="row justify-content-center">
-					<div class="col-7 col-md-3 col-lg-2 mb-3">
-						<a href="{{ ai_url.asr }}" class="btn btn-primary w-75 py-3 mx-auto d-flex flex-column">
-							<span>{% include 'icon/mic-fill.html' %}
-								{% include 'icon/caret-right-fill.html' %}
-								{% include 'icon/chat-left-text-fill.html' %}
-							</span>
-							<span class="d-inline-block">語音辨識系統</span>
-						</a>
-					</div>
-					<div class="col-7 col-md-3 col-lg-2 mb-3">
-						<a href="{{ ai_url.tts }}" class="btn btn-danger w-75 py-3 mx-auto d-flex flex-column">
-							<span>{% include 'icon/chat-left-text-fill.html' %}
-								{% include 'icon/caret-right-fill.html' %}
-								{% include 'icon/volume-down-fill.html' %}</span>
-							<span>語音合成系統</span>
-						</a>
-					</div>
-					<div class="col-7 col-md-3 col-lg-2 mb-3">
-						<a href="{{ ai_url.translate }}" class="btn btn-success w-75 py-3 mx-auto d-flex flex-column">
-							<span>{% include 'icon/translate.html' %}</span>
-							<span>基礎翻譯系統</span>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<aside class="d-md-none position-absolute bottom-0 start-0 z-0 w-100 overflow-hidden main-m-hero">
-			<img src="{% static 'images/feedback-banner.webp' %}" alt="">
-		</aside>
-	</div>
+      <div class="sa-hero__statement">
+        <p class="sa-vision__label">我們的願景</p>
+        <h2 class="sa-vision__title">打造永續的<br>「數位族語守護者」</h2>
+        <p class="sa-vision__body">想像一個永不疲倦的部落耆老，他存在於雲端，能隨時隨地與我們的下一代用族語對話、教他們說故事、回答他們的問題。這個數位守護者，將確保我們的語言在未來世界中，永遠活著。</p>
+      </div>
+
+      <ul class="sa-hero__ctas">
+        <li><a href="#asr" class="btn sa-hero-cta">
+          {% include 'icon/mic-fill.html' %}
+          語音辨識系統</a></li>
+        <li><a href="#tts" class="btn sa-hero-cta">
+          {% include 'icon/volume-down-fill.html' %}
+          語音合成系統</a></li>
+        <li><a href="#translate" class="btn sa-hero-cta">
+          {% include 'icon/translate.html' %}
+          基礎翻譯系統</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sa-section" aria-labelledby="compare-title">
+    <div class="container">
+      <p class="sa-eyebrow">系統總覽</p>
+      <h2 id="compare-title">三套系統，一次看懂差別</h2>
+      <p class="w-75ch">從你手上有的東西開始選：有錄音檔、有文字，還是想看懂一段族語。</p>
+      <ul class="sa-compare">
+        <li class="sa-card sa-card-asr">
+          <p class="sa-system-icon" aria-hidden="true">
+            {% include 'icon/mic-fill.html' %}
+            {% include 'icon/caret-right-fill.html' %}
+            {% include 'icon/chat-left-text-fill.html' %}
+          </p>
+          <h3>語音辨識系統</h3>
+          <p class="sa-card__what">把族語的聲音變成文字，錄音檔一上傳就有逐字稿。</p>
+          <dl class="sa-card__spec">
+            <dt>你給</dt><dd>錄音檔</dd>
+            <dt>你拿到</dt><dd>逐字稿、SRT 字幕</dd>
+            <dt>最佳表現</dt><dd>CER 4.41%</dd>
+          </dl>
+          <a href="#asr" class="btn btn-outline-primary px-4 py-2">看說明</a>
+        </li>
+        <li class="sa-card sa-card-tts">
+          <p class="sa-system-icon" aria-hidden="true">
+            {% include 'icon/chat-left-text-fill.html' %}
+            {% include 'icon/caret-right-fill.html' %}
+            {% include 'icon/volume-down-fill.html' %}
+          </p>
+          <h3>語音合成系統</h3>
+          <p class="sa-card__what">輸入族語文字，聽見唸出來的聲音，也可以用你自己的聲音唸。</p>
+          <dl class="sa-card__spec">
+            <dt>你給</dt><dd>族語文字</dd>
+            <dt>你拿到</dt><dd>可下載的語音檔</dd>
+            <dt>最佳表現</dt><dd>MOS 4.84</dd>
+          </dl>
+          <a href="#tts" class="btn btn-outline-danger px-4 py-2">看說明</a>
+        </li>
+        <li class="sa-card sa-card-mt">
+          <p class="sa-system-icon" aria-hidden="true">
+            {% include 'icon/translate.html' %}
+          </p>
+          <h3>基礎翻譯系統</h3>
+          <p class="sa-card__what">族語和華語互翻，先給你一份看得懂的初稿。</p>
+          <dl class="sa-card__spec">
+            <dt>你給</dt><dd>族語或華語句子</dd>
+            <dt>你拿到</dt><dd>對譯初稿</dd>
+            <dt>最佳表現</dt><dd>BLEU 13.74</dd>
+          </dl>
+          <a href="#translate" class="btn btn-outline-success px-4 py-2">看說明</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="asr" class="sa-section sa-section-asr bg-deep-grey" aria-labelledby="asr-title">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+        <div class="col-12 col-lg-7">
+          <p class="sa-eyebrow">系統一</p>
+          <h2 id="asr-title">語音辨識系統</h2>
+          <p class="sa-lead w-75ch">把族語的聲音變成文字，錄音檔一上傳就有逐字稿。</p>
+          <p class="w-75ch">以 Whisper Large 與 Kaldi 兩種模型訓練，支援 16 族族語。本站提供 Kaldi 版本，直接產出純文字；另有 Whisper 版本可輸出 SRT 字幕檔，供語推組織製作教學影片字幕。族語教學錄音、田野訪談都能先做出逐字稿初稿，再由族語老師校對。</p>
+          <dl class="sa-figures">
+            <div><dt>16 族</dt><dd>全數支援</dd></div>
+            <div><dt>&lt; 10%</dt><dd>16 族 CER</dd></div>
+            <div><dt>2 種</dt><dd>語音辨識模型</dd></div>
+          </dl>
+          <div class="sa-actions">
+            <a href="{{ ai_url.asr }}" class="btn btn-primary btn-lg px-4 py-3">前往語音辨識系統</a>
+            <a href="{{ ai_url.srt }}" class="btn sa-btn-asr-alt btn-lg px-4 py-3">前往逐字稿辨識系統</a>
+          </div>
+        </div>
+        <div class="col-12 col-lg-5">
+          <figure class="sa-plate m-0">
+            <img src="{% static 'images/asr-feature-visual.jpg' %}" alt="示意圖：左側的聲波線條向右匯聚，穿過一台織布機後化為整齊的線，比喻語音辨識把聲音整理成文字。">
+            <figcaption class="sa-plate__caption">美好的聲音，轉為色流的絲線。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tts" class="sa-section sa-section-tts" aria-labelledby="tts-title">
+    <div class="container">
+      <div class="row g-5 align-items-start flex-lg-row-reverse">
+        <div class="col-12 col-lg-7">
+          <p class="sa-eyebrow">系統二</p>
+          <h2 id="tts-title">語音合成系統</h2>
+          <p class="sa-lead w-75ch">輸入族語文字，聽見唸出來的聲音，也可以用你自己的聲音唸。</p>
+          <p class="w-75ch">以 F5-TTS 模型訓練，支援 16 族 42 語別。「預設配音員」輸入文字就能合成；「自己當配音員」錄一段指定句子，系統就用你的聲音唸出族語文字。太魯閣語、秀姑巒阿美語、德固達雅賽德克語族語老師進行的 MOS 盲測中，機器合成分數 4.49–4.84，與同批真人錄音的 4.48–4.92 相當接近。</p>
+          <dl class="sa-figures">
+            <div><dt>42 語別</dt><dd>全數支援</dd></div>
+            <div><dt>&gt; 4.49</dt><dd>MOS 分數</dd></div>
+            <div><dt>2 種</dt><dd>預設／自己當配音員</dd></div>
+          </dl>
+          <a href="{{ ai_url.tts }}" class="btn btn-danger btn-lg px-4 py-3">前往語音合成系統</a>
+        </div>
+        <div class="col-12 col-lg-5">
+          <figure class="sa-plate m-0">
+            <img src="{% static 'images/tts-feature-visual.jpg' %}" alt="示意圖：左側散開的線條穿過織布機後，在右側化為起伏的聲波，比喻語音合成把文字唸成聲音。">
+            <figcaption class="sa-plate__caption">讓書寫的文字，再次溫暖地響起。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="translate" class="sa-section sa-section-mt bg-deep-grey" aria-labelledby="translate-title">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+        <div class="col-12 col-lg-7">
+          <p class="sa-eyebrow">系統三</p>
+          <h2 id="translate-title">基礎翻譯系統</h2>
+          <p class="sa-lead w-75ch">族語和華語互翻，先給你一份看得懂的初稿。</p>
+          <p class="w-75ch">以 Meta AI 的 NLLB-200 模型為基礎訓練，支援 16 族 42 語別雙向互翻，訓練語料累計 84 萬句、3,289 萬字元。它是「基礎」翻譯系統，適合快速理解一段族語的意思或產出翻譯初稿，正式使用前建議請族語老師確認。</p>
+          <dl class="sa-figures">
+            <div><dt>84 萬句</dt><dd>訓練語料句數</dd></div>
+            <div><dt>3,289 萬</dt><dd>訓練語料字元數</dd></div>
+            <div><dt>雙向</dt><dd>族語 ⇄ 華語</dd></div>
+          </dl>
+          <a href="{{ ai_url.translate }}" class="btn btn-success btn-lg px-4 py-3">前往基礎翻譯系統</a>
+        </div>
+        <div class="col-12 col-lg-5">
+          <figure class="sa-plate m-0">
+            <img src="{% static 'images/mt-feature-visual.jpg' %}" alt="示意圖：深藍與褐色兩束線交纏編成一條繩，比喻族語與華語互相對譯。">
+            <figcaption class="sa-plate__caption">在族語與華語之間，搭建溝通的橋樑。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sa-section" aria-labelledby="video-title">
+    <div class="container">
+      <p class="sa-eyebrow">計畫成果</p>
+      <h2 id="video-title">MINANAM 科技 x 語言</h2>
+      <p class="w-75ch">112-114 族語 AI 成果發表會</p>
+      <figure class="sa-video">
+        <iframe src="https://www.youtube-nocookie.com/embed/2qfOiGEgsKI?rel=0&amp;playsinline=1"
+                title="族語 AI 計畫介紹影片" loading="lazy"
+                allow="encrypted-media; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <figcaption class="sa-plate__caption">族語AI成果影片</figcaption>
+      </figure>
+      <ul class="sa-gallery" aria-label="成果發表會現場紀錄">
+        <li><figure class="sa-plate m-0">
+          <img src="{% static 'images/112-114-minanam/minanam-1.JPG' %}" alt="原語會執行長──許韋晟 Lowking Nowbucyang進行成果報告及系統介紹" loading="lazy">
+          <figcaption class="sa-plate__caption">原語會執行長──許韋晟 Lowking Nowbucyang進行成果報告及系統介紹</figcaption>
+        </figure></li>
+        <li><figure class="sa-plate m-0">
+          <img src="{% static 'images/112-114-minanam/minanam-2.JPG' %}" alt="座談會分享" loading="lazy">
+          <figcaption class="sa-plate__caption">座談會分享</figcaption>
+        </figure></li>
+        <li><figure class="sa-plate m-0">
+          <img src="{% static 'images/112-114-minanam/minanam-3.JPG' %}" alt="族語 AI 互動體驗區" loading="lazy">
+          <figcaption class="sa-plate__caption">族語 AI 互動體驗區</figcaption>
+        </figure></li>
+        <li><figure class="sa-plate m-0">
+          <img src="{% static 'images/112-114-minanam/minanam-4.JPG' %}" alt="QA環節" loading="lazy">
+          <figcaption class="sa-plate__caption">QA環節</figcaption>
+        </figure></li>
+        <li><figure class="sa-plate m-0">
+          <img src="{% static 'images/112-114-minanam/minanam-5.JPG' %}" alt="影片欣賞" loading="lazy">
+          <figcaption class="sa-plate__caption">影片欣賞</figcaption>
+        </figure></li>
+        <li><figure class="sa-plate m-0">
+          <img src="{% static 'images/112-114-minanam/minanam-6.JPG' %}" alt="新世紀文化藝術團" loading="lazy">
+          <figcaption class="sa-plate__caption">新世紀文化藝術團</figcaption>
+        </figure></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sa-section bg-deep-grey" aria-labelledby="faq-title">
+    <div class="container">
+      <p class="sa-eyebrow">常見問題</p>
+      <h2 id="faq-title">使用前想先知道的事</h2>
+      <div class="sa-faq">
+        <details>
+          <summary>需要付費或申請帳號嗎？</summary>
+          <p>三套系統都免費開放使用，直接開啟網頁即可操作，不需要申請帳號。</p>
+        </details>
+        <details>
+          <summary>辨識或翻譯結果可以直接使用嗎？</summary>
+          <p>建議當成初稿。系統的目的是節省打字與理解的時間，正式教材、公文或出版品仍請族語老師校對後再使用。</p>
+        </details>
+        <details>
+          <summary>模型的訓練語料有哪些？</summary>
+          <p>包含族語 E 樂園語料、本計畫在專業錄音室錄製的三族朗讀與自發性語料、台灣聖經公會授權的族語聖經、三族語推組織提供的語料，以及計畫蒐集的各族語老師著作，翻譯系統的語料累計 84 萬句、3,289 萬字元。</p>
+        </details>
+        <details>
+          <summary>可以申請這些語料做研究嗎？</summary>
+          <p>可以，請至「<a href="/applicationform/" target="_blank">語料申請</a>」頁面填寫申請表單，說明用途與單位，由基金會審核後提供。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sa-section" aria-labelledby="partners-title">
+    <div class="container">
+      <p class="sa-eyebrow">合作夥伴</p>
+      <div class="sa-weave">
+        <div class="sa-weave__text">
+          <h2 id="partners-title">匯聚各方之力，共織傳承之網</h2>
+          <p>原語會除了自行研發，亦積極與國內外夥伴合作，整合建置「可機讀族語語料庫」，讓族語AI的應用更多元，一同為語言的未來努力。</p>
+          <p>科技，是我們為下一代編織的線。讓傳承，在對話中生生不息。</p>
+        </div>
+        <figure class="sa-weave__figure">
+          <img src="{% static 'images/partners-weave.jpg' %}" alt="以編繩比喻的合作關係圖：行政院、立法院、原住民族委員會與各族族人編成主繩，意傳科技、國網中心、聖經公會、教育部四條繩線匯入其中。">
+        </figure>
+      </div>
+    </div>
+  </section>
 </main>
 {% endblock %}

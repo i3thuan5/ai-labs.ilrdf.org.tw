@@ -666,24 +666,6 @@ h2:hover > a, h3:hover > a {
 	border-width: 1px;
 }
 
-/* ── 織布機插圖 ─────────────────────────────────── */
-
-.sa-loom {
-	max-width: 22rem;
-	margin: 2rem auto 2.5rem;
-	border: 1px solid var(--sa-hairline);
-	background: #FFFFFF;
-	padding: .7rem;
-	border-radius: 2px;
-}
-
-.sa-loom img {
-	display: block;
-	width: 100%;
-	height: auto;
-	aspect-ratio: 1984 / 2142;
-}
-
 /* ── 三系統並列比較卡 ───────────────────────────── */
 
 .sa-compare {

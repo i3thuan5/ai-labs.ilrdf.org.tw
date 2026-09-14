@@ -54,7 +54,7 @@
           <dl class="sa-card__spec">
             <dt>你給</dt><dd>錄音檔</dd>
             <dt>你拿到</dt><dd>逐字稿、SRT 字幕</dd>
-            <dt>表現</dt><dd>CER 4.41%</dd>
+            <dt>最佳表現</dt><dd>CER 4.41%</dd>
           </dl>
           <a href="#asr" class="btn btn-outline-primary px-4 py-2">看說明</a>
         </li>
@@ -69,7 +69,7 @@
           <dl class="sa-card__spec">
             <dt>你給</dt><dd>族語文字</dd>
             <dt>你拿到</dt><dd>可下載的語音檔</dd>
-            <dt>表現</dt><dd>MOS 4.84</dd>
+            <dt>最佳表現</dt><dd>MOS 4.84</dd>
           </dl>
           <a href="#tts" class="btn btn-outline-danger px-4 py-2">看說明</a>
         </li>
@@ -82,7 +82,7 @@
           <dl class="sa-card__spec">
             <dt>你給</dt><dd>族語或華語句子</dd>
             <dt>你拿到</dt><dd>對譯初稿</dd>
-            <dt>表現</dt><dd>BLEU 13.74</dd>
+            <dt>最佳表現</dt><dd>BLEU 13.74</dd>
           </dl>
           <a href="#translate" class="btn btn-outline-success px-4 py-2">看說明</a>
         </li>
@@ -100,8 +100,8 @@
           <p class="w-75ch">以 Whisper Large 與 Kaldi 兩種模型訓練，支援 16 族族語。本站提供 Kaldi 版本，直接產出純文字；另有 Whisper 版本可輸出 SRT 字幕檔，供語推組織製作教學影片字幕。族語教學錄音、田野訪談都能先做出逐字稿初稿，再由族語老師校對。</p>
           <dl class="sa-figures">
             <div><dt>16 族</dt><dd>全數支援</dd></div>
-            <div><dt>4.41%</dt><dd>阿美語字元錯誤率</dd></div>
-            <div><dt>&lt; 10%</dt><dd>其餘 13 族 CER</dd></div>
+            <div><dt>&lt; 10%</dt><dd>16 族 CER</dd></div>
+            <div><dt>2 種</dt><dd>語音辨識模型</dd></div>
           </dl>
           <div class="sa-actions">
             <a href="{{ ai_url.asr }}" class="btn btn-primary btn-lg px-4 py-3">前往語音辨識系統</a>
@@ -125,10 +125,10 @@
           <p class="sa-eyebrow">系統二</p>
           <h2 id="tts-title">語音合成系統</h2>
           <p class="sa-lead w-75ch">輸入族語文字，聽見唸出來的聲音，也可以用你自己的聲音唸。</p>
-          <p class="w-75ch">以 F5-TTS 模型訓練，支援 16 族 42 語別。「預設配音員」輸入文字就能合成；「自己當配音員」錄一段指定句子，系統就用你的聲音唸出族語文字。族語老師進行的 MOS 盲測中，機器合成分數 4.49–4.84，與同批真人錄音的 4.48–4.92 相當接近。</p>
+          <p class="w-75ch">以 F5-TTS 模型訓練，支援 16 族 42 語別。「預設配音員」輸入文字就能合成；「自己當配音員」錄一段指定句子，系統就用你的聲音唸出族語文字。太魯閣語、秀姑巒阿美語、德固達雅賽德克語族語老師進行的 MOS 盲測中，機器合成分數 4.49–4.84，與同批真人錄音的 4.48–4.92 相當接近。</p>
           <dl class="sa-figures">
             <div><dt>42 語別</dt><dd>全數支援</dd></div>
-            <div><dt>4.84</dt><dd>太魯閣語 MOS 分數</dd></div>
+            <div><dt>&gt; 4.49</dt><dd>MOS 分數</dd></div>
             <div><dt>2 種</dt><dd>預設／自己當配音員</dd></div>
           </dl>
           <a href="{{ ai_url.tts }}" class="btn btn-danger btn-lg px-4 py-3">前往語音合成系統</a>

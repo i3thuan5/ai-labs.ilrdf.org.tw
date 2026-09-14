@@ -353,20 +353,3 @@ h2:hover > a, h3:hover > a {
 .bg-deep-grey {
 	background-color: var(--sa-deep-grey);
 }
-/* ══════════════════════════════════════════════════
-   首頁（改版）
-   ══════════════════════════════════════════════════ */
-
-:root {
-	--sa-ink: #201F1D;
-	--sa-ink-2: #2B2A27;
-	--sa-hairline: rgba(0, 0, 0, .18);
-	--sa-hairline-light: rgba(255, 255, 255, .3);
-	--sa-paper: #F7F6F4;
-	--sa-muted: #3A3A3A;
-}
-
-.sa-num {
-	font-variant-numeric: tabular-nums;
-	font-feature-settings: "tnum";
-}

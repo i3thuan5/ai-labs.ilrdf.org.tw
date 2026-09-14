@@ -891,7 +891,7 @@ h2:hover > a, h3:hover > a {
 .sa-video {
 	position: relative;
 	max-width: 60rem;
-	margin-top: 2rem;
+	margin: 2rem 0 0;
 	border: 1px solid var(--sa-hairline);
 	background: #FFFFFF;
 	padding: .7rem;
@@ -904,6 +904,36 @@ h2:hover > a, h3:hover > a {
 	aspect-ratio: 16 / 9;
 	height: auto;
 	border: 0;
+}
+
+/* ── 現場紀錄相片 ───────────────────────────────── */
+
+.sa-gallery {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1.25rem;
+	max-width: 60rem;
+	margin: 1.25rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sa-gallery > li {
+	display: flex;
+}
+
+.sa-gallery figure {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.sa-gallery img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 3 / 2;
+	object-fit: cover;
 }
 
 /* ── 合作夥伴 ───────────────────────────────────── */

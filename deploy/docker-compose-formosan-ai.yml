@@ -12,7 +12,7 @@ services:
       - VIRTUAL_HOST=${ASR_VIRTUAL_HOST:-sapolita.ithuan.tw}
       - VIRTUAL_PORT=7860
       - LETSENCRYPT_HOST=${ASR_VIRTUAL_HOST:-sapolita.ithuan.tw}
-      - SAPOLITA_WEBSITE_HOST=${SAPOLITA_WEBSITE_HOST:-ai-labs.ilrdf.org.tw}
+      - SAPOLITA_WEBSITE_HOST=${VIRTUAL_HOST:-ai-labs.ilrdf.org.tw}
       - GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID:-}
       - GRADIO_ROOT_PATH=/sapolita
     deploy:
@@ -33,7 +33,7 @@ services:
     environment:
       - VIRTUAL_HOST=${ASR_KALDI_VIRTUAL_HOST:-sapolita-kaldi.ithuan.tw}
       - LETSENCRYPT_HOST=${ASR_KALDI_VIRTUAL_HOST:-sapolita-kaldi.ithuan.tw}
-      - SAPOLITA_WEBSITE_HOST=${SAPOLITA_WEBSITE_HOST:-ai-labs.ilrdf.org.tw}
+      - SAPOLITA_WEBSITE_HOST=${VIRTUAL_HOST:-ai-labs.ilrdf.org.tw}
       - GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID:-}
       - GRADIO_ROOT_PATH=/sapolita-kaldi
   tts:
@@ -46,7 +46,7 @@ services:
     environment:
       - VIRTUAL_HOST=${TTS_VIRTUAL_HOST:-hnang-kari-ai-asi-sluhay.ithuan.tw}
       - LETSENCRYPT_HOST=${TTS_VIRTUAL_HOST:-hnang-kari-ai-asi-sluhay.ithuan.tw}
-      - SAPOLITA_WEBSITE_HOST=${SAPOLITA_WEBSITE_HOST:-ai-labs.ilrdf.org.tw}
+      - SAPOLITA_WEBSITE_HOST=${VIRTUAL_HOST:-ai-labs.ilrdf.org.tw}
       - GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID:-}
       - GRADIO_ROOT_PATH=/hnang-kari-ai-asi-sluhay
     deploy:
@@ -67,7 +67,7 @@ services:
     environment:
       - VIRTUAL_HOST=${MT_VIRTUAL_HOST:-kari-seejiq-tnpusu-ai-hmjil.ithuan.tw}
       - LETSENCRYPT_HOST=${MT_VIRTUAL_HOST:-kari-seejiq-tnpusu-ai-hmjil.ithuan.tw}
-      - SAPOLITA_WEBSITE_HOST=${SAPOLITA_WEBSITE_HOST:-ai-labs.ilrdf.org.tw}
+      - SAPOLITA_WEBSITE_HOST=${VIRTUAL_HOST:-ai-labs.ilrdf.org.tw}
       - GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID:-}
       - GRADIO_ROOT_PATH=/kari-seejiq-tnpusu-ai-hmjil
     deploy:

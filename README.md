@@ -1,8 +1,13 @@
 # ai-labs.ilrdf.org.tw
 
-族語AI成果網站
+族語AI成果網站。上線指令：
 
-專案開發枋模
+```bash
+docker compose -p ai-labs.ilrdf.org.tw \
+  -f deploy/docker-compose-ai-labs.yml \
+  -f deploy/docker-compose-formosan-ai.yml \
+  up -d --pull
+```
 
 ## 開發
 

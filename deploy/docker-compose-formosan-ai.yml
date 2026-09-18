@@ -36,6 +36,7 @@ services:
       - SAPOLITA_WEBSITE_HOST=${VIRTUAL_HOST:-ai-labs.ilrdf.org.tw}
       - GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID:-}
       - GRADIO_ROOT_PATH=/sapolita-kaldi
+    restart: always
   tts:
     image: ithuan/formosan-ai:tts
     volumes:

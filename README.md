@@ -65,7 +65,6 @@ pip install tox
   - ./secrets/postgres_passwd.txt
   - ./secrets/sentry_dsn.txt
 - 正式機媒體檔資料夾改權限：`chmod 1777 media/`。
-- 開[https://github.com/i3thuan5/Formosan-AI](https://github.com/i3thuan5/Formosan-AI) ê docker compose服務。
 
 上線指令：
 

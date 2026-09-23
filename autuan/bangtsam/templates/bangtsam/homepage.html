@@ -23,8 +23,8 @@
 
       <div class="sa-hero__statement">
         <p class="sa-vision__label">我們的願景</p>
-        <h2 class="sa-vision__title">打造永續的<br>「數位族語守護者」</h2>
-        <p class="sa-vision__body">想像一個永不疲倦的部落耆老，他存在於雲端，能隨時隨地與我們的下一代用族語對話、教他們說故事、回答他們的問題。這個數位守護者，將確保我們的語言在未來世界中，永遠活著。</p>
+        <h2 class="sa-vision__title">活用科技，族語永續。</h2>
+        <p class="sa-vision__body">想像一位精力充沛不會累的耆老，能用純正的族語說故事、陪我們學習、回答我們的問題。就讓 AI 成為族語保存與應用的媒介，活用 AI 跨越世代與地域限制，使下一代繼續記得長輩的聲音。</p>
       </div>
 
       <ul class="sa-hero__ctas">
@@ -54,7 +54,7 @@
             {% include 'icon/chat-left-text-fill.html' %}
           </p>
           <h3>語音辨識系統</h3>
-          <p class="sa-card__what">把族語的聲音變成文字，錄音檔一上傳就有逐字稿。</p>
+          <p class="sa-card__what">將音檔轉錄為符合現行書寫規範的文字。</p>
           <dl class="sa-card__spec">
             <dt>你給</dt><dd>錄音檔</dd>
             <dt>你拿到</dt><dd>逐字稿、SRT 字幕</dd>
@@ -69,7 +69,7 @@
             {% include 'icon/volume-down-fill.html' %}
           </p>
           <h3>語音合成系統</h3>
-          <p class="sa-card__what">輸入族語文字，聽見唸出來的聲音，也可以用你自己的聲音唸。</p>
+          <p class="sa-card__what">將族語文字轉錄為擬真發音，如實呈現。</p>
           <dl class="sa-card__spec">
             <dt>你給</dt><dd>族語文字</dd>
             <dt>你拿到</dt><dd>可下載的語音檔</dd>
@@ -82,7 +82,7 @@
             {% include 'icon/translate.html' %}
           </p>
           <h3>基礎翻譯系統</h3>
-          <p class="sa-card__what">族語和華語互翻，先給你一份看得懂的初稿。</p>
+          <p class="sa-card__what">族語和華語對譯，成為溝通學習的工具。</p>
           <dl class="sa-card__spec">
             <dt>你給</dt><dd>族語或華語句子</dd>
             <dt>你拿到</dt><dd>對譯初稿</dd>
@@ -100,7 +100,7 @@
         <div class="col-12 col-lg-7">
           <p class="sa-eyebrow">系統一</p>
           <h2 id="asr-title">語音辨識系統</h2>
-          <p class="sa-lead w-75ch">把族語的聲音變成文字，錄音檔一上傳就有逐字稿。</p>
+          <p class="sa-lead w-75ch">將音檔轉錄為符合現行書寫規範的文字。</p>
           <p class="w-75ch">以 Whisper Large 與 Kaldi 兩種模型訓練，支援 16 族族語。本站提供 Kaldi 版本，直接產出純文字；另有 Whisper 版本可輸出 SRT 字幕檔，供語推組織製作教學影片字幕。族語教學錄音、田野訪談都能先做出逐字稿初稿，再由族語老師校對。</p>
           <dl class="sa-figures">
             <div><dt>16 族</dt><dd>全數支援</dd></div>
@@ -114,8 +114,9 @@
         </div>
         <div class="col-12 col-lg-5">
           <figure class="sa-plate m-0">
-            <img src="{% static 'images/asr-feature-visual.jpg' %}" alt="示意圖：左側的聲波線條向右匯聚，穿過一台織布機後化為整齊的線，比喻語音辨識把聲音整理成文字。">
-            <figcaption class="sa-plate__caption">美好的聲音，轉為色流的絲線。</figcaption>
+            <video class="sa-feature-video" autoplay muted loop playsinline preload="metadata" tabindex="0" aria-label="示意圖：左側的聲波線條向右匯聚，穿過一台織布機後化為整齊的線，比喻語音辨識把聲音整理成文字。（點一下可暫停或繼續播放）">
+              <source src="{% static 'videos/asr-feature-visual.mp4' %}" type="video/mp4">
+            </video>
           </figure>
         </div>
       </div>
@@ -128,7 +129,7 @@
         <div class="col-12 col-lg-7">
           <p class="sa-eyebrow">系統二</p>
           <h2 id="tts-title">語音合成系統</h2>
-          <p class="sa-lead w-75ch">輸入族語文字，聽見唸出來的聲音，也可以用你自己的聲音唸。</p>
+          <p class="sa-lead w-75ch">將族語文字轉錄為擬真發音，如實呈現。</p>
           <p class="w-75ch">以 F5-TTS 模型訓練，支援 16 族 42 語別。「預設配音員」輸入文字就能合成；「自己當配音員」錄一段指定句子，系統就用你的聲音唸出族語文字。太魯閣語、秀姑巒阿美語、德固達雅賽德克語族語老師進行的 MOS 盲測中，機器合成分數 4.49–4.84，與同批真人錄音的 4.48–4.92 相當接近。</p>
           <dl class="sa-figures">
             <div><dt>42 語別</dt><dd>全數支援</dd></div>
@@ -139,8 +140,9 @@
         </div>
         <div class="col-12 col-lg-5">
           <figure class="sa-plate m-0">
-            <img src="{% static 'images/tts-feature-visual.jpg' %}" alt="示意圖：左側散開的線條穿過織布機後，在右側化為起伏的聲波，比喻語音合成把文字唸成聲音。">
-            <figcaption class="sa-plate__caption">讓書寫的文字，再次溫暖地響起。</figcaption>
+            <video class="sa-feature-video" autoplay muted loop playsinline preload="metadata" tabindex="0" aria-label="示意圖：左側散開的線條穿過織布機後，在右側化為起伏的聲波，比喻語音合成把文字唸成聲音。（點一下可暫停或繼續播放）">
+              <source src="{% static 'videos/tts-feature-visual.mp4' %}" type="video/mp4">
+            </video>
           </figure>
         </div>
       </div>
@@ -153,7 +155,7 @@
         <div class="col-12 col-lg-7">
           <p class="sa-eyebrow">系統三</p>
           <h2 id="translate-title">基礎翻譯系統</h2>
-          <p class="sa-lead w-75ch">族語和華語互翻，先給你一份看得懂的初稿。</p>
+          <p class="sa-lead w-75ch">族語和華語對譯，成為溝通學習的工具。</p>
           <p class="w-75ch">以 Meta AI 的 NLLB-200 模型為基礎訓練，支援 16 族 42 語別雙向互翻，訓練語料累計 84 萬句、3,289 萬字元。它是「基礎」翻譯系統，適合快速理解一段族語的意思或產出翻譯初稿，正式使用前建議請族語老師確認。</p>
           <dl class="sa-figures">
             <div><dt>84 萬句</dt><dd>訓練語料句數</dd></div>
@@ -164,8 +166,9 @@
         </div>
         <div class="col-12 col-lg-5">
           <figure class="sa-plate m-0">
-            <img src="{% static 'images/mt-feature-visual.jpg' %}" alt="示意圖：深藍與褐色兩束線交纏編成一條繩，比喻族語與華語互相對譯。">
-            <figcaption class="sa-plate__caption">在族語與華語之間，搭建溝通的橋樑。</figcaption>
+            <video class="sa-feature-video" autoplay muted loop playsinline preload="metadata" tabindex="0" aria-label="示意圖：深藍與褐色兩束線交纏編成一條繩，比喻族語與華語互相對譯。（點一下可暫停或繼續播放）">
+              <source src="{% static 'videos/mt-feature-visual.mp4' %}" type="video/mp4">
+            </video>
           </figure>
         </div>
       </div>
@@ -216,7 +219,7 @@
         </details>
         <details>
           <summary>辨識或翻譯結果可以直接使用嗎？</summary>
-          <p>建議當成初稿。系統的目的是節省打字與理解的時間，正式教材、公文或出版品仍請族語老師校對後再使用。</p>
+          <p>由本網站系統產生出的內容皆可直接使用，不需另外向基金會申請授權。產生內容建議視作初稿，本網站系統為輔助應用工具，將結果用於正式教材、公文或出版品前，須再次確認內容是否正確。</p>
         </details>
         <details>
           <summary>模型的訓練語料有哪些？</summary>
@@ -233,17 +236,27 @@
   <section class="sa-section" aria-labelledby="partners-title">
     <div class="container">
       <p class="sa-eyebrow">合作夥伴</p>
-      <div class="sa-weave">
-        <div class="sa-weave__text">
-          <h2 id="partners-title">匯聚各方之力，共織傳承之網</h2>
-          <p>原語會除了自行研發，亦積極與國內外夥伴合作，整合建置「可機讀族語語料庫」，讓族語AI的應用更多元，一同為語言的未來努力。</p>
-          <p>科技，是我們為下一代編織的線。讓傳承，在對話中生生不息。</p>
-        </div>
-        <figure class="sa-weave__figure">
-          <img src="{% static 'images/partners-weave.jpg' %}" alt="以編繩比喻的合作關係圖：行政院、立法院、原住民族委員會與各族族人編成主繩，意傳科技、國網中心、聖經公會、教育部四條繩線匯入其中。">
-        </figure>
+      <div class="sa-closing">
+        <h2 id="partners-title">匯聚各方之力，共織傳承之網</h2>
+        <p class="sa-closing__body">原語會自行研發，過程中積極與國內外學術單位、研究單位、各族族人合作，整合建置「可機讀族語語料庫」，讓族語 AI 的應用更多元。</p>
+        <blockquote class="sa-closing__motto">
+          <p>感謝各族族人、行政院、立法院、教育部、原住民族委員會、國家高速網路與計算中心、財團法人台灣聖經公會及意傳科技有限公司一同為族語的未來努力。</p>
+        </blockquote>
       </div>
     </div>
   </section>
 </main>
+<script>
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.sa-feature-video').forEach(function (v) {
+      if (reduce) { v.removeAttribute('autoplay'); v.pause(); }
+      function toggle() { v.paused ? v.play() : v.pause(); }
+      v.addEventListener('click', toggle);
+      v.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
+    });
+  })();
+</script>
 {% endblock %}

@@ -371,20 +371,31 @@
 	border-radius: 2px;
 }
 
-.sa-plate img {
+.sa-plate {
+	position: relative;
+}
+
+.sa-plate img,
+.sa-plate video {
 	display: block;
 	width: 100%;
 	height: auto;
-	aspect-ratio: 1260 / 633;
+}
+
+/* 三支系統影片皆為 2880×1828，統一比例 */
+.sa-plate video {
+	aspect-ratio: 2880 / 1828;
 	object-fit: cover;
 }
 
-#tts .sa-plate img {
-	aspect-ratio: 1260 / 688;
+/* 點擊影片即可暫停／播放（WCAG 2.2.2） */
+.sa-feature-video {
+	cursor: pointer;
 }
 
-#translate .sa-plate img {
-	aspect-ratio: 1260 / 369;
+.sa-feature-video:focus-visible {
+	outline: 3px solid var(--bs-success);
+	outline-offset: 2px;
 }
 
 .sa-plate__caption {
@@ -498,51 +509,6 @@
 	object-fit: cover;
 }
 
-/* ── 合作夥伴 ───────────────────────────────────── */
-
-.sa-weave {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 2rem;
-	align-items: center;
-	margin-top: 1.5rem;
-}
-
-@media (min-width: 992px) {
-	.sa-weave {
-		grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
-		gap: 3.5rem;
-	}
-}
-
-.sa-weave__text h2 {
-	margin-top: 0;
-	padding-bottom: 1.5rem;
-	border-bottom: 1px solid var(--sa-hairline);
-}
-
-.sa-weave__text p {
-	max-width: 42ch;
-	font-size: 1.1rem;
-	line-height: 2.15rem;
-	margin: 0;
-	margin-top: 1.5rem;
-}
-
-.sa-weave__figure {
-	margin: 0;
-	border: 1px solid var(--sa-hairline);
-	background: #FFFFFF;
-	padding: .7rem;
-	border-radius: 2px;
-}
-
-.sa-weave__figure img {
-	display: block;
-	width: 100%;
-	height: auto;
-}
-
 /* ── 首頁專用外框按鈕（站內設定會把 outline 變填色，這裡改回細框）──── */
 
 .sa-card .btn-outline-primary,
@@ -604,4 +570,39 @@
 .sa-hero__statement .sa-vision__body {
 	max-width: 46ch;
 	border-top: 1px solid var(--sa-hairline-light);
+}
+
+
+/* 合作夥伴 */
+
+.sa-closing {
+	max-width: 44rem;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.sa-closing h2 {
+	margin-top: .5rem;
+}
+
+.sa-closing__body {
+	font-size: 1.1rem;
+	line-height: 2.15rem;
+	margin: 1rem auto 0;
+	text-align: left;
+}
+
+.sa-closing__motto {
+	margin: 2.5rem 0 0;
+	padding: 2rem 0;
+	border-top: 1px solid var(--sa-hairline);
+	border-bottom: 1px solid var(--sa-hairline);
+}
+
+.sa-closing__motto p {
+	margin: 0;
+	color: #AC370C;
+	font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+	line-height: 2;
+	text-wrap: balance;
 }

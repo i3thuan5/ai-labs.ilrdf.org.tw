@@ -1,0 +1,81 @@
+---
+services:
+  asr:
+    image: ithuan/formosan-ai:asr
+    volumes:
+      - "./model_cache_asr:/home/nonroot/.cache:rw"
+    networks:
+      - nginx-bridge
+      - ai-labs-bridge
+    environment:
+      - BATCH_SIZE=${ASR_BATCH_SIZE:-5}
+      - VIRTUAL_HOST=${ASR_VIRTUAL_HOST:-sapolita.ithuan.tw}
+      - VIRTUAL_PORT=7860
+      - LETSENCRYPT_HOST=${ASR_VIRTUAL_HOST:-sapolita.ithuan.tw}
+      - SAPOLITA_WEBSITE_HOST=${VIRTUAL_HOST:-ai-labs.ilrdf.org.tw}
+      - GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID:-}
+      - GRADIO_ROOT_PATH=/sapolita
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: always
+  asr-kaldi:
+    image: ithuan/formosan-ai:asr-kaldi
+    volumes:
+      - "./model_cache_asr_kaldi:/home/nonroot/.cache:rw"
+    networks:
+      - nginx-bridge
+      - ai-labs-bridge
+    environment:
+      - VIRTUAL_HOST=${ASR_KALDI_VIRTUAL_HOST:-sapolita-kaldi.ithuan.tw}
+      - LETSENCRYPT_HOST=${ASR_KALDI_VIRTUAL_HOST:-sapolita-kaldi.ithuan.tw}
+      - SAPOLITA_WEBSITE_HOST=${VIRTUAL_HOST:-ai-labs.ilrdf.org.tw}
+      - GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID:-}
+      - GRADIO_ROOT_PATH=/sapolita-kaldi
+    restart: always
+  tts:
+    image: ithuan/formosan-ai:tts
+    volumes:
+      - "./model_cache_tts:/home/nonroot/.cache:rw"
+    networks:
+      - nginx-bridge
+      - ai-labs-bridge
+    environment:
+      - VIRTUAL_HOST=${TTS_VIRTUAL_HOST:-hnang-kari-ai-asi-sluhay.ithuan.tw}
+      - LETSENCRYPT_HOST=${TTS_VIRTUAL_HOST:-hnang-kari-ai-asi-sluhay.ithuan.tw}
+      - SAPOLITA_WEBSITE_HOST=${VIRTUAL_HOST:-ai-labs.ilrdf.org.tw}
+      - GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID:-}
+      - GRADIO_ROOT_PATH=/hnang-kari-ai-asi-sluhay
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: always
+  mt:
+    image: ithuan/formosan-ai:mt
+    volumes:
+      - "./model_cache_mt:/home/nonroot/.cache:rw"
+    networks:
+      - nginx-bridge
+      - ai-labs-bridge
+    environment:
+      - VIRTUAL_HOST=${MT_VIRTUAL_HOST:-kari-seejiq-tnpusu-ai-hmjil.ithuan.tw}
+      - LETSENCRYPT_HOST=${MT_VIRTUAL_HOST:-kari-seejiq-tnpusu-ai-hmjil.ithuan.tw}
+      - SAPOLITA_WEBSITE_HOST=${VIRTUAL_HOST:-ai-labs.ilrdf.org.tw}
+      - GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID:-}
+      - GRADIO_ROOT_PATH=/kari-seejiq-tnpusu-ai-hmjil
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: always

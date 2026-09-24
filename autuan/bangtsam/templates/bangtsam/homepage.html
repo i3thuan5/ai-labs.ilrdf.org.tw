@@ -31,6 +31,9 @@
         <li><a href="#asr" class="btn sa-hero-cta">
           {% include 'icon/mic-fill.html' %}
           語音辨識系統</a></li>
+        <li><a href="#srt" class="btn sa-hero-cta">
+          {% include 'icon/chat-left-text-fill.html' %}
+          逐字稿辨識系統</a></li>
         <li><a href="#tts" class="btn sa-hero-cta">
           {% include 'icon/volume-down-fill.html' %}
           語音合成系統</a></li>
@@ -44,7 +47,7 @@
   <section class="sa-section" aria-labelledby="compare-title">
     <div class="container">
       <p class="sa-eyebrow">系統總覽</p>
-      <h2 id="compare-title">三套系統，一次看懂差別</h2>
+      <h2 id="compare-title">四套系統，一次看懂差別</h2>
       <p class="w-75ch">從你手上有的東西開始選：有錄音檔、有文字，還是想看懂一段族語。</p>
       <ul class="sa-compare">
         <li class="sa-card sa-card-asr">
@@ -57,10 +60,25 @@
           <p class="sa-card__what">將音檔轉錄為符合現行書寫規範的文字。</p>
           <dl class="sa-card__spec">
             <dt>你給</dt><dd>錄音檔</dd>
-            <dt>你拿到</dt><dd>逐字稿、SRT 字幕</dd>
+            <dt>你拿到</dt><dd>純文字逐字稿</dd>
             <dt>最佳表現</dt><dd>CER 4.41%</dd>
           </dl>
           <a href="#asr" class="btn btn-outline-primary px-4 py-2">看說明</a>
+        </li>
+        <li class="sa-card sa-card-srt">
+          <p class="sa-system-icon" aria-hidden="true">
+            {% include 'icon/mic-fill.html' %}
+            {% include 'icon/caret-right-fill.html' %}
+            {% include 'icon/chat-left-text-fill.html' %}
+          </p>
+          <h3>逐字稿辨識系統</h3>
+          <p class="sa-card__what">簡化繁瑣的人工作業，加速語料的保存。</p>
+          <dl class="sa-card__spec">
+            <dt>你給</dt><dd>錄音檔、影片音軌</dd>
+            <dt>你拿到</dt><dd>SRT 字幕檔</dd>
+            <dt>模型</dt><dd>Whisper Large</dd>
+          </dl>
+          <a href="#srt" class="btn btn-outline-info px-4 py-2">看說明</a>
         </li>
         <li class="sa-card sa-card-tts">
           <p class="sa-system-icon" aria-hidden="true">
@@ -101,16 +119,13 @@
           <p class="sa-eyebrow">系統一</p>
           <h2 id="asr-title">語音辨識系統</h2>
           <p class="sa-lead w-75ch">將音檔轉錄為符合現行書寫規範的文字。</p>
-          <p class="w-75ch">以 Whisper Large 與 Kaldi 兩種模型訓練，支援 16 族族語。本站提供 Kaldi 版本，直接產出純文字；另有 Whisper 版本可輸出 SRT 字幕檔，供語推組織製作教學影片字幕。族語教學錄音、田野訪談都能先做出逐字稿初稿，再由族語老師校對。</p>
+          <p class="w-75ch">以 Kaldi 模型訓練，支援 16 族族語，上傳音檔即直接產出純文字。族語教學錄音、田野訪談都能先做出逐字稿初稿，再由族語老師校對。</p>
           <dl class="sa-figures">
             <div><dt>16 族</dt><dd>全數支援</dd></div>
             <div><dt>&lt; 10%</dt><dd>16 族 CER</dd></div>
-            <div><dt>2 種</dt><dd>語音辨識模型</dd></div>
+            <div><dt>純文字</dt><dd>輸出格式</dd></div>
           </dl>
-          <div class="sa-actions">
-            <a href="{{ ai_url.asr }}" class="btn btn-primary btn-lg px-4 py-3">前往語音辨識系統</a>
-            <a href="{{ ai_url.srt }}" class="btn sa-btn-asr-alt btn-lg px-4 py-3">前往逐字稿辨識系統</a>
-          </div>
+          <a href="{{ ai_url.asr }}" class="btn btn-primary btn-lg px-4 py-3">前往語音辨識系統</a>
         </div>
         <div class="col-12 col-lg-5">
           <figure class="sa-plate m-0">
@@ -123,11 +138,37 @@
     </div>
   </section>
 
-  <section id="tts" class="sa-section sa-section-tts" aria-labelledby="tts-title">
+  <section id="srt" class="sa-section sa-section-srt" aria-labelledby="srt-title">
     <div class="container">
       <div class="row g-5 align-items-start flex-lg-row-reverse">
         <div class="col-12 col-lg-7">
           <p class="sa-eyebrow">系統二</p>
+          <h2 id="srt-title">逐字稿辨識系統</h2>
+          <p class="sa-lead w-75ch">簡化繁瑣的人工作業，加速語料的保存。</p>
+          <p class="w-75ch">以 Whisper Large 模型訓練，支援 16 族族語，輸出 SRT 字幕檔，每句都帶有起訖時間。語推組織與族語老師製作教學影片時，可直接匯入剪輯軟體，省下逐句對時間軸的功夫。</p>
+          <dl class="sa-figures">
+            <div><dt>16 族</dt><dd>全數支援</dd></div>
+            <div><dt>SRT</dt><dd>字幕檔格式</dd></div>
+            <div><dt>Whisper</dt><dd>Large 模型</dd></div>
+          </dl>
+          <a href="{{ ai_url.srt }}" class="btn btn-info btn-lg px-4 py-3">前往逐字稿辨識系統</a>
+        </div>
+        <div class="col-12 col-lg-5">
+          <figure class="sa-plate m-0">
+            <video class="sa-feature-video" autoplay muted loop playsinline preload="metadata" tabindex="0" aria-label="示意圖：逐字稿辨識系統把聲音整理成帶時間軸的字幕。（點一下可暫停或繼續播放）">
+              <source src="{% static 'videos/srt-feature-visual.mp4' %}" type="video/mp4">
+            </video>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tts" class="sa-section sa-section-tts bg-deep-grey" aria-labelledby="tts-title">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+        <div class="col-12 col-lg-7">
+          <p class="sa-eyebrow">系統三</p>
           <h2 id="tts-title">語音合成系統</h2>
           <p class="sa-lead w-75ch">將族語文字轉錄為擬真發音，如實呈現。</p>
           <p class="w-75ch">以 F5-TTS 模型訓練，支援 16 族 42 語別。「預設配音員」輸入文字就能合成；「自己當配音員」錄一段指定句子，系統就用你的聲音唸出族語文字。太魯閣語、秀姑巒阿美語、德固達雅賽德克語族語老師進行的 MOS 盲測中，機器合成分數 4.49–4.84，與同批真人錄音的 4.48–4.92 相當接近。</p>
@@ -149,11 +190,11 @@
     </div>
   </section>
 
-  <section id="translate" class="sa-section sa-section-mt bg-deep-grey" aria-labelledby="translate-title">
+  <section id="translate" class="sa-section sa-section-mt" aria-labelledby="translate-title">
     <div class="container">
-      <div class="row g-5 align-items-start">
+      <div class="row g-5 align-items-start flex-lg-row-reverse">
         <div class="col-12 col-lg-7">
-          <p class="sa-eyebrow">系統三</p>
+          <p class="sa-eyebrow">系統四</p>
           <h2 id="translate-title">基礎翻譯系統</h2>
           <p class="sa-lead w-75ch">族語和華語對譯，成為溝通學習的工具。</p>
           <p class="w-75ch">以 Meta AI 的 NLLB-200 模型為基礎訓練，支援 16 族 42 語別雙向互翻，訓練語料累計 84 萬句、3,289 萬字元。它是「基礎」翻譯系統，適合快速理解一段族語的意思或產出翻譯初稿，正式使用前建議請族語老師確認。</p>
@@ -215,7 +256,7 @@
       <div class="sa-faq">
         <details>
           <summary>需要付費或申請帳號嗎？</summary>
-          <p>三套系統都免費開放使用，直接開啟網頁即可操作，不需要申請帳號。</p>
+          <p>四套系統都免費開放使用，直接開啟網頁即可操作，不需要申請帳號。</p>
         </details>
         <details>
           <summary>辨識或翻譯結果可以直接使用嗎？</summary>

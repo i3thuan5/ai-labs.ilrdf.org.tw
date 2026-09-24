@@ -185,6 +185,7 @@
 
 .sa-section-asr { --sa-system-color: #AC370C; }
 .sa-section-tts { --sa-system-color: #6E3B8E; }
+.sa-section-srt { --sa-system-color: #1D6B5A; }
 .sa-section-mt  { --sa-system-color: #274DAB; }
 
 .sa-eyebrow {
@@ -244,22 +245,20 @@
 	gap: .75rem;
 }
 
-/* 語音辨識區的第二顆按鈕：同色系細框，與主要按鈕分出主次 */
-.sa-btn-asr-alt {
-	--bs-btn-color: #AC370C;
-	--bs-btn-bg: transparent;
-	--bs-btn-border-color: #AC370C;
+/* 逐字稿辨識系統：墨綠色 */
+.sa-section-srt .btn-info {
+	--bs-btn-color: #FFFFFF;
+	--bs-btn-bg: #1D6B5A;
+	--bs-btn-border-color: #1D6B5A;
 	--bs-btn-hover-color: #FFFFFF;
-	--bs-btn-hover-bg: #AC370C;
-	--bs-btn-hover-border-color: #AC370C;
+	--bs-btn-hover-bg: #17574A;
+	--bs-btn-hover-border-color: #17574A;
 	--bs-btn-active-color: #FFFFFF;
-	--bs-btn-active-bg: #8E2D0A;
-	--bs-btn-active-border-color: #8E2D0A;
-	--bs-btn-focus-shadow-rgb: var(--sa-primary-subtle-rgb);
-	border-width: 1px;
+	--bs-btn-active-bg: #12453A;
+	--bs-btn-active-border-color: #12453A;
 }
 
-/* ── 三系統並列比較卡 ───────────────────────────── */
+/* ── 四系統並列比較卡 ───────────────────────────── */
 
 .sa-compare {
 	display: grid;
@@ -272,7 +271,7 @@
 
 @media (min-width: 768px) {
 	.sa-compare {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
 
@@ -291,6 +290,7 @@
 
 .sa-card-asr { --sa-system-color: #AC370C; }
 .sa-card-tts { --sa-system-color: #6E3B8E; }
+.sa-card-srt { --sa-system-color: #1D6B5A; }
 .sa-card-mt  { --sa-system-color: #274DAB; }
 
 .sa-card h3 {
@@ -513,7 +513,8 @@
 
 .sa-card .btn-outline-primary,
 .sa-card .btn-outline-danger,
-.sa-card .btn-outline-success {
+.sa-card .btn-outline-success,
+.sa-card .btn-outline-info {
 	--sa-outline-color: #AC370C;
 	--bs-btn-color: var(--sa-outline-color);
 	--bs-btn-bg: transparent;
@@ -531,10 +532,12 @@
 
 .sa-card .btn-outline-danger { --sa-outline-color: #6E3B8E; }
 .sa-card .btn-outline-success { --sa-outline-color: #274DAB; }
+.sa-card .btn-outline-info { --sa-outline-color: #1D6B5A; }
 
 .sa-card .btn-outline-primary:focus-visible,
 .sa-card .btn-outline-danger:focus-visible,
-.sa-card .btn-outline-success:focus-visible {
+.sa-card .btn-outline-success:focus-visible,
+.sa-card .btn-outline-info:focus-visible {
 	color: #FFFFFF;
 	background-color: var(--sa-outline-color);
 	outline: 3px solid var(--bs-success);

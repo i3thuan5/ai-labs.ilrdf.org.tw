@@ -197,6 +197,7 @@ WAGTAILDOCS_DOCUMENT_FORM_BASE = 'bangtsam.forms.document_base.CustomDocumentFor
 SAPOLITA_ASR_URL = "/sapolita-kaldi/"
 SAPOLITA_TTS_URL = "/hnang-kari-ai-asi-sluhay/"
 SAPOLITA_TRANSLATE_URL = "/kari-seejiq-tnpusu-ai-hmjil/"
+SAPOLITA_SRT_URL = "/sapolita/"
 
 # GA
 GA_MEASUREMENT_ID = os.environ.get('GA_MEASUREMENT_ID', '')

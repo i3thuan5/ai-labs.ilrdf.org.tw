@@ -369,11 +369,9 @@
 	background: var(--sa-paper);
 	padding: .7rem;
 	border-radius: 2px;
-}
-
-.sa-plate {
 	position: relative;
 }
+
 
 .sa-plate img,
 .sa-plate video {

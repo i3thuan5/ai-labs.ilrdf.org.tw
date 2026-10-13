@@ -1,6 +1,6 @@
 {% load static %}
 
-<li><figure class="sa-plate m-0">
+<figure class="sa-plate m-0">
 	<button type="button" class="sa-zoom"
 		data-bs-toggle="modal" data-bs-target="#sa-lightbox"
 		data-sa-src="{% static src %}"
@@ -9,4 +9,4 @@
 		<img src="{% static src %}" alt="{{ caption }}" loading="lazy">
 	</button>
 	<figcaption class="sa-plate__caption">{{ caption }}</figcaption>
-</figure></li>
+</figure>

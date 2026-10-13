@@ -229,10 +229,10 @@
         <figcaption class="sa-plate__caption">族語AI成果影片</figcaption>
       </figure>
       <ul class="sa-gallery" aria-label="成果發表會現場紀錄">
-        {% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-1.JPG' caption='原語會執行長──許韋晟 Lowking Nowbucyang進行成果報告及系統介紹' %}
-        {% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-2.JPG' caption='座談會分享' %}
-        {% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-3.JPG' caption='族語 AI 互動體驗區' %}
-        {% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-4.JPG' caption='活動大合照' %}
+        <li>{% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-1.JPG' caption='原語會執行長──許韋晟 Lowking Nowbucyang進行成果報告及系統介紹' %}</li>
+        <li>{% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-2.JPG' caption='座談會分享' %}</li>
+        <li>{% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-3.JPG' caption='族語 AI 互動體驗區' %}</li>
+        <li>{% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-4.JPG' caption='活動大合照' %}</li>
       </ul>
     </div>
   </section>
@@ -280,11 +280,12 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header border-bottom-0">
-        <h2 class="modal-title fs-6 mb-0" id="sa-lightbox-label" aria-live="polite"></h2>
+        <p class="modal-title fs-6 mb-0" id="sa-lightbox-label" aria-live="polite">相片放大檢視</p>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
       </div>
       <div class="modal-body pt-0 text-center">
-        <img class="sa-lightbox__img" id="sa-lightbox-img" src="" alt="">
+        <img class="sa-lightbox__img" id="sa-lightbox-img"
+             src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="">
       </div>
       <div class="modal-footer border-top-0 sa-lightbox__nav" id="sa-lightbox-nav">
         <button type="button" class="btn btn-outline-secondary" id="sa-lightbox-prev">
@@ -323,8 +324,11 @@
     var prev = document.getElementById('sa-lightbox-prev');
     var next = document.getElementById('sa-lightbox-next');
 
-    var triggers = [].slice.call(document.querySelectorAll('.sa-zoom'));
+    var triggers = Array.from(document.querySelectorAll('.sa-zoom'));
     var current = 0;
+
+    // 關閉時放回去的透明圖，避免 img 出現空的 src
+    var BLANK = img.getAttribute('src');
 
     // 只有一張相片就不顯示切換列
     if (triggers.length < 2) { nav.hidden = true; }
@@ -340,8 +344,7 @@
     }
 
     box.addEventListener('show.bs.modal', function (e) {
-      var i = triggers.indexOf(e.relatedTarget);
-      showAt(i < 0 ? 0 : i);
+      showAt(Math.max(triggers.indexOf(e.relatedTarget), 0));
     });
 
     prev.addEventListener('click', function () { showAt(current - 1); });
@@ -354,9 +357,9 @@
     });
 
     box.addEventListener('hidden.bs.modal', function () {
-      img.removeAttribute('src');
+      img.src = BLANK;
       img.alt = '';
-      label.textContent = '';
+      label.textContent = '相片放大檢視';
       count.textContent = '';
       // 焦點回到最後看的那張，而不是一開始點開的那張。
       // Bootstrap 關閉後會把焦點還給原按鈕，所以要等它做完再改。

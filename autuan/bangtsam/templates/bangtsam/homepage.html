@@ -229,22 +229,10 @@
         <figcaption class="sa-plate__caption">族語AI成果影片</figcaption>
       </figure>
       <ul class="sa-gallery" aria-label="成果發表會現場紀錄">
-        <li><figure class="sa-plate m-0">
-          <img src="{% static 'images/112-114-minanam/minanam-1.JPG' %}" alt="原語會執行長──許韋晟 Lowking Nowbucyang進行成果報告及系統介紹" loading="lazy">
-          <figcaption class="sa-plate__caption">原語會執行長──許韋晟 Lowking Nowbucyang進行成果報告及系統介紹</figcaption>
-        </figure></li>
-        <li><figure class="sa-plate m-0">
-          <img src="{% static 'images/112-114-minanam/minanam-2.JPG' %}" alt="座談會分享" loading="lazy">
-          <figcaption class="sa-plate__caption">座談會分享</figcaption>
-        </figure></li>
-        <li><figure class="sa-plate m-0">
-          <img src="{% static 'images/112-114-minanam/minanam-3.JPG' %}" alt="族語 AI 互動體驗區" loading="lazy">
-          <figcaption class="sa-plate__caption">族語 AI 互動體驗區</figcaption>
-        </figure></li>
-        <li><figure class="sa-plate m-0">
-          <img src="{% static 'images/112-114-minanam/minanam-4.JPG' %}" alt="QA環節" loading="lazy">
-          <figcaption class="sa-plate__caption">活動大合照</figcaption>
-        </figure></li>
+        {% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-1.JPG' caption='原語會執行長──許韋晟 Lowking Nowbucyang進行成果報告及系統介紹' %}
+        {% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-2.JPG' caption='座談會分享' %}
+        {% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-3.JPG' caption='族語 AI 互動體驗區' %}
+        {% include 'bangtsam/gallery_item.html' with src='images/112-114-minanam/minanam-4.JPG' caption='活動大合照' %}
       </ul>
     </div>
   </section>
@@ -287,6 +275,30 @@
     </div>
   </section>
 </main>
+
+<div class="modal fade" id="sa-lightbox" tabindex="-1" aria-labelledby="sa-lightbox-label" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h2 class="modal-title fs-6 mb-0" id="sa-lightbox-label" aria-live="polite"></h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="關閉"></button>
+      </div>
+      <div class="modal-body pt-0 text-center">
+        <img class="sa-lightbox__img" id="sa-lightbox-img" src="" alt="">
+      </div>
+      <div class="modal-footer border-top-0 sa-lightbox__nav" id="sa-lightbox-nav">
+        <button type="button" class="btn btn-outline-secondary" id="sa-lightbox-prev">
+          <span aria-hidden="true">←</span> 上一張
+        </button>
+        <p class="sa-lightbox__count m-0" id="sa-lightbox-count"></p>
+        <button type="button" class="btn btn-outline-secondary" id="sa-lightbox-next">
+          下一張 <span aria-hidden="true">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   (function () {
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -297,6 +309,58 @@
       v.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
       });
+    });
+  })();
+
+  (function () {
+    var box = document.getElementById('sa-lightbox');
+    if (!box) { return; }
+
+    var img = document.getElementById('sa-lightbox-img');
+    var label = document.getElementById('sa-lightbox-label');
+    var count = document.getElementById('sa-lightbox-count');
+    var nav = document.getElementById('sa-lightbox-nav');
+    var prev = document.getElementById('sa-lightbox-prev');
+    var next = document.getElementById('sa-lightbox-next');
+
+    var triggers = [].slice.call(document.querySelectorAll('.sa-zoom'));
+    var current = 0;
+
+    // 只有一張相片就不顯示切換列
+    if (triggers.length < 2) { nav.hidden = true; }
+
+    function showAt(i) {
+      current = (i + triggers.length) % triggers.length;
+      var trigger = triggers[current];
+      var caption = trigger.dataset.saCaption || '';
+      img.src = trigger.dataset.saSrc;
+      img.alt = caption;
+      label.textContent = caption;
+      count.textContent = (current + 1) + ' / ' + triggers.length;
+    }
+
+    box.addEventListener('show.bs.modal', function (e) {
+      var i = triggers.indexOf(e.relatedTarget);
+      showAt(i < 0 ? 0 : i);
+    });
+
+    prev.addEventListener('click', function () { showAt(current - 1); });
+    next.addEventListener('click', function () { showAt(current + 1); });
+
+    box.addEventListener('keydown', function (e) {
+      if (triggers.length < 2) { return; }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); showAt(current - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); showAt(current + 1); }
+    });
+
+    box.addEventListener('hidden.bs.modal', function () {
+      img.removeAttribute('src');
+      img.alt = '';
+      label.textContent = '';
+      count.textContent = '';
+      // 焦點回到最後看的那張，而不是一開始點開的那張。
+      // Bootstrap 關閉後會把焦點還給原按鈕，所以要等它做完再改。
+      setTimeout(function () { triggers[current].focus(); }, 0);
     });
   })();
 </script>

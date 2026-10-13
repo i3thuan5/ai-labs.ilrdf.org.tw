@@ -509,6 +509,89 @@
 	object-fit: cover;
 }
 
+/* 點圖放大：按鈕包住圖，本身不佔視覺重量 */
+
+.sa-zoom {
+	display: block;
+	width: 100%;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: zoom-in;
+	position: relative;
+}
+
+.sa-zoom:focus-visible {
+	outline: 3px solid var(--bs-success);
+	outline-offset: 2px;
+}
+
+/* 右下角的放大鏡，告知這張圖點得開 */
+.sa-zoom::after {
+	content: "";
+	position: absolute;
+	right: .5rem;
+	bottom: .5rem;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	background-color: rgba(32, 31, 29, .72);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 1.1rem;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3E%3Cpath d='M6.5 1a5.5 5.5 0 0 1 4.383 8.823l4.147 4.147a.75.75 0 1 1-1.06 1.06l-4.147-4.147A5.5 5.5 0 1 1 6.5 1m0 1.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8M6.5 4a.5.5 0 0 1 .5.5V6h1.5a.5.5 0 0 1 0 1H7v1.5a.5.5 0 0 1-1 0V7H4.5a.5.5 0 0 1 0-1H6V4.5a.5.5 0 0 1 .5-.5'/%3E%3C/svg%3E");
+	transition: background-color .15s ease-in-out;
+}
+
+.sa-zoom:hover::after,
+.sa-zoom:focus-visible::after {
+	background-color: var(--sa-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sa-zoom::after {
+		transition: none;
+	}
+}
+
+/* 放大後的圖：完整顯示，不裁切 */
+
+.sa-lightbox__img {
+	display: block;
+	width: auto;
+	max-width: 100%;
+	max-height: 70vh;
+	margin: 0 auto;
+	object-fit: contain;
+}
+
+/* 上一張／下一張 */
+
+.sa-lightbox__nav {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: .75rem;
+}
+
+.sa-lightbox__nav .btn {
+	--bs-btn-color: var(--sa-ink);
+	--bs-btn-border-color: var(--sa-hairline);
+	--bs-btn-hover-color: #FFFFFF;
+	--bs-btn-hover-bg: var(--sa-ink);
+	--bs-btn-hover-border-color: var(--sa-ink);
+	--bs-btn-active-bg: var(--sa-ink);
+	--bs-btn-active-border-color: var(--sa-ink);
+	white-space: nowrap;
+}
+
+.sa-lightbox__count {
+	color: var(--sa-muted);
+	font-size: .95rem;
+	font-variant-numeric: tabular-nums;
+}
+
 /* ── 首頁專用外框按鈕（站內設定會把 outline 變填色，這裡改回細框）──── */
 
 .sa-card .btn-outline-primary,

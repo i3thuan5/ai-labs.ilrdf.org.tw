@@ -18,3 +18,6 @@ services:
   nginx:
     environment:
       LETSENCRYPT_HOST: ${VIRTUAL_HOST}
+    networks: !override
+      - nginx-bridge
+      - gunicorn-bridge

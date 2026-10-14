@@ -47,3 +47,18 @@ class ThehAiWebsiteURLTest(TestCase):
             response, settings.SAPOLITA_TTS_URL)
         self.assertContains(
             response, settings.SAPOLITA_TRANSLATE_URL)
+
+
+class ThehGaIdTest(TestCase):
+
+    def test_bo_setting_tio_bo_ga(self):
+        homepage = tshong_wagtail_homepage()
+        with self.settings(GA_MEASUREMENT_ID=''):
+            response = self.client.get(homepage.url)
+        self.assertNotContains(response, 'googletagmanager.com')
+
+    def test_u_setting_tio_u_ga(self):
+        homepage = tshong_wagtail_homepage()
+        with self.settings(GA_MEASUREMENT_ID='G-TESTING000'):
+            response = self.client.get(homepage.url)
+        self.assertContains(response, 'G-TESTING000')

@@ -1,0 +1,18 @@
+---
+services:
+
+  nginx:
+    depends_on:
+      - gunicorn
+      - asr
+      - asr-kaldi
+      - tts
+      - mt
+
+  gunicorn:
+    image: ithuan/ai-labs.ilrdf.org.tw:latest
+    build: !reset null
+
+  django-static:
+    image: ithuan/ai-labs.ilrdf.org.tw:latest
+    build: !reset null

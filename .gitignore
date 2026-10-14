@@ -176,3 +176,6 @@ cython_debug/
 node_modules/
 package.json
 package-lock.json
+model_cache*
+.claude/
+kithann/

@@ -185,7 +185,7 @@ p {
 }
 
 .dropdown-menu {
-	--bs-dropdown-min-width: 2rem;
+	--bs-dropdown-min-width: max-content;
 	--bs-dropdown-font-size: var(--bs-body-font-size);
 }
 
@@ -326,12 +326,12 @@ h2:hover > a, h3:hover > a {
 	z-index: 99;
 }
 
-main.hero {
+.hero {
 	background-repeat: no-repeat;
 }
 
-main.hero > .position-relative {
-	min-height: 70vh;
+.hero > .position-relative {
+	min-height: 60vh;
 }
 
 .main-m-hero > img{
@@ -339,14 +339,14 @@ main.hero > .position-relative {
 }
 
 @media screen and (min-width: 768px){
-	main.hero {
+	.hero {
 		background-image: url('../images/hero.webp');
 		background-repeat: repeat-y;
 		background-position: left;
 		background-size: 200px;
 	}
-	main.hero > .position-relative {
-		min-height: 60vh;
+	.hero > .position-relative {
+		min-height: 55vh;
 	}
 }
 

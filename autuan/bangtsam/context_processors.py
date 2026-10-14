@@ -24,5 +24,10 @@ def theh_ai_url(request):
             "asr": settings.SAPOLITA_ASR_URL,
             "tts": settings.SAPOLITA_TTS_URL,
             "translate": settings.SAPOLITA_TRANSLATE_URL,
+            "srt": settings.SAPOLITA_SRT_URL,
         }
     }
+
+
+def theh_ga_id(request):
+    return {'ga_measurement_id': settings.GA_MEASUREMENT_ID}

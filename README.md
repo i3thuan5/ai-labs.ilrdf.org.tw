@@ -1,8 +1,14 @@
 # ai-labs.ilrdf.org.tw
 
-族語AI成果網站
+族語AI成果網站。上線指令：
 
-專案開發枋模
+```bash
+docker compose \
+  -f docker-compose.yml \
+  -f deploy/docker-compose-ai-labs.yml \
+  -f deploy/docker-compose-formosan-ai.yml \
+  up -d --pull always
+```
 
 ## 開發
 
@@ -59,7 +65,16 @@ pip install tox
   - ./secrets/postgres_passwd.txt
   - ./secrets/sentry_dsn.txt
 - 正式機媒體檔資料夾改權限：`chmod 1777 media/`。
-- 開[https://github.com/i3thuan5/Formosan-AI](https://github.com/i3thuan5/Formosan-AI) ê docker compose服務。
+
+上線指令：
+
+```bash
+docker compose \
+  -f docker-compose.yml \
+  -f deploy/docker-compose-ai-labs.yml \
+  -f deploy/docker-compose-formosan-ai.yml \
+  up -d --pull always
+```
 
 上線後愛做：
 

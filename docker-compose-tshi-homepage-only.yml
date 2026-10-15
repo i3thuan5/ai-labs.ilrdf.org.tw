@@ -1,0 +1,23 @@
+---
+services:
+  gunicorn:
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    depends_on: !reset []
+    environment:
+      DJANGO_SETTINGS_MODULE: autuan.settings
+    ports:
+      - "8000:8000"
+    user: "root"
+    volumes:
+      - "./autuan:/app"
+
+  django-static:
+    volumes:
+      - "./autuan:/app"
+
+  nginx:
+    environment:
+      LETSENCRYPT_HOST: ${VIRTUAL_HOST}
+    networks: !override
+      - nginx-bridge
+      - gunicorn-bridge

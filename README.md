@@ -112,3 +112,11 @@ docker cp ~/ilrdf.org.tw.2026.chained.crt zugi-nginx-proxy-1:/etc/nginx/certs/il
 ```bash
 docker compose exec nginx-proxy nginx -s reload
 ```
+
+## 測試機上線，僅跑起首頁
+
+需要產生 `.env`，寫入 `VIRTUAL_HOST` 和 `LETSENCRYPT_HOST`。
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose-tshi-homepage-only.yml up -d
+```

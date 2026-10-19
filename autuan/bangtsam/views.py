@@ -1,5 +1,8 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.http import require_GET
+
+from bangtsam.ga_pv import theh_ga_pv
 
 
 @require_GET
@@ -10,6 +13,12 @@ def comming_soon_view(request):
 @require_GET
 def webmanifest_view(request):
     return render(request, 'khing/site.webmanifest')
+
+
+@require_GET
+def ga_pv_view(request):
+    # 予Gradio ê AI應用系統提瀏覽人次
+    return JsonResponse({'pv': theh_ga_pv()})
 
 
 @require_GET

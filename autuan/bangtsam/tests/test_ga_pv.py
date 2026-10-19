@@ -54,47 +54,47 @@ class ThehGaPvTest(GaPvTestCase):
         with self.settings_bo_ga:
             self.assertIsNone(theh_ga_pv())
 
-    @patch(tsha_GA)
+    @patch(TSHA_GA)
     def test_bo_setting_ga_bo_tsha(self, tsha_ga):
         self.sia_tong(359, kui_jit_tsing=1)
         with self.settings_bo_ga:
             theh_ga_pv()
         tsha_ga.assert_not_called()
 
-    @patch(tsha_GA, return_value=1000)
+    @patch(TSHA_GA, return_value=1000)
     def test_bo_tong_tsha_ga(self, tsha_ga):
         with self.settings_ga:
             self.assertEqual(theh_ga_pv(), 1000)
         self.assertEqual(self.pv_file.read_text(), '1000\n')
 
-    @patch(tsha_GA, return_value=1000)
+    @patch(TSHA_GA, return_value=1000)
     def test_tong_si_tsa_hng_e_tsha_ga(self, tsha_ga):
         self.sia_tong(359, kui_jit_tsing=1)
         with self.settings_ga:
             self.assertEqual(theh_ga_pv(), 1000)
         tsha_ga.assert_called_once()
 
-    @patch(tsha_GA, return_value=1000)
+    @patch(TSHA_GA, return_value=1000)
     def test_tong_si_kin_a_jit_e_bo_tsha_ga(self, tsha_ga):
         self.sia_tong(359)
         with self.settings_ga:
             self.assertEqual(theh_ga_pv(), 359)
         tsha_ga.assert_not_called()
 
-    @patch(tsha_GA, return_value=1000)
+    @patch(TSHA_GA, return_value=1000)
     def test_kang_tsit_jit_kan_na_tsha_tsit_pai(self, tsha_ga):
         with self.settings_ga:
             theh_ga_pv()
             theh_ga_pv()
         tsha_ga.assert_called_once()
 
-    @patch(tsha_GA, side_effect=Exception('GA bo ing'))
+    @patch(TSHA_GA, side_effect=Exception('GA bo ing'))
     def test_ga_sit_pai_iong_ku_e_pv(self, tsha_ga):
         self.sia_tong(359, kui_jit_tsing=1)
         with self.settings_ga, self.assertLogs('bangtsam.ga_pv', 'ERROR'):
             self.assertEqual(theh_ga_pv(), 359)
 
-    @patch(tsha_GA, side_effect=Exception('GA bo ing'))
+    @patch(TSHA_GA, side_effect=Exception('GA bo ing'))
     def test_ga_sit_pai_bo_sui_si_koh_tshi(self, tsha_ga):
         self.sia_tong(359, kui_jit_tsing=1)
         with self.settings_ga, self.assertLogs('bangtsam.ga_pv', 'ERROR'):

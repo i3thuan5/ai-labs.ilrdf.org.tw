@@ -42,7 +42,7 @@ def theh_ga_pv():
             _sia_pv(_tsham_ga_pv())
         except Exception:
             logger.exception('查GA瀏覽人次失敗')
-    return _tok_pv()
+    return _thak_pv()
 
 
 def _ai_tsham_ga():
@@ -86,7 +86,7 @@ def _tsham_ga_pv():
     return int(rows[0]['metricValues'][0]['value'])
 
 
-def _tok_pv():
+def _thak_pv():
     try:
         return int(Path(settings.GA_PV_FILE).read_text().strip())
     except (OSError, ValueError):

@@ -128,7 +128,7 @@ class TshamGaPvTest(GaPvTestCase):
             {'startDate': '2026-09-11', 'endDate': 'yesterday'}])
         self.assertEqual(body['metrics'], [{'name': 'screenPageViews'}])
 
-    def test_tok_pv_tsongho(self):
+    def test_thak_pv_tsongho(self):
         pv, _, _ = self.tsham({
             'rows': [{'metricValues': [{'value': '12345'}]}],
         })

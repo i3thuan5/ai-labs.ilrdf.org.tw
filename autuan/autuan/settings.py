@@ -85,6 +85,7 @@ TEMPLATES = [
                 'bangtsam.context_processors.theh_wagtail_pages',
                 'bangtsam.context_processors.theh_ai_url',
                 'bangtsam.context_processors.theh_ga_id',
+                'bangtsam.context_processors.theh_ga_pv',
             ],
         },
     },
@@ -201,3 +202,8 @@ SAPOLITA_SRT_URL = "/sapolita/"
 
 # GA
 GA_MEASUREMENT_ID = os.environ.get('GA_MEASUREMENT_ID', '')
+# GA瀏覽人次：GA4資源ID（數字，毋是G-開頭ê評估ID）佮服務帳戶金鑰JSON
+GA_PROPERTY_ID = os.environ.get('GA_PROPERTY_ID', '')
+GA_CREDENTIALS_FILE = os.environ.get('GA_CREDENTIALS_FILE', '')
+GA_PV_START_DATE = '2026-09-11'
+GA_PV_FILE = os.environ.get('GA_PV_FILE', os.path.join(BASE_DIR, 'ga-pv', 'pv.txt'))

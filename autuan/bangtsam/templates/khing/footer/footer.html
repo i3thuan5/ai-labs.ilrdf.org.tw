@@ -18,7 +18,9 @@
 			</div>
 			<div class="col-12 col-lg-3">
 				<ul class="list-unstyled">
-					<li class="mb-3" id="ga-pv" title="統計區間：2026/09/11至昨日，每日更新。" tabindex="0">瀏覽人次（每日更新）：359</li>
+					{% if ga_pv is not None %}
+					<li class="mb-3" id="ga-pv" title="統計區間：2026/09/11至昨日，每日更新。" tabindex="0">瀏覽人次（每日更新）：{{ ga_pv }}</li>
+					{% endif %}
 					<li class="mb-3">{% include 'khing/footer/link.html' with wagtail_iah=copyrightpage %}</li>
 					<li class="mb-3">{% include 'khing/footer/link.html' with wagtail_iah=termofusepage %}</li>
 					<li class="mb-3"><img src="{% static 'logo/accessibility-AA-mark.png' %}" alt="待申請尚未通過無障礙標章AA"></li>

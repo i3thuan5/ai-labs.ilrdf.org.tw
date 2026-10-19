@@ -29,7 +29,7 @@ GA_TIMEOUT_SECONDS = 10
 # 查GA失敗了後，同一个process等遮久才閣試，
 # 免得GA有問題ê時，逐个request攏去等GA。
 RETRY_SECONDS = 10 * 60
-TSHI_CACHE_KEY = 'ga-pv-tsham-tsing'
+TSHI_CACHE_KEY = 'ga-pv-tsha-tsing'
 
 
 def theh_ga_pv():
@@ -37,15 +37,15 @@ def theh_ga_pv():
     提PV總和（int）；檔案無抑是內容毋著，回傳None。
     若檔案毋是今仔日寫ê，先去GA查新ê數字。
     """
-    if _ai_tsham_ga():
+    if _ai_tsha_ga():
         try:
-            _sia_pv(_tsham_ga_pv())
+            _sia_pv(_tsha_ga_pv())
         except Exception:
             logger.exception('查GA瀏覽人次失敗')
     return _thak_pv()
 
 
-def _ai_tsham_ga():
+def _ai_tsha_ga():
     if not settings.GA_PROPERTY_ID or not settings.GA_CREDENTIALS_FILE:
         return False
     if _pv_si_kin_a_jit_e():
@@ -64,7 +64,7 @@ def _pv_si_kin_a_jit_e():
     return sia_jit >= timezone.localdate()
 
 
-def _tsham_ga_pv():
+def _tsha_ga_pv():
     credentials = service_account.Credentials.from_service_account_file(
         settings.GA_CREDENTIALS_FILE, scopes=GA_SCOPES)
     session = AuthorizedSession(credentials)

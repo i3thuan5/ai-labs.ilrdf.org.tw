@@ -7,10 +7,10 @@ from unittest.mock import patch, MagicMock
 from django.core.cache import cache
 from django.test import TestCase
 
-from bangtsam.ga_pv import theh_ga_pv, _tsham_ga_pv
+from bangtsam.ga_pv import theh_ga_pv, _tsha_ga_pv
 from bangtsam.tests.utils import tshong_wagtail_homepage
 
-TSHAM_GA = 'bangtsam.ga_pv._tsham_ga_pv'
+tsha_GA = 'bangtsam.ga_pv._tsha_ga_pv'
 
 
 class GaPvTestCase(TestCase):
@@ -54,58 +54,58 @@ class ThehGaPvTest(GaPvTestCase):
         with self.settings_bo_ga:
             self.assertIsNone(theh_ga_pv())
 
-    @patch(TSHAM_GA)
-    def test_bo_setting_ga_bo_tsham(self, tsham_ga):
+    @patch(tsha_GA)
+    def test_bo_setting_ga_bo_tsha(self, tsha_ga):
         self.sia_tong(359, kui_jit_tsing=1)
         with self.settings_bo_ga:
             theh_ga_pv()
-        tsham_ga.assert_not_called()
+        tsha_ga.assert_not_called()
 
-    @patch(TSHAM_GA, return_value=1000)
-    def test_bo_tong_tsham_ga(self, tsham_ga):
+    @patch(tsha_GA, return_value=1000)
+    def test_bo_tong_tsha_ga(self, tsha_ga):
         with self.settings_ga:
             self.assertEqual(theh_ga_pv(), 1000)
         self.assertEqual(self.pv_file.read_text(), '1000\n')
 
-    @patch(TSHAM_GA, return_value=1000)
-    def test_tong_si_tsa_hng_e_tsham_ga(self, tsham_ga):
+    @patch(tsha_GA, return_value=1000)
+    def test_tong_si_tsa_hng_e_tsha_ga(self, tsha_ga):
         self.sia_tong(359, kui_jit_tsing=1)
         with self.settings_ga:
             self.assertEqual(theh_ga_pv(), 1000)
-        tsham_ga.assert_called_once()
+        tsha_ga.assert_called_once()
 
-    @patch(TSHAM_GA, return_value=1000)
-    def test_tong_si_kin_a_jit_e_bo_tsham_ga(self, tsham_ga):
+    @patch(tsha_GA, return_value=1000)
+    def test_tong_si_kin_a_jit_e_bo_tsha_ga(self, tsha_ga):
         self.sia_tong(359)
         with self.settings_ga:
             self.assertEqual(theh_ga_pv(), 359)
-        tsham_ga.assert_not_called()
+        tsha_ga.assert_not_called()
 
-    @patch(TSHAM_GA, return_value=1000)
-    def test_kang_tsit_jit_kan_na_tsham_tsit_pai(self, tsham_ga):
+    @patch(tsha_GA, return_value=1000)
+    def test_kang_tsit_jit_kan_na_tsha_tsit_pai(self, tsha_ga):
         with self.settings_ga:
             theh_ga_pv()
             theh_ga_pv()
-        tsham_ga.assert_called_once()
+        tsha_ga.assert_called_once()
 
-    @patch(TSHAM_GA, side_effect=Exception('GA bo ing'))
-    def test_ga_sit_pai_iong_ku_e_pv(self, tsham_ga):
+    @patch(tsha_GA, side_effect=Exception('GA bo ing'))
+    def test_ga_sit_pai_iong_ku_e_pv(self, tsha_ga):
         self.sia_tong(359, kui_jit_tsing=1)
         with self.settings_ga, self.assertLogs('bangtsam.ga_pv', 'ERROR'):
             self.assertEqual(theh_ga_pv(), 359)
 
-    @patch(TSHAM_GA, side_effect=Exception('GA bo ing'))
-    def test_ga_sit_pai_bo_sui_si_koh_tshi(self, tsham_ga):
+    @patch(tsha_GA, side_effect=Exception('GA bo ing'))
+    def test_ga_sit_pai_bo_sui_si_koh_tshi(self, tsha_ga):
         self.sia_tong(359, kui_jit_tsing=1)
         with self.settings_ga, self.assertLogs('bangtsam.ga_pv', 'ERROR'):
             theh_ga_pv()
             theh_ga_pv()
-        tsham_ga.assert_called_once()
+        tsha_ga.assert_called_once()
 
 
-class TshamGaPvTest(GaPvTestCase):
+class tshaGaPvTest(GaPvTestCase):
 
-    def tsham(self, response_json):
+    def tsha(self, response_json):
         response = MagicMock()
         response.json.return_value = response_json
         with self.settings_ga, \
@@ -113,11 +113,11 @@ class TshamGaPvTest(GaPvTestCase):
                       '.from_service_account_file') as credentials, \
                 patch('google.auth.transport.requests.AuthorizedSession'
                       '.post', return_value=response) as post:
-            pv = _tsham_ga_pv()
+            pv = _tsha_ga_pv()
         return pv, credentials, post
 
-    def test_tsham_tui_khai_si_kau_tsa_hng(self):
-        _, credentials, post = self.tsham({'rows': []})
+    def test_tsha_tui_khai_si_kau_tsa_hng(self):
+        _, credentials, post = self.tsha({'rows': []})
         credentials.assert_called_once_with(
             '/run/secrets/ga_credentials',
             scopes=['https://www.googleapis.com/auth/analytics.readonly'])
@@ -129,13 +129,13 @@ class TshamGaPvTest(GaPvTestCase):
         self.assertEqual(body['metrics'], [{'name': 'screenPageViews'}])
 
     def test_thak_pv_tsongho(self):
-        pv, _, _ = self.tsham({
+        pv, _, _ = self.tsha({
             'rows': [{'metricValues': [{'value': '12345'}]}],
         })
         self.assertEqual(pv, 12345)
 
     def test_bo_tsu_liau_si_0(self):
-        pv, _, _ = self.tsham({})
+        pv, _, _ = self.tsha({})
         self.assertEqual(pv, 0)
 
 

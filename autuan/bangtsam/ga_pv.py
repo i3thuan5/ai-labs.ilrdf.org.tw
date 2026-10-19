@@ -46,13 +46,13 @@ def theh_ga_pv():
 def _ai_tsham_ga():
     if not settings.GA_PROPERTY_ID or not settings.GA_CREDENTIALS_FILE:
         return False
-    if _pv_si_kim_a_jit_e():
+    if _pv_si_kin_a_jit_e():
         return False
     # cache.add只有頭一擺會成功，鎖同一个process無重複查
     return cache.add(TSHI_CACHE_KEY, True, RETRY_SECONDS)
 
 
-def _pv_si_kim_a_jit_e():
+def _pv_si_kin_a_jit_e():
     try:
         mtime = Path(settings.GA_PV_FILE).stat().st_mtime
     except OSError:

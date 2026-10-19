@@ -75,7 +75,7 @@ class ThehGaPvTest(GaPvTestCase):
         tsham_ga.assert_called_once()
 
     @patch(TSHAM_GA, return_value=1000)
-    def test_tong_si_kim_a_jit_e_bo_tsham_ga(self, tsham_ga):
+    def test_tong_si_kin_a_jit_e_bo_tsham_ga(self, tsham_ga):
         self.sia_tong(359)
         with self.settings_ga:
             self.assertEqual(theh_ga_pv(), 359)

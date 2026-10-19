@@ -10,7 +10,7 @@ from django.test import TestCase
 from bangtsam.ga_pv import theh_ga_pv, _tsha_ga_pv
 from bangtsam.tests.utils import tshong_wagtail_homepage
 
-tsha_GA = 'bangtsam.ga_pv._tsha_ga_pv'
+TSHA_GA = 'bangtsam.ga_pv._tsha_ga_pv'
 
 
 class GaPvTestCase(TestCase):

@@ -1,6 +1,7 @@
 FROM python:3.12
 
 ENV DJANGO_SETTINGS_MODULE=autuan.settings-tsiunnsuann
+ENV TZ=Asia/Taipei
 
 WORKDIR /app
 COPY requirements-prod.txt ./

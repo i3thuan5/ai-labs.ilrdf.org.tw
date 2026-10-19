@@ -26,7 +26,7 @@ GA_TIMEOUT_SECONDS = 10
 
 # 查GA失敗了後，同一个process等遮久才閣試，
 # 免得GA有問題ê時，逐个request攏去等GA。
-TSHI_KHUAN_SECONDS = 10 * 60
+RETRY_SECONDS = 10 * 60
 TSHI_CACHE_KEY = 'ga-pv-tsham-tsing'
 
 
@@ -49,7 +49,7 @@ def _ai_tsham_ga():
     if _pv_si_kim_a_jit_e():
         return False
     # cache.add只有頭一擺會成功，鎖同一个process無重複查
-    return cache.add(TSHI_CACHE_KEY, True, TSHI_KHUAN_SECONDS)
+    return cache.add(TSHI_CACHE_KEY, True, RETRY_SECONDS)
 
 
 def _pv_si_kim_a_jit_e():

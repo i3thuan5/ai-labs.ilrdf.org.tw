@@ -28,6 +28,8 @@ services:
       DJANGO_ALLOW_HOSTS: ${VIRTUAL_HOST}
       POSTGRES_PASSWORD_FILE: /run/secrets/postgres_passwd
       GA_MEASUREMENT_ID: ${GA_MEASUREMENT_ID:-}
+      GA_PROPERTY_ID: ${GA_PROPERTY_ID:-}
+      GA_CREDENTIALS_FILE: /run/secrets/ga_credentials
       SENTRY_DSN_FILE: /run/secrets/sentry_dsn
     networks:
       - gunicorn-bridge
@@ -37,8 +39,10 @@ services:
       - django_secret_key
       - postgres_passwd
       - sentry_dsn
+      - ga_credentials
     volumes:
       - "./media:/app/media/"
+      - "ga-pv:/app/ga-pv/"
 
   django-static:
     build: .
@@ -88,7 +92,10 @@ secrets:
     file: ./secrets/postgres_passwd.txt
   sentry_dsn:
     file: ./secrets/sentry_dsn.txt
+  ga_credentials:
+    file: ./secrets/ga_credentials.json
 
 volumes:
   postgres-data:
   staticfiles:
+  ga-pv:

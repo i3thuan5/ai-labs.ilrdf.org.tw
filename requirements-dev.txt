@@ -14,8 +14,12 @@ beautifulsoup4==4.14.2
     # via wagtail
 certifi==2025.10.5
     # via requests
+cffi==2.1.1
+    # via cryptography
 charset-normalizer==3.4.3
     # via requests
+cryptography==50.0.2
+    # via google-auth
 defusedxml==0.7.1
     # via willow
 django==5.2.9
@@ -58,6 +62,8 @@ et-xmlfile==2.0.0
     # via openpyxl
 filetype==1.2.0
     # via willow
+google-auth==2.60.0
+    # via -r requirements-dev.in
 idna==3.10
     # via requests
 laces==0.1.2
@@ -70,6 +76,12 @@ pillow==11.3.0
     #   wagtail
 pillow-heif==1.1.1
     # via willow
+pyasn1==0.6.4
+    # via pyasn1-modules
+pyasn1-modules==0.4.2
+    # via google-auth
+pycparser==3.0
+    # via cffi
 requests==2.32.5
     # via wagtail
 soupsieve==2.8

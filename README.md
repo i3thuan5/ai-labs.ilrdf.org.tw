@@ -64,6 +64,7 @@ pip install tox
   - ./secrets/django_secret_key.txt
   - ./secrets/postgres_passwd.txt
   - ./secrets/sentry_dsn.txt
+  - ./secrets/ga_credentials.json （GA服務帳戶的金鑰。GA資源請原語會加服務帳戶做「檢視者」。）
 - 正式機媒體檔資料夾改權限：`chmod 1777 media/`。
 
 上線指令：

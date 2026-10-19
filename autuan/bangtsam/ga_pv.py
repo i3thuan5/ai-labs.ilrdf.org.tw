@@ -14,6 +14,8 @@ from pathlib import Path
 from django.conf import settings
 from django.core.cache import cache
 from django.utils import timezone
+from google.auth.transport.requests import AuthorizedSession
+from google.oauth2 import service_account
 
 logger = logging.getLogger(__name__)
 
@@ -63,10 +65,6 @@ def _pv_si_kin_a_jit_e():
 
 
 def _tsham_ga_pv():
-    # 只有需要查GA ê時才import，無設定GA ê環境免載入
-    from google.auth.transport.requests import AuthorizedSession
-    from google.oauth2 import service_account
-
     credentials = service_account.Credentials.from_service_account_file(
         settings.GA_CREDENTIALS_FILE, scopes=GA_SCOPES)
     session = AuthorizedSession(credentials)

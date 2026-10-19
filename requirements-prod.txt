@@ -22,10 +22,18 @@ certifi==2025.10.5
     #   -r requirements-dev.txt
     #   requests
     #   sentry-sdk
+cffi==2.1.1
+    # via
+    #   -r requirements-dev.txt
+    #   cryptography
 charset-normalizer==3.4.3
     # via
     #   -r requirements-dev.txt
     #   requests
+cryptography==50.0.2
+    # via
+    #   -r requirements-dev.txt
+    #   google-auth
 defusedxml==0.7.1
     # via
     #   -r requirements-dev.txt
@@ -93,6 +101,8 @@ filetype==1.2.0
     # via
     #   -r requirements-dev.txt
     #   willow
+google-auth==2.60.0
+    # via -r requirements-dev.txt
 gunicorn==23.0.0
     # via -r requirements-prod.in
 idna==3.10
@@ -122,6 +132,18 @@ psycopg[binary]==3.2.12
     # via -r requirements-prod.in
 psycopg-binary==3.2.12
     # via psycopg
+pyasn1==0.6.4
+    # via
+    #   -r requirements-dev.txt
+    #   pyasn1-modules
+pyasn1-modules==0.4.2
+    # via
+    #   -r requirements-dev.txt
+    #   google-auth
+pycparser==3.0
+    # via
+    #   -r requirements-dev.txt
+    #   cffi
 requests==2.32.5
     # via
     #   -r requirements-dev.txt

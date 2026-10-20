@@ -1,4 +1,5 @@
 import os
+import stat
 import tempfile
 import time
 from pathlib import Path
@@ -66,6 +67,13 @@ class ThehGaPvTest(GaPvTestCase):
         with self.settings_ga:
             self.assertEqual(theh_ga_pv(), 1000)
         self.assertEqual(self.pv_file.read_text(), '1000\n')
+
+    @patch(TSHA_GA, return_value=1000)
+    def test_sia_tong_kuan_han_si_644(self, tsha_ga):
+        with self.settings_ga:
+            theh_ga_pv()
+        kuan_han = stat.S_IMODE(self.pv_file.stat().st_mode)
+        self.assertEqual(kuan_han, 0o644)
 
     @patch(TSHA_GA, return_value=1000)
     def test_tong_si_tsa_hng_e_tsha_ga(self, tsha_ga):

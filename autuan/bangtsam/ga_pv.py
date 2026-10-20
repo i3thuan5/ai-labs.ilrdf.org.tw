@@ -101,6 +101,7 @@ def _sia_pv(pv):
     try:
         with os.fdopen(fd, 'w') as f:
             f.write(f'{pv}\n')
+        os.chmod(tmp, 0o644)
         os.replace(tmp, tong)
     except BaseException:
         os.unlink(tmp)

@@ -7,7 +7,6 @@ services:
       DJANGO_SETTINGS_MODULE: autuan.settings
     ports:
       - "8000:8000"
-    user: "root"
     volumes:
       - "./autuan:/app"
 

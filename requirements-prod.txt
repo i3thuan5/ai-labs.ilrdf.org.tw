@@ -51,6 +51,7 @@ django==5.2.9
     #   django-treebeard
     #   djangorestframework
     #   laces
+    #   modelsearch
     #   sentry-sdk
     #   wagtail
 django-axes==8.0.0
@@ -59,7 +60,7 @@ django-filter==25.2
     # via
     #   -r requirements-dev.txt
     #   wagtail
-django-modelcluster==6.4
+django-modelcluster==6.5
     # via
     #   -r requirements-dev.txt
     #   wagtail
@@ -77,9 +78,10 @@ django-taggit==6.1.0
     # via
     #   -r requirements-dev.txt
     #   wagtail
-django-tasks==0.8.1
+django-tasks==0.12.0
     # via
     #   -r requirements-dev.txt
+    #   modelsearch
     #   wagtail
 django-treebeard==4.7.1
     # via
@@ -110,6 +112,10 @@ idna==3.10
     #   -r requirements-dev.txt
     #   requests
 laces==0.1.2
+    # via
+    #   -r requirements-dev.txt
+    #   wagtail
+modelsearch==1.2.2
     # via
     #   -r requirements-dev.txt
     #   wagtail
@@ -174,7 +180,7 @@ urllib3==2.6.3
     #   -r requirements-dev.txt
     #   requests
     #   sentry-sdk
-wagtail==7.1.1
+wagtail==7.3.2
     # via -r requirements-dev.txt
 willow[heif]==1.11.0
     # via

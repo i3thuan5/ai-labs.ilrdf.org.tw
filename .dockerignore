@@ -21,6 +21,10 @@ secrets/
 
 */media/
 
+# GA瀏覽人次，執行時才產生
+
+*/ga-pv/
+
 # Docker
 
 .dockerignore

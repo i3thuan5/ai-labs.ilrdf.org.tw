@@ -21,6 +21,37 @@
       ansible.builtin.template:
         src: .env.template
         dest: "{{ tsuanan_path }}/.env"
+    - name: 設定secrets檔案簿仔
+      ansible.builtin.file:
+        path: "{{ tsuanan_path }}/secrets"
+        state: directory
+        mode: '700'
+    - name: 設定django_secret_key
+      ansible.builtin.copy:
+        content: "{{ lookup('ansible.builtin.password', '/dev/null', length=32, chars=['ascii_letters', 'digits']) }}"
+        dest: "{{ tsuanan_path }}/secrets/django_secret_key.txt"
+        mode: '0644'
+        force: false
+      no_log: true
+    - name: 設定postgres_passwd，干焦頭一擺產生，以後毋通改
+      ansible.builtin.copy:
+        content: "{{ lookup('ansible.builtin.password', '/dev/null', length=32, chars=['ascii_letters', 'digits']) }}"
+        dest: "{{ tsuanan_path }}/secrets/postgres_passwd.txt"
+        mode: '0644'
+        force: false
+      no_log: true
+    - name: 設定sentry_dsn
+      ansible.builtin.copy:
+        content: "{{ SENTRY_DSN }}"
+        dest: "{{ tsuanan_path }}/secrets/sentry_dsn.txt"
+        mode: '0644'
+      no_log: true
+    - name: 設定ga_credentials
+      ansible.builtin.copy:
+        content: "{}"
+        dest: "{{ tsuanan_path }}/secrets/ga_credentials.json"
+        mode: '0644'
+      no_log: true
     - name: 設定辨識model_cache檔案簿仔
       ansible.builtin.file:
         path: "{{ tsuanan_path }}/model_cache_asr"

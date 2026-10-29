@@ -9,6 +9,7 @@ before_install:
 branches:
   only:
     - main
+    - CD
 jobs:
   include:
     - name: Check YAML format
@@ -89,3 +90,37 @@ jobs:
       after_failure:
         - cd Formosan-AI/
         - docker compose logs
+    - stage: deploy
+      name: deploy
+      if: (type = push or type = cron) and (branch = main or branch = CD)
+      install:
+        - pip install ansible
+      before_script:
+        - mkdir -p "${HOME}/.ssh/"
+        - TRAVIS_TSUKI_SSH_KEY_PATH="${HOME}/.ssh/id_ed25519_travis"
+        - echo "${DEPLOY_HOST} ssh-ed25519 ${DEPLOY_HOST_SSH_PUBLICKEY}" >> ${HOME}/.ssh/known_hosts
+        - echo "${DEPLOY_HOST_USER_SSH_KEY}" | base64 --decode > "${TRAVIS_TSUKI_SSH_KEY_PATH}"
+        # Recreate the certificate from the secure environment variable
+        - chmod 400 "${TRAVIS_TSUKI_SSH_KEY_PATH}"
+      script:
+        - >
+          ansible-playbook -i deploy/inventory_travis deploy/deploy.yaml
+          --extra-vars "tsuanan_repo=`basename ${TRAVIS_REPO_SLUG}`"
+          --extra-vars "branch=${TRAVIS_BRANCH}"
+          --extra-vars "DEPLOY_HOST=${DEPLOY_HOST}"
+          --extra-vars "DEPLOY_HOST_USER=${DEPLOY_HOST_USER}"
+          --extra-vars "TRAVIS_TSUKI_SSH_KEY_PATH=${TRAVIS_TSUKI_SSH_KEY_PATH}"
+          --extra-vars "DOCKER_USER=${DOCKER_USER}"
+          --extra-vars "DOCKER_TOKEN=${DOCKER_TOKEN_PULL}"
+          --extra-vars "VIRTUAL_HOST=${VIRTUAL_HOST}"
+          --extra-vars "LETSENCRYPT_HOST=${LETSENCRYPT_HOST}"
+          --extra-vars "WEB_CONCURRENCY=${WEB_CONCURRENCY}"
+          --extra-vars "SENTRY_DSN=${SENTRY_DSN}"
+          --extra-vars "GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID}"
+          --extra-vars "GA_PROPERTY_ID=${GA_PROPERTY_ID}"
+          --extra-vars "GA_CREDENTIALS=${GA_CREDENTIALS}"
+          --extra-vars "ASR_BATCH_SIZE=${ASR_BATCH_SIZE}"
+          --extra-vars "ASR_VIRTUAL_HOST=${ASR_VIRTUAL_HOST}"
+          --extra-vars "ASR_KALDI_VIRTUAL_HOST=${ASR_KALDI_VIRTUAL_HOST}"
+          --extra-vars "TTS_VIRTUAL_HOST=${TTS_VIRTUAL_HOST}"
+          --extra-vars "MT_VIRTUAL_HOST=${MT_VIRTUAL_HOST}"

@@ -9,6 +9,7 @@ before_install:
 branches:
   only:
     - main
+    - CD
 jobs:
   include:
     - name: Check YAML format

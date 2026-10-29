@@ -113,6 +113,7 @@ jobs:
           --extra-vars "DOCKER_USER=${DOCKER_USER}"
           --extra-vars "DOCKER_TOKEN=${DOCKER_TOKEN_PULL}"
           --extra-vars "VIRTUAL_HOST=${VIRTUAL_HOST}"
+          --extra-vars "LETSENCRYPT_HOST=${LETSENCRYPT_HOST}"
           --extra-vars "WEB_CONCURRENCY=${WEB_CONCURRENCY}"
           --extra-vars "SENTRY_DSN=${SENTRY_DSN}"
           --extra-vars "GA_MEASUREMENT_ID=${GA_MEASUREMENT_ID}"

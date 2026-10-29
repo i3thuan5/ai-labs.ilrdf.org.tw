@@ -1,0 +1,77 @@
+---
+- name: Continuous Deployment(CD)
+  hosts: tsiunnsuann
+
+  tasks:
+    - name: 專案名先改做小寫koh有設定絕對位
+      ansible.builtin.set_fact:
+        tsuanan: "{{ tsuanan_repo|lower }}"
+        tsuanan_path: "{{ ansible_facts['env']['HOME'] }}/{{ tsuanan_repo }}"
+    - name: 設定Github known_hosts
+      ansible.builtin.known_hosts:
+        name: 'github.com'
+        key: 'github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl'
+    - name: 設定Github專案
+      ansible.builtin.git:
+        repo: "git@github.com:i3thuan5/{{ tsuanan_repo }}.git"
+        dest: "{{ tsuanan_path }}"
+        version: "{{ branch }}"
+        force: true
+    - name: 設定專案.env
+      ansible.builtin.template:
+        src: .env.template
+        dest: "{{ tsuanan_path }}/.env"
+    - name: 設定辨識model_cache檔案簿仔
+      ansible.builtin.file:
+        path: "{{ tsuanan_path }}/model_cache_asr"
+        state: directory
+        mode: '1777'
+    - name: 設定辨識model_cache檔案簿仔
+      ansible.builtin.file:
+        path: "{{ tsuanan_path }}/model_cache_asr_kaldi"
+        state: directory
+        mode: '1777'
+    - name: 設定合成model_cache檔案簿仔
+      ansible.builtin.file:
+        path: "{{ tsuanan_path }}/model_cache_tts"
+        state: directory
+        mode: '1777'
+    - name: 設定翻譯model_cache檔案簿仔
+      ansible.builtin.file:
+        path: "{{ tsuanan_path }}/model_cache_mt"
+        state: directory
+        mode: '1777'
+    - name: Log into DockerHub
+      community.docker.docker_login:
+        username: "{{ DOCKER_USER }}"
+        password: "{{ DOCKER_TOKEN }}"
+    - name: 開docker compose up -d
+      community.docker.docker_compose_v2:
+        project_src: "{{ tsuanan_path }}"
+        files:
+          - docker-compose.yml
+          - deploy/docker-compose-ai-labs.yml
+          - deploy/docker-compose-formosan-ai.yml
+        build: "always"
+        pull: "always"
+        remove_orphans: true
+    - name: Log out of DockerHub
+      community.docker.docker_login:
+        state: absent
+    - name: 等5秒hōo docker開--開
+      ansible.builtin.wait_for:
+        timeout: 5
+      delegate_to: localhost
+    - name: 更新資料庫
+      ansible.builtin.command: |
+        docker compose exec -T gunicorn python manage.py migrate
+      args:
+        chdir: "{{ tsuanan_path }}"
+    - name: 更新nginx
+      ansible.builtin.command: |
+        docker compose exec -T nginx nginx -s reload
+      args:
+        chdir: "{{ tsuanan_path }}"
+    - name: Prune Docker Image
+      community.docker.docker_prune:
+        images: true

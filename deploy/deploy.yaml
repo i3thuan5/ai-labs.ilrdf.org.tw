@@ -48,7 +48,7 @@
       no_log: true
     - name: 設定ga_credentials
       ansible.builtin.copy:
-        content: "{}"
+        content: "{{ GA_CREDENTIALS | b64decode }}"
         dest: "{{ tsuanan_path }}/secrets/ga_credentials.json"
         mode: '0644'
       no_log: true

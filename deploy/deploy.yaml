@@ -26,14 +26,14 @@
         path: "{{ tsuanan_path }}/secrets"
         state: directory
         mode: '700'
-    - name: 設定django_secret_key
+    - name: 設定django_secret_key。若已經有檔案，就照舊檔，袂更新。
       ansible.builtin.copy:
         content: "{{ lookup('ansible.builtin.password', '/dev/null', length=32, chars=['ascii_letters', 'digits']) }}"
         dest: "{{ tsuanan_path }}/secrets/django_secret_key.txt"
         mode: '0644'
         force: false
       no_log: true
-    - name: 設定postgres_passwd，干焦頭一擺產生，以後毋通改
+    - name: 設定postgres_passwd。若已經有檔案，就照舊檔，袂更新。
       ansible.builtin.copy:
         content: "{{ lookup('ansible.builtin.password', '/dev/null', length=32, chars=['ascii_letters', 'digits']) }}"
         dest: "{{ tsuanan_path }}/secrets/postgres_passwd.txt"

@@ -28,6 +28,8 @@ services:
     volumes:
       - "./model_cache_asr_kaldi:/home/nonroot/.cache:rw"
       - "./feedbacks_asr_kaldi:/feedbacks:rw"
+    group_add:
+      - "${FEEDBACKS_GID:-1000}"
     networks:
       - nginx-bridge
       - ai-labs-bridge
@@ -65,6 +67,8 @@ services:
     volumes:
       - "./model_cache_mt:/home/nonroot/.cache:rw"
       - "./feedbacks_mt:/feedbacks:rw"
+    group_add:
+      - "${FEEDBACKS_GID:-1000}"
     networks:
       - nginx-bridge
       - ai-labs-bridge
